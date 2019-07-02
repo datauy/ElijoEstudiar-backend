@@ -1,0 +1,2032 @@
+<?php
+//Constantes
+// Arrays only in PHP 7
+/*define('DATAUY_TAXO_CURSOS', array(*/
+function datauy_terms_def() {
+	return array(
+		7 => 'field_nivel',
+		8 => 'field_tipo_curso',
+		9 => 'field_orientaci_n',
+		10 => 'field_categor_a',
+	);
+}
+//Hooks
+	function datauy_menu(){
+		$items = array();
+    $items['admin/test/%/%'] = array(
+			'title' => 'Test page',
+			'type' => MENU_CALLBACK,
+			'page callback' => 'datauy_test',
+			'page arguments' => array(2,3),
+			'access arguments' => array('access content'),
+		);
+		$items['api/search/%'] = array(
+			'title' => 'Test page',
+			'type' => MENU_CALLBACK,
+			'page callback' => 'datauy_api_busqueda_terminos',
+			'page arguments' => array(2),
+			'access arguments' => array('access content'),
+		);
+		$items['api/searchByLocalidadDepartamento/%'] = array(
+			'title' => 'Test page',
+			'type' => MENU_CALLBACK,
+			'page callback' => 'datauy_api_busqueda_localidades_departamentos',
+			'page arguments' => array(2),
+			'access arguments' => array('access content'),
+		);
+		$items['api/cursos'] = array(
+			'title' => 'Cursos JSON',
+			'type' => MENU_CALLBACK,
+			'page callback' => 'datauy_api_cursos',
+			'access arguments' => array('access content'),
+		);
+		/*$items['api/get_pins_json/%'] = array(
+			'title' => 'Get pins in JSON format',
+			'type' => MENU_CALLBACK,
+			'page arguments' => array(2),
+			'page callback' => 'datauy_get_pins_json',
+			'access arguments' => array('access content'),
+		);*/
+		$items['api/datauy_get_online_users_geojson/%'] = array(
+			'title' => 'Get online users in GEOJSON format',
+			'type' => MENU_CALLBACK,
+			'page arguments' => array(2),
+			'page callback' => 'datauy_get_online_users_geojson',
+			'access arguments' => array('access content'),
+		);
+		$items['api/contact/%/%/%/%'] = array(
+			'title' => 'Send contact from app',
+			'type' => MENU_CALLBACK,
+			'page arguments' => array(2,3,4,5),
+			'page callback' => 'datauy_send_contact',
+			'access arguments' => array('access content'),
+		);
+		$items['api/login'] = array(
+			'title' => 'Login from app',
+			'type' => MENU_CALLBACK,
+			'page arguments' => array(),
+			'page callback' => 'datauy_external_login',
+			'access arguments' => array('access content'),
+		);
+		$items['api/send_user_position'] = array(
+			'title' => 'Send user location from app',
+			'type' => MENU_CALLBACK,
+			'page arguments' => array(),
+			'page callback' => 'datauy_send_user_position',
+			'access arguments' => array('access content'),
+		);
+		$items['api/create_user'] = array(
+			'title' => 'Create user from app',
+			'type' => MENU_CALLBACK,
+			'page aionrguments' => array(),
+			'page callback' => 'datauy_create_user',
+			'access arguments' => array('access content'),
+		);
+		$items['api/edit_profile'] = array(
+			'title' => 'Edite user from app',
+			'type' => MENU_CALLBACK,
+			'page arguments' => array(),
+			'page callback' => 'datauy_edit_profile',
+			'access arguments' => array('access content'),
+		);
+		$items['api/get_user_info'] = array(
+			'title' => 'Get user info from app',
+			'type' => MENU_CALLBACK,
+			'page arguments' => array(),
+			'page callback' => 'datauy_get_user_info',
+			'access arguments' => array('access content'),
+		);
+		$items['api/get_all_messages_to_user'] = array(
+			'title' => 'Get user info from app',
+			'type' => MENU_CALLBACK,
+			'page arguments' => array(),
+			'page callback' => 'datauy_get_all_messages_to_user',
+			'access arguments' => array('access content'),
+		);
+		$items['api/send_text_message'] = array(
+			'title' => 'Send a text message to user from app',
+			'type' => MENU_CALLBACK,
+			'page arguments' => array(),
+			'page callback' => 'datauy_send_text_message',
+			'access arguments' => array('access content'),
+		);
+
+	  return $items;
+	}
+
+function datauy_turnos_map($turno, $id) {
+	$turnos = array(
+		'matutino' => array (
+			"2069" => 1, //mat
+			"2093" => 1, //mat
+			"2080" => 1, //doble
+			"2095" => 1, //doble
+			"2085" => 1, //especial
+			"2086" => 1, //extendido
+			"2096" => 1, //extendido
+			"2203" => 1, //intemedio
+			"2148" => 1, //intemedio ext
+			"2089" => 1, //intemedio ves
+			"2082" => 1, //matves
+			"2145" => 1, //matextendido
+			"2084" => 1, //rural
+			"2097" => 1, //rural
+			"2087" => 1, //completo
+			"2094" => 1, //completo
+			"2088" => 1, //unico
+		),
+		'vespertino' => array (
+			"2081" => 1, //vesnoc
+			"2204" => 1, //vesext
+			"2079" => 1, //ves
+			"2098" => 1, //ves
+			"2080" => 1, //doble
+			"2095" => 1, //doble
+			"2085" => 1, //especial
+			"2086" => 1, //extendido
+			"2096" => 1, //extendido
+			"2203" => 1, //intemedio
+			"2148" => 1, //intemedio ext
+			"2089" => 1, //intemedio ves
+			"2082" => 1, //matves
+			"2089" => 1, //intemedio ves
+			"2082" => 1, //matves
+			"2084" => 1, //rural
+			"2097" => 1, //rural
+			"2087" => 1, //completo
+			"2094" => 1, //completo
+			"2088" => 1, //unico
+		),
+		'nocturno' => array (
+			"2078" => 1, //noct
+			"2205" => 1, //noct ext
+			"2084" => 1, //rural
+			"2097" => 1, //rural
+			"2088" => 1, //unico
+			"2081" => 1, //vesnoc
+			"2204" => 1, //vesext
+		),
+	);
+	if ($turno) {
+		return $turnos[$turno];
+	}
+	if ($id) {
+		foreach ($turnos as $key => $ids) {
+			if ( isset($ids[$id]) )
+				return $key;
+		}
+	}
+	return 0;
+}
+/** QUERIES **/
+function datauy_find_curso_by_term($field, $value){
+  $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', "cursos")
+    ->propertyCondition('status', 1)
+		->fieldCondition($field, 'target_id', $value );
+		$result = $query->execute();
+  if (!empty($result['node'])) {
+    return node_load_multiple(array_keys($result['node']));
+  }
+  return array();
+}
+
+function datauy_search_establecimientos_by_localidad($search){
+	$query = new EntityFieldQuery();
+	$entities = $query->entityCondition('entity_type', 'node')
+		->propertyCondition('type', "establecimiento")
+		->propertyCondition('status', 1)
+		->fieldCondition('field_localidad', 'value', $search, 'CONTAINS')
+		->fieldOrderBy('field_localidad', 'value', 'ASC')
+		//->range(0,1)
+		->execute();
+	if (!empty($entities['node'])) {
+		$nids = array_keys($entities['node']);
+		$nodes = node_load_multiple($nids, array('type' => "establecimiento"));
+		return $nodes;
+	}else{
+		return false;
+	}
+}
+
+function datauy_search_establecimientos_by_departamento($search){
+	$query = new EntityFieldQuery();
+	$entities = $query->entityCondition('entity_type', 'node')
+		->propertyCondition('type', "establecimiento")
+		->propertyCondition('status', 1)
+		->fieldCondition('field_departamento', 'value', $search, 'CONTAINS')
+		->fieldOrderBy('field_departamento', 'value', 'ASC')
+		//->range(0,1)
+		->execute();
+	if (!empty($entities['node'])) {
+		$nids = array_keys($entities['node']);
+		$nodes = node_load_multiple($nids, array('type' => "establecimiento"));
+		return $nodes;
+	}else{
+		return false;
+	}
+}
+
+function datauy_search_terms($search) {
+	$query = new EntityFieldQuery();
+	if($search=="api-get-all"){
+		$result = $query->entityCondition('entity_type', 'taxonomy_term')
+			->propertyCondition('vid', array_keys(datauy_terms_def()), 'in')
+			//->propertyCondition('name', '%'.$search.'%', 'like')
+			->execute();
+			if ( !empty($result['taxonomy_term']) ) {
+				return taxonomy_term_load_multiple( array_keys($result['taxonomy_term']) );
+			}
+	}else{
+		$result = $query->entityCondition('entity_type', 'taxonomy_term')
+	    ->propertyCondition('vid', array_keys(datauy_terms_def()), 'in')
+			->propertyCondition('name', '%'.$search.'%', 'like')
+	    ->execute();
+		if ( !empty($result['taxonomy_term']) ) {
+			return taxonomy_term_load_multiple( array_keys($result['taxonomy_term']) );
+		}
+	}
+	return array();
+}
+
+function datauy_get_vocabulary_terms($vid) {
+	$query = new EntityFieldQuery();
+	$result = $query->entityCondition('entity_type', 'taxonomy_term')
+    ->propertyCondition('vid', $vid)
+    ->propertyOrderBy('weight')
+    ->execute();
+	if ( !empty($result['taxonomy_term']) ) {
+		return taxonomy_term_load_multiple( array_keys($result['taxonomy_term']) );
+	}
+	return array();
+}
+//Funciones customised
+function datauy_find_establecimiento_by_rule($rule, $ruee){
+  $query = new EntityFieldQuery();
+    $result = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', "establecimiento")
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_rule', 'value', $rule)
+		->fieldCondition('field_ruee', 'value', $ruee)
+    ->execute();
+  if (!empty($result['node'])) {
+    return array_keys($result['node']);
+  }else{
+    return false;
+  }
+}
+function datauy_find_curso($node){
+  if( empty( $node ) ){
+    return false;
+  }
+  $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', "cursos")
+    ->propertyCondition('status', 1)
+		->fieldCondition('field_nivel', 'target_id', $node->field_nivel['und'][0]['target_id'] )
+		->fieldCondition('field_tipo_curso', 'target_id', $node->field_tipo_curso['und'][0]['target_id'] );
+		if ( isset($node->field_a_o['und']) )
+			$query->fieldCondition('field_a_o', 'value', $node->field_a_o['und'][0]['value'] );
+		if ( isset($node->field_plan['und']) )
+    	$query->fieldCondition('field_plan', 'value', $node->field_plan['und'][0]['value'] );
+		if ( isset($node->field_c_digo['und']) )
+			$query->fieldCondition('field_c_digo', 'value', $node->field_c_digo['und'][0]['value'] );
+		if ( isset($node->field_orientaci_n['und']) )
+    	$query->fieldCondition('field_orientaci_n', 'target_id', $node->field_orientaci_n['und'][0]['target_id'] );
+    $result = $query->execute();
+  if (!empty($result['node'])) {
+    return array_keys($result['node']);
+  }else{
+    return false;
+  }
+}
+function datauy_find_oferta($est, $curso, $turno){
+  $query = new EntityFieldQuery();
+    $result = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', "oferta")
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_turno', 'target_id', $turno )
+		->fieldCondition('field_establecimiento', 'target_id', $est )
+		->fieldCondition('field_curso', 'target_id', $curso )
+    ->execute();
+  if (!empty($result['node'])) {
+		$nid = array_shift(array_keys($result['node']));
+    return node_load( $nid );
+  }else{
+    return false;
+  }
+}
+function findUbicacionByTitle($title, $padre){
+	$query = new EntityFieldQuery();
+	$query->entityCondition('entity_type', 'node')
+		->propertyCondition('type', 'ubicaciones')
+		->propertyCondition('title', $title)
+		->propertyCondition('status', 1)
+		->range(0,1);
+	if( $padre )
+	 	$query->fieldCondition('field_padre', 'target_id', $padre );
+	$entities = $query->execute();
+	if (!empty($entities['node']))
+		return array_shift( array_keys($entities['node']) );
+
+	return false;
+}
+/** ABM OBJETOS **/
+
+function datauy_create_curso_node($params){
+  $node = new stdClass();
+  $node->type = "cursos";
+  $node->title = $params['title'];
+  node_object_prepare($node);
+  $node->status = 1;
+  $node->field_nivel['und'][0]['target_id'] = $params['nivel'];
+	$node->field_tipo_curso['und'][0]['target_id'] = $params['tipo'];
+	$node->field_sub_sistema['und'][0]['target_id'] = $params['subsis'];
+	if ( isset($params['a_o']) )
+		$node->field_a_o['und'][0]['value'] = $params['a_o'];
+	if ( isset($params['orientaci_n']) )
+		$node->field_orientaci_n['und'][0]['target_id'] = $params['orientaci_n'];
+		if ( isset($params['titulaci_n']) )
+		$node->field_titulaci_n['und'][0]['target_id'] = $params['titulaci_n'];
+	if ( isset($params['plan']) )
+		$node->field_plan['und'][0]['value'] = $params['plan'];
+	if ( isset($params['c_digo']) )
+		$node->field_c_digo['und'][0]['value'] = $params['c_digo'];
+	if ( isset($params['trayectoria']) )
+  	$node->field_trayectoria['und'][0]['value'] = $params['trayectoria'];
+
+  //$node->field_number['und'][0]['value'] = $rowParsed[3];
+	if ( !($nid = datauy_find_curso($node)) ){
+		try {
+			node_save($node); //Comentado para evitar duplicados
+		} catch (\Exception $e) {
+			watchdog('datauy', "No se puede crear el nodo :".$params['title'].print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+			return 0;
+		}
+		$nid = $node->nid;
+	}
+	else {
+		$nid = array_shift($nid);
+	}
+	return $nid;
+}
+/**
+* Crear nodos
+*/
+function datauy_create_ubicacion_node($rowParsed, $tipo, $padre){
+  $node = new stdClass();
+  $node->type = "ubicaciones";
+  $node->title = $rowParsed[2];
+  node_object_prepare($node);
+  $node->status = 1;
+  $node->field_ubicaci_n['und'][0] = array(
+    'input_format' => GEOFIELD_INPUT_LAT_LON,
+    'geom' => array('lat' => $rowParsed[0], 'lon' => $rowParsed[1]),
+  );
+	$node->field_tipo_de_ubicaci_n['und'][0]['value'] = $tipo;
+	if ( !empty($padre) ) {
+		$node->field_padre['und'][0]['target_id'] = $padre;
+	}
+  try {
+    node_save($node); //Comentado para evitar duplicados
+    return 1;
+  } catch (\Exception $e) {
+    watchdog('datauy', "No se puede crear el nodo:".$rowParsed[2].print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+    return 0;
+  }
+}
+/**
+* Crear nodos
+*/
+function datauy_create_establecimiento_node($rowParsed, $subsis){
+  $node = new stdClass();
+  $node->type = "establecimiento";
+  $node->title = $rowParsed[4];
+  node_object_prepare($node);
+  $node->status = 1;
+  $node->field_ubicaci_n['und'][0] = array(
+    'input_format' => GEOFIELD_INPUT_LAT_LON,
+    'geom' => array('lat' => $rowParsed[1], 'lon' => $rowParsed[0]),
+  );
+  $node->field_ruee['und'][0]['value'] = $rowParsed[2];
+  $sub = $rowParsed[3];
+  $node->field_sub_sistema['und'][0]['target_id'] = $subsis[$sub];
+  $node->field_departamento['und'][0]['value'] = $rowParsed[6];
+  $node->field_localidad['und'][0]['value'] = $rowParsed[7];
+  $node->field_paraje['und'][0]['value'] = $rowParsed[8];
+  $node->field_direcci_n['und'][0]['value'] = $rowParsed[9]." ".$rowParsed[10];
+  $node->field_tel_fono['und'][0]['value'] = $rowParsed[11];
+  $node->field_rule['und'][0]['value'] = $rowParsed[12];
+  //$node->field_number['und'][0]['value'] = $rowParsed[3];
+  try {
+    node_save($node); //Comentado para evitar duplicados
+    return 1;
+  } catch (\Exception $e) {
+    watchdog('datauy', "No se puede crear el nodo RULE:".$rowParsed[12].print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+    return 0;
+  }
+}
+
+function datauy_update_establecimiento(){
+	print "\nArranca update establecimiento<pre>";
+	$i=0;
+	$fails = 0;
+	$tipos_hand = fopen(drupal_get_path('module', 'datauy').'/import/update_establecimientos.csv', 'r') or die("can't open ./import/update_establecimientos.csv");
+	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+		if ( !($est = datauy_find_establecimiento_by_rule( $rowParsed[1], $rowParsed[0] )) ) {
+			$fails++;
+			continue;
+		}
+		if ( !empty($rowParsed[3]) )
+			$est->field_mail['und']['0']['value'] = $rowParsed[3];
+		if ( !empty($rowParsed[4]) )
+			$est->field_web['und']['0']['value'] = $rowParsed[4];
+		try {
+	    node_save($node); //Comentado para evitar duplicados
+	    $i++;
+	  } catch (\Exception $e) {
+	    watchdog('datauy', "No se puede actualizar el establecimiento: ".$rowParsed[0].' - '.$rowParsed[1].print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+	    $fails++;
+	  }
+		/* Ver si es necesario luego expandir esta función, por ahora se recojen mails y webs.
+		if (!$i){
+			$i++;
+			//Get fields
+			foreach ($rowParsed as $key => $value) {
+				if ( $key == 0 || $key == 1 )
+					continue;
+
+			}
+			continue;
+		}*/
+	}
+}
+// returns (nid, created)
+function datauy_create_oferta_node($oferta){
+	if ( !($est = datauy_find_establecimiento_by_rule( $oferta['rule'], $oferta['ruee'] )) ) {
+		print "\nEST NO encontrado\nRULE: ".$oferta['rule']."\nRUEE: ".$oferta['ruee'];
+		return array(0, 0);
+	}
+	$est = array_shift($est);
+	//Vemos si existe el nodo
+	if ( $node = datauy_find_oferta($est, $oferta['curso'], $oferta['turno']) ){
+		//Verificar los grupos
+		if ( !empty($oferta['grupo']) ){
+			$nuevo_grupo = 1;
+			foreach ( $node->field_grupos['und'] as $pre_grupo ){
+				if ( $pre_grupo['value'] == $oferta['grupo']) {
+					$nuevo_grupo = 0;
+					break;
+				}
+			}
+			if ($nuevo_grupo){
+				$node->field_grupos['und'][] = array('value' => $oferta['grupo']);
+			}
+			else {
+				return array($node->nid, 0);
+			}
+		}
+		else {
+			return array($node->nid, 0);
+		}
+	}
+	else {
+		$node = new stdClass();
+		$node->type = "oferta";
+		$node->title = $oferta['title'];
+		node_object_prepare($node);
+		$node->status = 1;
+		$node->field_establecimiento['und'][0]['target_id'] = $est;
+		$node->field_curso['und'][0]['target_id'] = $oferta['curso'];
+		//// TODO: MULTIPLE VALUES!!!!
+		$node->field_turno['und'][0]['target_id'] = $oferta['turno'];
+		if ( isset($oferta['cat']) )
+			$node->field_categor_a['und'][0]['target_id'] = $oferta['cat'];
+		if ( isset($oferta['grupo']) )
+			$node->field_grupos['und'][0]['value'] = $oferta['grupo'];
+		if ( isset($oferta['duraci_n']) )
+			$node->field_duraci_n['und'] = $oferta['duraci_n'];
+		if ( isset($oferta['modalidad']) )
+			$node->field_modalidad['und'][0]['target_id'] = $oferta['modalidad'];
+	}
+	try {
+		node_save($node); //Comentado para evitar duplicados
+		return array($node->nid, 1);
+	} catch (\Exception $e) {
+		watchdog('datauy', "No se puede crear el nodo Oferta RULE:".$oferta['rule'].print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+		return array(0, 0);
+	}
+}
+//
+function datauy_add_taxonomy($name, $voc){
+	$term = taxonomy_get_term_by_name("$name", $voc[0]);
+	if ( empty($term) ){
+		$term = new stdClass();
+		$term->name = $name;
+		$term->vid = $voc[1];
+		try {
+			taxonomy_term_save($term);
+		}
+		catch (\Exception $e) {
+			watchdog('datauy', "No se puede crear el término:".$name.print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+			return 0;
+		}
+	}
+	if (is_array($term))
+		$term = array_shift($term);
+	return $term->tid;
+}
+
+/**  FUNCIONES DE IMPORTACIÓN  **/
+
+// Se utiliza csv de
+function datauy_import_establecimientos() {
+	global $user;
+	print "\nArranca import establecimientos<pre>";
+	$external_url = "http://backend.educacion.thor.datauy.org/centros_ANEP.csv";
+	$data = file_get_contents($external_url);
+	$rows = str_getcsv($data, "\n"); //parse the rows
+	//Load subsitemes with name key
+	$subsis_tree = taxonomy_get_tree(2);
+	foreach ($subsis_tree as $sub ) {
+		$subsis[$sub->name] = $sub->tid;
+	}
+	// TODO:caragr horarios
+	$i=0;
+	$fails = 0;
+	$repeated = 0;
+	foreach($rows as $key => $row){
+		if (!$i){
+			$i++;
+			continue;
+		}
+		$rowParsed = str_getcsv($row, ","); //parse the items in rows
+		if ( !datauy_find_establecimiento_by_rule($rowParsed[12], $rowParsed[2]) ) {
+			print "\nNO HAY... agregando ".$rowParsed[4];
+			$created = datauy_create_establecimiento_node($rowParsed, $subsis);
+			if ($created) {
+				$i++;
+			}
+			else {
+				$fails++;
+			}
+		}
+		else {
+			$repeated++;
+		}
+		//exit(); //Only take first row
+	}
+	print "Se crearon ".$i." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	exit();
+}
+
+/**
+* Import de Ubicaciones
+*/
+function datauy_import_ubicaciones() {
+	global $user;
+
+	print "\nArranca import Ubicaciones<pre>";
+	$i=0;
+	$fails = 0;
+	$repeated = 0;
+	$tipos_hand = fopen(drupal_get_path('module', 'datauy').'/import/localidades_import.csv', 'r') or die("can't open ./import/localidades_import.csv");
+	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+		if (!$i){
+			$i++;
+			continue;
+		}
+		$padre = 0;
+		if ( !empty($rowParsed[3]) ) {
+			$padre = findUbicacionByTitle($rowParsed[3], 0);
+		}
+		if ( !findUbicacionByTitle($rowParsed[2], $padre) ) {
+			$created = datauy_create_ubicacion_node($rowParsed, 'localidad', $padre);
+			if ($created) {
+				$i++;
+			}
+			else {
+				$fails++;
+			}
+		}
+		else {
+			$repeated++;
+		}
+	//exit(); //Only take first row
+}
+print "Se crearon ".$i." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+exit();
+}
+// Se utiliza csv de
+function datauy_import_CEIP() {
+	global $user;
+
+	print "\nArranca import CEIP<pre>";
+	$i=0;
+	$fails = 0;
+	$repeated = 0;
+	$tipos_hand = fopen(drupal_get_path('module', 'datauy').'/import/CEIP_import.csv', 'r') or die("can't open ./import/tipos_act.csv");
+	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+		if (!$i){
+			$i++;
+			continue;
+		}
+		//Verificar tipo
+		// TODO: CAMBIAR TIPO PARA JARDINES...
+		$tipo = datauy_add_taxonomy($rowParsed[0], array('tipo_de_curso', 8));
+		$orientacion = datauy_add_taxonomy($rowParsed[0], array('orientaci_n', 9));
+		if ( !$tipo  ) {
+			//Verificar nivel
+			//error ya reportado
+			print "Sale no tiene tipo...";
+			continue;
+		}
+		$doble = 0;
+		//No hay año asociado, ej: escuela especial
+		if ( empty($rowParsed[4]) ) {
+			$primer_grado = 0;
+			$ultimo_grado = 0;
+			$nivel = 2091;
+			$nombre_curso = 'PRIMARIA-';
+		}
+		else {
+			//Verifico el nivel
+			if ( strpos($rowParsed[4], '°') ) {
+				$nivel = 2091;
+				$nombre_curso = 'PRIMARIA-';
+			}
+			else {
+				$nivel = 2090;
+				$nombre_curso = 'JARDÍN-';
+				//Chequeo si es todo inicial o es escuela también
+				if ( strpos($rowParsed[5], '°') ) {
+					$doble = 1;
+				}
+			}
+			$primer_grado = substr($rowParsed[4], 0, 1 );
+			if ( $doble ) {
+				$ultimo_grado = 5;
+			}
+			else {
+				$ultimo_grado = substr($rowParsed[5], 0, 1 );
+			}
+		}
+		for ($primer_grado; $primer_grado <= $ultimo_grado; $primer_grado++) {
+			$curso_params = array(
+				'title' => $nombre_curso.$primer_grado,
+				'nivel' => $nivel,
+				'tipo' => $tipo,
+				'orientaci_n' => $orientacion,
+				//'plan' => null,
+				//'c_digo' => null,
+				'a_o' => $primer_grado,
+				//'trayectoria' => null,
+				'subsis' => 1
+			);
+			if ( $curso_id = datauy_create_curso_node($curso_params) ) {
+				$turno = datauy_add_taxonomy($rowParsed[1], array('turno', 11));
+				$cat = datauy_add_taxonomy($rowParsed[3], array('categor_a', 10));
+				$oferta_params = array(
+					'rule' => $rowParsed[18],
+					'ruee' => $rowParsed[17],
+					'curso' => $curso_id,
+					'turno' => $turno,
+					'title' => $nombre_curso.$primer_grado.'-'.$rowParsed[17], // TODO: cambiar al nombre del turno
+					'cat' => $cat
+				);
+				$oferta_creada = datauy_create_oferta_node($oferta_params);
+				if ($oferta_creada[0] && $oferta_creada[1]){
+					$i++;
+				}
+				elseif ($oferta_creada[0]) {
+					$repeated++;
+				}
+				else {
+					$fails++;
+				}
+			}
+			else {
+				$fails++;
+				print "No se pudo crear el curso: ".print_r($nivel, TRUE);
+			}
+		}
+		//Si es doble ejecutamos la parte de primaria
+		if ( $doble ) {
+			$nombre_curso = 'PRIMARIA-';
+			$primer_grado = 1;
+			$ultimo_grado = substr($rowParsed[5], 0, 1 );
+			for ($primer_grado; $primer_grado <= $ultimo_grado; $primer_grado++) {
+				$curso_params = array(
+					'title' => $nombre_curso.$primer_grado,
+					'nivel' => 2091,
+					'tipo' => 2092,
+					'orientaci_n' => 2066,
+					//'plan' => '',
+					//'c_digo' => '',
+					'a_o' => $primer_grado,
+					//'trayectoria' => '',
+					'subsis' => 1
+				);
+				if ( $curso_id = datauy_create_curso_node($curso_params) ) {
+					$oferta_params = array(
+						'rule' => $rowParsed[18],
+						'ruee' => $rowParsed[17],
+						'curso' => $curso_id,
+						'turno' => $turno,
+						'title' => $nombre_curso.$primer_grado.'-'.$rowParsed[17], // TODO: cambiar al nombre del turno
+						'cat' => $cat
+					);
+					$oferta_creada = datauy_create_oferta_node($oferta_params);
+					if ($oferta_creada[0] && $oferta_creada[1]){
+						$i++;
+					}
+					elseif ($oferta_creada[0]) {
+						$repeated++;
+					}
+					else {
+						$fails++;
+					}
+				}
+				else {
+					$fails++;
+					print "No se pudo crear el curso: ".print_r($nivel, TRUE);
+				}
+			}
+		}
+		//Para la región se evaluará su pertinencia
+		//$region = taxonomy_get_term_by_name('CAMPUS REGIONAL EDUC. TECNOLOGICA LITORAL NORTE', 'regional');
+		//Crear curso en caso que no exista
+	}
+	fclose($tipos_hand) or die("Can't close php://tipos_hand");
+	print "Se crearon ".$i." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	exit();
+}
+
+
+function datauy_import_CES() {
+	global $user;
+	print "\nArranca import CES<pre>";
+	$i=0;
+	$fails = 0;
+	$repeated = 0;
+	$tipos_hand = fopen(drupal_get_path('module', 'datauy').'/import/CES_import.csv', 'r') or die("can't open ./import/CES_correcciones.csv");
+	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+		if (!$i){
+			$i++;
+			continue;
+		}
+		$orientacion = 0;
+		//Verificar tipo
+		switch ($rowParsed[2]) {
+			case 4:
+				$orientacion = 2207;
+				$tipo = 2105;
+				$nivel = 1794;
+				$title = 'BACHILLERATO 4°';
+				break;
+			case 5:
+				$tipo = 2103;
+				$nivel = 1794;
+				$orientacion = datauy_add_taxonomy($rowParsed[3], array('orientaci_n', 9));
+				$title = 'BACHILLERATO 5° - '.$rowParsed[3];
+				break;
+			case 6:
+				$tipo = 2104;
+				$nivel = 1794;
+				$orientacion = datauy_add_taxonomy($rowParsed[3], array('orientaci_n', 9));
+				$title = 'BACHILLERATO 6° - '.$rowParsed[3];
+				break;
+			default:
+				$orientacion = 2207;
+				$tipo = 2106;
+				$nivel = 1778;
+				$title = 'SECUNDARIA CICLO BÁSICO';
+				break;
+		}
+
+		$curso_params = array(
+			'title' => $title,
+			'nivel' => $nivel,
+			'tipo' => $tipo,
+			'orientaci_n' => $orientacion,
+			'plan' => $rowParsed[5],
+			'a_o' => $rowParsed[2],
+			'subsis' => 2,
+		);
+		if ( $curso_id = datauy_create_curso_node($curso_params) ) {
+			$turno = datauy_add_taxonomy($rowParsed[4], array('turno', 11));
+			$duracion = array();
+			foreach ( explode('/', $rowParsed[6]) as $opciones) {
+				if (!empty($opciones)) {
+					$dur_time = datauy_add_taxonomy($opciones, array('duraci_n', 14));
+					if ( $dur_time )
+					$duracion[] = array('target_id' => $dur_time);
+				}
+			}
+			$oferta_params = array(
+				'title' => $title.'-'.$rowParsed[0].'-'.$rowParsed[4],
+				'rule' => $rowParsed[1],
+				'ruee' => $rowParsed[0],
+				'curso' => $curso_id,
+				'turno' => $turno,
+				'duraci_n' => $duracion,
+			);
+			$oferta_creada = datauy_create_oferta_node($oferta_params);
+			if ($oferta_creada[0] && $oferta_creada[1]){
+				$i++;
+			}
+			elseif ($oferta_creada[0]) {
+				$repeated++;
+			}
+			else {
+				$fails++;
+			}
+		}
+		else {
+			$fails++;
+			print "No se pudo crear el curso: ".print_r($nivel, TRUE);
+		}
+		//Para la región se evaluará su pertinencia
+		//$region = taxonomy_get_term_by_name('CAMPUS REGIONAL EDUC. TECNOLOGICA LITORAL NORTE', 'regional');
+		//Crear curso en caso que no exista
+	}
+	print "Se crearon ".$i." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	exit();
+}
+
+// Se utiliza csv de
+function datauy_import_CETP() {
+	global $user;
+	print "\nArranca import CETP<pre>";
+	$i=0;
+	$fails = 0;
+	$repeated = 0;
+	$tipos_hand = fopen(drupal_get_path('module', 'datauy').'/import/CETP_import.csv', 'r') or die("can't open ./import/CETP_import.csv");
+	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+		if (!$i){
+			$i++;
+			continue;
+		}
+		//Verificar nivel
+		$nivel = datauy_add_taxonomy($rowParsed[0], array('nivel', 7));
+		//Verificar tipo
+		$tipo = datauy_add_taxonomy($rowParsed[1], array('tipo_de_curso', 8));
+		//Verificar orientacion
+		$orientacion = datauy_add_taxonomy($rowParsed[4], array('orientaci_n', 9));
+		$turno = datauy_add_taxonomy($rowParsed[10], array('turno', 11));
+		if (!$orientacion || !$tipo || !$nivel ) {
+			//error ya reportado
+			print "Sale no tiene algo...";
+			continue;
+		}
+		$curso_params = array(
+			'title' => $rowParsed[4].'-'.$rowParsed[6],
+			'nivel' => $nivel,
+			'tipo' => $tipo,
+			'orientaci_n' => $orientacion,
+			'plan' => $rowParsed[2],
+			'c_digo' => $rowParsed[3],
+			'a_o' => $rowParsed[6],
+			'trayectoria' => substr_count($rowParsed[5],'I'),
+			'subsis' => 3
+		);
+		if ( $curso_id = datauy_create_curso_node($curso_params) ) {
+			$oferta_params = array(
+				'rule' => $rowParsed[14],
+				'ruee' => $rowParsed[13],
+				'curso' => $curso_id,
+				'turno' => $turno,
+				'title' => $rowParsed[4].'-'.$rowParsed[13].'-'.$rowParsed[10],
+				'grupo' => $rowParsed[9]
+			);
+			$oferta_creada = datauy_create_oferta_node($oferta_params);
+			if ($oferta_creada[0] && $oferta_creada[1]){
+				$i++;
+			}
+			elseif ($oferta_creada[0]) {
+				$repeated++;
+			}
+			else {
+				$fails++;
+			}
+		}
+		else {
+			$fails++;
+			print "No se pudo crear el curso: ".print_r($nivel, TRUE);
+		}
+		//Para la región se evaluará su pertinencia
+		//$region = taxonomy_get_term_by_name('CAMPUS REGIONAL EDUC. TECNOLOGICA LITORAL NORTE', 'regional');
+		//Crear curso en caso que no exista
+	}
+	print "Se crearon ".$i." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	fclose($tipos_hand) or die("Can't close php://tipos_hand");
+	exit();
+}
+
+function datauy_import_CFE() {
+	global $user;
+	print "\nArranca import CFE<pre>";
+	$i=0;
+	$fails = 0;
+	$repeated = 0;
+	$tipos_hand = fopen(drupal_get_path('module', 'datauy').'/import/CFE_import.csv', 'r') or die("can't open ./import/CFE_import.csv");
+	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+		if (!$i){
+			$i++;
+			continue;
+		}
+		$nivel = 1934;
+		$title = 'FORMACIÓN EN '.$rowParsed[5];
+		//Verificar tipo
+		$tipo = datauy_add_taxonomy($rowParsed[4], array('tipo_de_curso', 8));
+		//Verificar orientacion
+		$orientacion = datauy_add_taxonomy($rowParsed[5], array('orientaci_n', 9));
+		if (!$orientacion || !$tipo) {
+			//error ya reportado
+			print "Sale no tiene algo...";
+			continue;
+		}
+		$curso_params = array(
+			'title' => $title,
+			'nivel' => $nivel,
+			'tipo' => $tipo,
+			'orientaci_n' => $orientacion,
+			//'plan' => $rowParsed[2],
+			//'c_digo' => $rowParsed[3],
+			//'a_o' => $rowParsed[6],
+			'subsis' => 4
+		);
+		if (!empty($rowParsed[3]))
+			$curso_params['titulaci_n'] = datauy_add_taxonomy($rowParsed[3], array('titulaci_n', 12));
+		if ( $curso_id = datauy_create_curso_node($curso_params) ) {
+			if ( empty($rowParsed[6]) ) {
+				$fails++;
+				print "No tiene turno: ".print_r($rowParsed, TRUE);
+			}
+			else {
+				$turno = datauy_add_taxonomy($rowParsed[6], array('turno', 11));
+				$oferta_params = array(
+					'title' => $title.'-'.$rowParsed[1],
+					'rule' => $rowParsed[1],
+					'ruee' => $rowParsed[0],
+					'curso' => $curso_id,
+					'turno' => $turno,
+				);
+				if (!empty($rowParsed[2]))
+					$oferta_params['modalidad'] = datauy_add_taxonomy($rowParsed[2], array('modalidad', 13));
+				$oferta_creada = datauy_create_oferta_node($oferta_params);
+				if ($oferta_creada[0] && $oferta_creada[1]){
+					$i++;
+				}
+				elseif ($oferta_creada[0]) {
+					$repeated++;
+				}
+				else {
+					$fails++;
+				}
+			}
+		}
+		else {
+			$fails++;
+			print "No se pudo crear el curso: ".print_r($nivel, TRUE);
+		}
+		//Para la región se evaluará su pertinencia
+		//$region = taxonomy_get_term_by_name('CAMPUS REGIONAL EDUC. TECNOLOGICA LITORAL NORTE', 'regional');
+		//Crear curso en caso que no exista
+	}
+	print "Se crearon ".$i." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	exit();
+}
+
+function datauy_import_tipos() {
+	$tipos_hand = fopen(drupal_get_path('module', 'datauy').'/import/tipos_act.csv', 'r') or die("can't open ./import/tipos_act.csv");
+	while (($row = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+		datauy_add_taxonomy($row[0], array('tipo_de_curso', 8));
+	}
+	fclose($tipos_hand) or die("Can't close php://tipos_hand");
+}
+
+function datauy_import_previas() {
+	$tipos_hand = fopen(drupal_get_path('module', 'datauy').'/import/previas_nomb.csv', 'r') or die("can't open ./import/previas_nomb.csv");
+	while (($row = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+		$tipo = array_shift(taxonomy_get_term_by_name($row[0], 'tipo_de_curso'));
+		$previa = array_shift(taxonomy_get_term_by_name($row[1], 'tipo_de_curso'));
+		$add = 1;
+		$added = 0;
+		$err = 0;
+		if ( isset($tipo->field_previas['und']) ) {
+			foreach ($tipo->field_previas['und'] as $target_arr) {
+				if ( $target_arr['target_id'] == $previa->tid ) {
+					$add = 0;
+					continue;
+				}
+			}
+		}
+		if ($add) {
+			try {
+				$tipo->field_previas['und'][] = array('target_id' => $previa->tid);
+				taxonomy_term_save($tipo);
+				$added++;
+			} catch (\Exception $e) {
+				watchdog('datauy', "No se puede crear la previa para :<pre>".$row[0].print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+				$err++;
+			}
+		}
+	}
+	print 'END PREVIAS, se agregaron '.$added.' previas; fallaron '.$err;
+	fclose($tipos_hand) or die("Can't close php://tipos_hand");
+}
+
+
+
+
+/******* API *******/
+/**
+	*Búsqueda de dónde estudiar
+	*@param:
+	* String de Búsqueda
+	*@return:
+	* JSON array de localidad, departamento
+*/
+function datauy_api_busqueda_localidades_departamentos($search){
+	$establecimientosByLocalidad = datauy_search_establecimientos_by_localidad($search);
+	$establecimientosByDepartamento = datauy_search_establecimientos_by_departamento($search);
+	$result = array();
+	if($establecimientosByLocalidad!=false){
+		foreach ($establecimientosByLocalidad as $key => $establecimiento) {
+			if(isset($establecimiento->field_localidad["und"][0]["value"]) && isset($establecimiento->field_departamento["und"][0]["value"])){
+				$full_value = $establecimiento->field_localidad["und"][0]["value"] . ", " . $establecimiento->field_departamento["und"][0]["value"];
+				$item = array();
+				if(!array_key_exists($full_value,$result)){
+					$item["loc_dep"] = $full_value;
+					$item["localidad"] = $establecimiento->field_localidad["und"][0]["value"];
+					$item["departamento"] = $establecimiento->field_departamento["und"][0]["value"];
+					$item["coordenadas"] = $establecimiento->field_ubicaci_n["und"][0];
+					$result [$full_value]= $item;
+				}
+			}
+		}
+	}
+	if($establecimientosByDepartamento!=false){
+		foreach ($establecimientosByDepartamento as $key => $establecimiento) {
+			if(isset($establecimiento->field_localidad["und"][0]["value"]) && isset($establecimiento->field_departamento["und"][0]["value"])){
+				$full_value = $establecimiento->field_localidad["und"][0]["value"] . ", " . $establecimiento->field_departamento["und"][0]["value"];
+				$item = array();
+				if(!array_key_exists($full_value,$result)){
+					$item["loc_dep"] = $full_value;
+					$item["localidad"] = $establecimiento->field_localidad["und"][0]["value"];
+					$item["departamento"] = $establecimiento->field_departamento["und"][0]["value"];
+					$item["coordenadas"] = $establecimiento->field_ubicaci_n["und"][0];
+					$result [$full_value]= $item;
+				}
+			}
+		}
+	}
+	ksort($result);
+	printInNiceJson($result);
+	exit();
+}
+
+/**
+	*Búsqueda de términos
+	*@param:
+	* String de Búsqueda
+	*@return:
+	* JSON array por SUBSISTEMA
+*/
+function datauy_api_busqueda_terminos($search) {
+		//GEt all terms matching search and group by vocabulary
+		/*$view = views_get_view('b_squeda_de_t_rminos');
+		$view->set_exposed_input(array('name' => $search));
+		$view->init_display();
+		$view->pre_execute();
+		$view->execute();
+		$terms = $view->result;*/
+		//$terms = views_get_view_result('b_squeda_de_t_rminos', 'default', 'name=mat');
+		if ( $search == "all") {
+			print_r(file_get_contents('./cursos.json'));
+			exit();
+		}
+		$terms = datauy_search_terms($search);
+		$result = array();
+		//Get all nodes matching terms (query by vocabulary )
+		// TODO: Levantar vocabularios y manejarlos localmente para no hacer un load a la base por cada nodo?
+		$subsiss = datauy_get_vocabulary_terms(2);
+		$niveles = datauy_get_vocabulary_terms(7);
+		$tipos = datauy_get_vocabulary_terms(8);
+		foreach ($terms as $term) {
+			if ($term->vocabulary_machine_name == 'orientaci_n'){
+				$field = 'field_orientaci_n';
+			}
+			elseif ($term->vocabulary_machine_name == 'nivel') {
+				$field = 'field_nivel';
+			}
+			else {
+				$field = 'field_tipo_curso';
+			}
+			$nodes = datauy_find_curso_by_term($field, $term->tid);
+			foreach ($nodes as $node) {
+				//$subsis = taxonomy_term_load($node->field_sub_sistema['und']['0']['target_id']);
+				$nsubsis = $node->field_sub_sistema['und']['0']['target_id'];
+				$subsis = $subsiss[$nsubsis];
+				$ntipo = $node->field_tipo_curso['und']['0']['target_id'];
+				$tipo = $tipos[$ntipo];
+				$nnivel = $node->field_nivel['und']['0']['target_id'];
+				$nivel = $niveles[$nnivel];
+				//$tipo = taxonomy_term_load($node->field_tipo_curso['und']['0']['target_id']);
+				/*if ($term->vocabulary_machine_name == 'orientaci_n') {
+					$nombre = $term->name;
+					$id = $term->tid;
+				}*/
+				if ( isset($node->field_orientaci_n['und']) ) {
+					$orientacion = taxonomy_term_load($node->field_orientaci_n['und']['0']['target_id']);
+					$nombre = $orientacion->name;
+					$id = $orientacion->tid;
+					$tipo_op = 'orientacion';
+				}
+				else {
+					$nombre = $tipo->name;
+					$id = $tipo->tid;
+					$tipo_op = 'tipo';
+				}
+				//$key = $term->tid.'-'.$tipo->tid.'-'.$nivel->tid;
+				//No agregar a menos que sea diferente
+				if ( isset($result[$subsis->name][$id]) )
+					continue;
+				$result[$subsis->name][$id] = array(
+					'id' => $id,
+					'nombre' => $nombre,
+					'tag' => array(
+						array(
+							'nombre' => $tipo->name,
+							'tipo'	=> 'tipo',
+							'url' => ''
+						),
+						array(
+							'nombre' => $nivel->name,
+							'tipo'	=> 'nivel',
+							'url' => ''
+						),
+					),
+					'tipoId' => $tipo->tid,
+				);
+			}
+		}
+		/*print '<pre>';
+		print_r($result);
+		exit();*/
+		foreach ($result as $subsis => $sub_arr) {
+			$jres[] = array(
+				'subsis' => $subsis,
+				'cursos' => array_values($sub_arr)
+			);
+		}
+		//return tagged terms
+		printInNiceJson($jres);
+		exit();
+}
+function datauy_api_cursos() {
+	$references = array(
+		2 => 'field_sub_sistema',
+		7 => 'field_nivel',
+		8 => 'field_tipo_curso',
+		9 => 'field_orientaci_n',
+		10 => 'field_categor_a',
+		12 => 'field_titulaci_n',
+		13 => 'field_modalidad',
+	);
+	$taxonomies = array();
+	foreach ($references as $vid => $field) {
+		$taxonomies[$field] = datauy_get_vocabulary_terms($vid);
+	}
+	//$taxonomies['field_turno'] = datauy_get_vocabulary_terms(11);
+	//PARAMS
+	if ( isset($_GET['edad']) && $_GET['edad'] != 'all') {
+			$edad = $_GET['edad'];
+	}
+	else {
+		$edad = 0;
+	}
+	//NIVEL
+	if ( isset($_GET['nivel']) && $_GET['nivel'] != 'all' ) {
+		$nivel = $_GET['nivel'];
+		if ( isset($taxonomies['field_nivel'][$nivel]) ) {
+			$nivel_obj = $taxonomies['field_nivel'][$nivel];
+		}
+		else {
+			printInNiceJson(array(
+				"status" => 0,
+				"message" => "Nivel no encontrado"
+			));
+			exit();
+		}
+	}
+	if ( isset($_GET['orientacion']) )
+		$orientacion = $_GET['orientacion'];
+	else
+		$orientacion = 'all';
+	if ( isset($_GET['tipo']) )
+		$tipo = $_GET['tipo'];
+	else
+		$tipo = 'all';
+	$turnos = array();
+	if ( isset($_GET['turnos']) && $_GET['turnos'] != 'all' ) {
+		$turnos_arr = explode(',', $_GET['turnos']);
+		//Agrupamos turnos
+		foreach ($turnos_arr as $turno_str) {
+			$turnos += datauy_turnos_map($turno_str);
+		}
+	}
+	else {
+		$turnos = array('all'=>1);
+	}// TODO: Arreglar turnos!!!!! Hacer query acá y dejar la vista...
+	if ( isset($_GET['ubicacion']) )
+		$ubicacion = $_GET['ubicacion'];
+	else
+		$ubicacion = 'all';
+	if ( isset($_GET['centro']) )
+		$centro = $_GET['centro'];
+	else
+		$centro = 'all';
+	// TODO: levantar filtros por edad
+	// TODO: Mapear turnos
+	$cursos_arr = [];
+
+	$view = views_get_view('cursos_test');
+	$view->set_arguments(array($ubicacion, $orientacion, $tipo, $centro));
+	$view->set_exposed_input( array( "turnos" => array_keys($turnos) ) );
+	$view->init_display();
+	$view->pre_execute();
+	$view->execute();
+	$cursos = $view->result;//views_get_view_result('cursos_test', 'default', $ubicacion, implode(',',array_keys($turnos)), $orientacion, $tipo);
+	//array_unshift($_GET, 'cursos', 'default');
+	//$cursos = call_user_func_array('views_get_view_result', $_GET);
+	//Armamos array para mantener el orden:
+	$cursos_est = array();
+	foreach ($cursos as $curso) {
+		/*print '<pre>';
+		print_r($curso);
+		exit();*/
+		$oferta = $curso->_field_data['field_curso_node_nid']['entity'];
+		$est = $curso->_field_data['node_field_data_field_establecimiento_nid']['entity'];
+		//Si está el curso cargo sólo la oferta
+		if ( !isset($cursos_arr[$curso->nid]) ){
+			$cursos_est[$curso->nid] = array();
+			$curso_obj = $curso->_field_data['nid']['entity'];
+			// TODO: Procesar previas!!!
+			//$curso_obj->field_tipo_curso['und']['0']['target_id']
+			$cursos_arr[$curso->nid] = array(
+				'plan' => isset($curso_obj->field_plan['und']) ? $curso_obj->field_plan['und']['0']['value'] : '',
+				'año' => isset($curso_obj->field_a_o['und']) ? $curso_obj->field_a_o['und']['0']['value'] : '',
+			);
+			//Levantamos taxonomías
+			foreach ($references as $field) {
+				$field_arr = $curso_obj->$field;
+				if ( isset($field_arr['und']) ) {
+					$tid = $field_arr['und']['0']['target_id'];
+					$tax_field = $taxonomies[$field][$tid];
+					$cursos_arr[$curso->nid][$field] = $tax_field->name;
+				}
+				else {
+					$cursos_arr[$curso->nid][$field] = '';
+				}
+			}
+			if ( $cursos_arr[$curso->nid]['field_orientaci_n'] == '' ) {
+				$cursos_arr[$curso->nid]['field_orientaci_n'] = $cursos_arr[$curso->nid]['field_tipo_curso'];
+			}
+		}
+		if (!isset($cursos_est[$curso->nid][$est->nid])) {
+			//Contador para mantener el orden
+			$cursos_est[$curso->nid][$est->nid] = count($cursos_arr[$curso->nid]['oferta']);
+			$cursos_arr[$curso->nid]['oferta'][] = array(
+				'nombre' => $est->title,
+				'lat' => $est->field_ubicaci_n['und'][0]['lat'],
+				'long' => $est->field_ubicaci_n['und'][0]['lon'],
+				'id' => $est->nid,
+				'turnos' => [],
+				'turnos_ext' => [],
+			);
+		}
+		$est_key = $cursos_est[$curso->nid][$est->nid];
+		//Cargamos taxo turno
+		foreach ($curso->field_field_turno as $turno_arr) {
+			$turno = $turno_arr['raw']['entity'];
+			if ( $turno_ext = datauy_turnos_map(0, $turno->tid) ) {
+				if ( !in_array($turno_ext, $cursos_arr[$curso->nid]['oferta'][$est_key]['turnos_ext']) ) {
+					$cursos_arr[$curso->nid]['oferta'][$est_key]['turnos_ext'][] = $turno_ext;
+				}
+			}
+			if ( !in_array($turno->name, $cursos_arr[$curso->nid]['oferta'][$est_key]['turnos']) ) {
+				$cursos_arr[$curso->nid]['oferta'][$est_key]['turnos'][] = $turno->name;
+			}
+		}
+		/*
+		$tax_field = $taxonomies['field_turno'][$tid];
+		$turno = $tax_field->name;*/
+		/*Cargamos oferta
+		$cursos_arr[$curso->nid]['oferta'][$est->nid] = array(
+			'horas' => isset($oferta->field_horas['und']) ? $oferta->field_horas['und']['0']['value'] : '',
+			'grupos' => isset($oferta->field_grupos['und']) ? sizeof($oferta->field_grupos['und']) : 0,
+			'establecimiento_id' => $oferta->field_establecimiento['und']['0']['target_id'],
+			'turno' => $turno
+		);*/
+	}
+	printInNiceJson(array_values($cursos_arr));
+	exit();
+}
+
+function datauy_test($quiere_nid, $tiene_nid) {
+  global $user;
+  print "\nArranca test<pre>";
+  if ( $user->uid == 1 || $user->uid == 12 || $user->uid == 18 || $user->uid == 19 ){
+    //$external_url = "http://backend.educacion.thor.datauy.org/centros_ANEP.csv";
+    //$data = file_get_contents($external_url);
+    //$rows = str_getcsv($data, "\n"); //parse the rows
+		//print_r(taxonomy_get_vocabularies());
+    //Load subsitemes with name key
+		//print_r( node_load(48758) );
+		//print_r( node_load(43726) );
+		//$orientacion = taxonomy_get_term_by_name('EDUCACION MEDIA BASICA', 'regional');
+		//print_r($orientacion);
+		//print_r(views_get_view_result('oferta', NULL, '-34.828518,-55.951376', 'MATUTINO') );
+		//print_r(datauy_get_vocabulary_terms(11));
+		//$html = "Importando CEIP...";
+		//datauy_import_previas();
+		//datauy_import_CEIP();
+		//datauy_import_CES();
+		//datauy_import_CFE();
+		//datauy_import_CETP();
+		datauy_import_ubicaciones();
+		/*$node = node_load($quiere_nid);
+		if ( isset($node->field_tipo_curso['und']) ) {
+			$tipo = taxonomy_term_load($node->field_tipo_curso['und']['0']['target_id']);
+			if ( isset($tipo->field_previas['und']) ) {
+				$previas = taxonomy_term_load_multiple( array_values($tipo->field_previas['und']) );
+				print_r($previas);
+				foreach ($previas as $previa) {
+					$previa;
+				}
+			}
+			print_r($tipo);
+		}
+		else {
+			print "Error: tipo no seteado";
+		}*/
+	}
+	exit();
+}
+
+/** NODO ORIGINAL Proyecto Dónde Reciclo??? Se reordena, se pasan hooks para arriba y se mantiene contenido*/
+	function findNodeByAuthorUid($type,$uid){
+		if(!isset($uid)||$uid==""){
+			return false;
+		}
+		$query = new EntityFieldQuery();
+	 	$entities = $query->entityCondition('entity_type', 'node')
+										  ->propertyCondition('type', $type)
+										  ->propertyCondition('status', 1)
+											->propertyCondition('uid', $uid)
+										  //->range(0,1)
+										  ->execute();
+	  if (!empty($entities['node'])) {
+	    $node = node_load(array_shift(array_keys($entities['node'])));
+			return $node;
+	  }else{
+			return false;
+		}
+	}
+
+	function findLastLocationByUid($uid){
+		if(!isset($uid)||$uid==""){
+			return false;
+		}
+		$query = new EntityFieldQuery();
+		$entities = $query->entityCondition('entity_type', 'node')
+											->propertyCondition('type', "user_location")
+											->propertyCondition('status', 1)
+											->propertyCondition('uid', $uid)
+											->propertyOrderBy('created', 'DESC')
+											->range(0,1)
+											->execute();
+		if (!empty($entities['node'])) {
+			$node = node_load(array_shift(array_keys($entities['node'])));
+			return $node;
+		}else{
+			return false;
+		}
+	}
+
+	function findNodeByDestinatarioUidAndAuthorUid($type,$uid,$author_uid){
+		if(!isset($uid)||$uid==""){
+			return false;
+		}
+		if(!isset($author_uid)||$author_uid==""){
+			return false;
+		}
+		$query = new EntityFieldQuery();
+		$entities = $query->entityCondition('entity_type', 'node')
+											->propertyCondition('type', $type)
+											->propertyCondition('status', 1)
+											->fieldCondition('field_destinatario', 'target_id', $uid, '=')
+											->propertyCondition('uid', $author_uid)
+											->propertyOrderBy('created', 'ASC')
+											//->range(0,1)
+											->execute();
+		if (!empty($entities['node'])) {
+			$nids = array_keys($entities['node']);
+		  $nodes = node_load_multiple($nids, array('type' => $type));
+			return $nodes;
+		}else{
+			return false;
+		}
+	}
+
+	function findSubprogramaByTitle($title){
+		$query = new EntityFieldQuery();
+	 	$entities = $query->entityCondition('entity_type', 'node')
+										  ->propertyCondition('type', 'subprograma')
+										  ->propertyCondition('title', $title)
+										  ->propertyCondition('status', 1)
+										  ->range(0,1)
+										  ->execute();
+	  if (!empty($entities['node'])) {
+	    $node = node_load(array_shift(array_keys($entities['node'])));
+			return $node;
+	  }else{
+			return false;
+		}
+	}
+
+	function findSubprogramaByIdFieldValue($idFieldValue){
+		$query = new EntityFieldQuery();
+		$result = array();
+		$entities = $query->entityCondition('entity_type', 'node')
+											->propertyCondition('type', 'subprograma')
+											->fieldCondition('field_id_subprograma', 'value', $idFieldValue, '=')
+											->propertyCondition('status', 1)
+											->range(0,1)
+											->execute();
+		if (!empty($entities['node'])) {
+			foreach ($entities['node'] as $key => $subprogramaNode) {
+				array_push($result,$subprogramaNode);
+			}
+			//$node = node_load(array_shift(array_keys($entities['node'])));
+			return $result;
+		}else{
+			return false;
+		}
+	}
+
+	function datauy_transform_coordinates($lat,$long){
+		if($long<0||$lat<0){
+			//YA ESTA CONVERTIDA
+			$lonlat = [$long,$lat];
+			return $lonlat;
+		}
+		libraries_load('proj4php');
+		// Initialise Proj4
+		$proj4 = new proj4php\Proj4php();
+		$proj4->addDef('EPSG:32721', '+proj=utm +zone=21 +south +ellps=WGS84 +datum=WGS84 +units=m +no_defs');
+		$proj_origin = new proj4php\Proj('EPSG:32721',$proj4);
+		// Create two different projections.
+		$projWGS84  = new proj4php\Proj('EPSG:4326', $proj4);
+		// Create a point.
+		$pointSrc = new proj4php\Point($long, $lat, $proj_origin);
+		// Transform the point between datums.
+		$pointDest = $proj4->transform($projWGS84, $pointSrc);
+		return $pointDest->toArray();
+	}
+
+	function datauy_send_contact($name,$email,$subject,$message){
+		$to = "devops@datauy.org";
+		if($subject=="Cempre"){
+			$to = "cempre@cempre.org.uy";
+		}
+		$body = "Hay un nuevo mensaje desde la APP de Dónde Reciclo<br/><br/>";
+		$body .= "<b>Nombre:</b> " . $name . "<br/>";
+		$body .= "<b>Email:</b> " . $email . "<br/>";
+		$body .= "<b>Mensaje:</b><br/>" . $message;
+		drupal_mail('datauy', 'contact_from_app', $to, 'es', array('body' => $body, 'subject' => "Nuevo mensaje desde la app"), NULL, TRUE);
+		echo '{"result":"1"}';
+	}
+
+	function datauy_mail($key, &$message, $params) {
+	  switch ($key)
+	  {
+	      case 'contact_from_app':
+					$message['headers']['Content-Type'] = 'text/html; charset=UTF-8; ; format=flowed;';
+	        $body = $params['body'];
+					$message['body'][] = $body;
+					//$message['to'] = 'pablo.pignolo@gmail.com';
+					$message['subject'] = $params['subject'];
+	        break;
+	  }
+	}
+
+	function datauy_getNewsFeed(){
+		// include lastRSS
+		include drupal_get_path('module', 'datauy') . "/lastrss/lastRSS.php";
+		include_once drupal_get_path('module', 'datauy') . '/simplehtmldom/simple_html_dom.php';
+		// Create lastRSS object
+		$rss = new lastRSS;
+
+		// Set cache dir and cache time limit (1200 seconds)
+		// (don't forget to chmod cahce dir to 777 to allow writing)
+		$rss->cache_dir = drupal_get_path('module', 'datauy') . '/lastrss/cache/';
+		$rss->cache_time = 0;
+		$rss->cp = 'utf-8';
+		$rss->date_format = 'd/m/y';
+		$rssurl = 'http://cempre.org.uy/index.php?option=com_content&view=category&layout=blog&id=1&Itemid=69&format=feed&type=rss';
+
+		if ($rs = $rss->get($rssurl)) {
+			$itemArray = $rs["items"];
+			$html = '{"items": [';
+			foreach($itemArray as $item){
+				$desc = cleanRssDescription($item["description"]);
+				$elements = parse_html($desc);
+				$html .= '{"title":"'.cleanRssDescription($item["title"]).'",';
+				$html .= '"link":"'.($item["link"]).'",';
+				$html .= '"date":"'.cleanRssDescription($item["pubDate"]).'",';
+				$html .= '"image":"'.$elements["img"][0]["src"].'",';
+				$html .= '"description":"'.strtolower($elements["p"][0]["plaintext"]).'"';
+				$html .= '},';
+			}
+			$html .= ']}';
+			$html = str_replace(",]","]",$html);
+			echo $html;
+			exit();
+			}
+		else {
+			echo "Error: It's not possible to get $rssurl...";
+		}
+	}
+
+	function cleanRssDescription($data){
+		$data = str_replace("<![CDATA[", "", $data);
+		$data = str_replace("]]>", "", $data);
+		$data = str_replace("<p>", "<p class='news_txt'>", $data);
+		$data = str_replace("\"", "'", $data);
+		$data = str_replace("&quot;", "'", $data);
+		$data = str_replace("“", "'", $data);
+		$data = str_replace("”", "'", $data);
+		$data = str_replace("&nbsp;", "", $data);
+
+		return $data;
+	}
+
+	function parse_html($html,&$elements){
+		if(!isset($elements)){
+			$elements = array();
+		}
+		$html = str_get_html($html);
+		// Fetch child of the current element (one by one)
+		foreach ($html->find('*') as $child) {
+			if(!isset($elements[$child->tag] )){
+				$elements[$child->tag] = array();
+			}
+			$item = parse_element($child);
+			array_push($elements[$child->tag],$item);
+			if(count($child->children()>0)){
+				foreach ($child->children() as $subchild) {
+					$elements = parse_html($subchild->outertext,$elements,true);
+				}
+			}
+
+		}
+		return $elements;
+	}
+
+	function parse_element($element){
+		$item = array();
+		if($element->tag=="img"){
+			$item['src']=$element->src;
+		}else if($element->tag=="p"){
+			$item['plaintext']=$element->plaintext;
+		}else if($element->tag=="iframe"){
+			$item['src']=$element->src;
+		}else if($element->tag=="a"){
+			$item['href']=$element->href;
+		}else if($element->tag=="td"){
+			$item['plaintext']=$element->plaintext;
+		}else if($element->tag=="body"){
+			$item['plaintext']=$element->plaintext;
+		}else {
+			$item['plaintext']=$element->plaintext;
+		}
+		return $item;
+	}
+
+	function containerInsideBbox($coordinatesArray,$containerLon,$containerLat){
+		$nearBy = 0.007;
+		$minLon = $coordinatesArray[0];
+		$minLon = $minLon - $nearBy;
+		$minLat = $coordinatesArray[1];
+		$minLat = $minLat - $nearBy;
+		$maxLon = $coordinatesArray[2];
+		$maxLon = $maxLon + $nearBy;
+		$maxLat = $coordinatesArray[3];
+		$maxLat = $maxLat + $nearBy;
+		if($containerLon<$minLon){
+			return false;
+		}
+		if($containerLon>$maxLon){
+			return false;
+		}
+		if($containerLat<$minLat){
+			return false;
+		}
+		if($containerLat>$maxLat){
+			return false;
+		}
+		return true;
+	}
+
+	function datauy_node_update($node){
+		if($node->type == 'cerveza' || $node->type == 'venue' || $node->type == 'cerveceria'){
+	    register_shutdown_function('datauy_post_insert',$node->nid);
+	  }
+	}
+
+	function datauy_node_insert($node){
+	  if($node->type == 'cerveza' || $node->type == 'venue' || $node->type == 'cerveceria'){
+	    register_shutdown_function('datauy_post_insert',$node->nid);
+	  }
+	}
+
+	function datauy_node_delete($node){
+		if($node->type == 'cerveza' || $node->type == 'venue' || $node->type == 'cerveceria'){
+	    register_shutdown_function('datauy_post_insert',$node->nid);
+	  }
+	}
+
+	function datauy_post_insert($nid) {
+	  //$node = node_load($nid);
+		datauy_get_pins_json();
+	}
+
+	function datauy_send_user_position(){
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+		$user = datauy_get_user_from_params();
+		$result = array();
+		if($user){
+			$lat = $_POST["lat"];
+			$lon = $_POST["lon"];
+			$node = new stdClass();
+			$node->field_coordenadas['und'][0] = array(
+				'input_format' => GEOFIELD_INPUT_LAT_LON,
+				'geom' => array('lat' => $lat, 'lon' => $lon),
+			);
+			$node->type = "user_location";
+			$node->title = "Ubicación de usuario: " . $user->name;
+			node_object_prepare($node);
+			$node->status = 1; //(1 or 0): published or not
+			$node->uid = $user->uid;
+			node_save($node);
+			$result["Status"] = "success";
+		}else{
+			$result["Status"] = "error";
+			$result["Message"] = "Usuario o clave incorrectos";
+		}
+		printInNiceJson($result);
+		datauy_get_online_users_geojson();
+	}
+
+	function datauy_create_user(){
+		$username = $_POST['user'];
+		$password = $_POST['password'];
+		$email = $_POST['email'];
+		$gender = $_POST['gender'];
+		$estado = $_POST['status'];
+		$interested = $_POST['interested'];
+		$show_location = $_POST['show_location'];
+		$photo = $_FILES['photo']['tmp_name'];
+		if(isset($photo)){
+			$img_file = save_my_image($photo);
+		}
+		 //set up the user fields
+	 $fields = array(
+		 'name' => $username,
+		 'mail' => $email,
+		 'pass' => $password,
+		 'status' => 1,
+		 'init' => 'email address',
+		 'roles' => array(
+			 DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+		 ),
+	 'field_interested_in' => array(
+			'und' => array(
+				0 => array(
+					'value' => $interested,
+					)
+				)
+			),
+		'field_estado' => array(
+			'und' => array(
+				0 => array(
+					'value' => $estado,
+					)
+				)
+			),
+		'field_show_location' => array(
+			'und' => array(
+				0 => array(
+					'value' => $show_location,
+					)
+				)
+			),
+			'field_gender' => array(
+			 'und' => array(
+				 0 => array(
+					 'value' => $gender,
+					 )
+				 )
+			 ),
+		 );
+		 $user = user_save(null, $fields);
+		 if(isset($img_file->fid)){
+			 $user->picture = $img_file;
+		 }
+		 $user = user_save($user);
+		 $result = array();
+		 // If you want to send the welcome email, use the following code
+		 // Manually set the password so it appears in the e-mail.
+		 //$account->password = $fields['pass'];
+		 // Send the e-mail through the user module.
+		 //drupal_mail('user', 'register_no_approval_required', $email, NULL, array('account' => $account), variable_get('site_mail', 'noreply@example.com'));
+		 if($user){
+ 			$form_state = array();
+ 			$form_state['uid'] = $user->uid;
+ 			user_login_submit(array(), $form_state);
+ 			$result["Name"] =  $user->name;
+ 			$result["Uid"] = $user->uid;
+ 			$result["Status"] = "success";
+ 			$result["ShowLocation"] = $user->field_show_location['und'][0]['value'];
+			$result["Estado"] = $user->field_estado['und'][0]['value'];
+			$result["InterestedIn"] = $user->field_interested_in['und'][0]['value'];
+			$result["Gender"] = $user->field_gender['und'][0]['value'];
+ 			$icon = "anon";
+ 			if(isset($user->picture)){
+ 				$icon = $user->picture->uri;
+ 			}
+ 			$icon = str_replace("public://","http://tomamosuna.thor.datauy.org/sites/tomamos_una/files/",$icon);
+ 			$result["Photo"] = $icon;
+ 		}else{
+ 			$result["Status"] = "error";
+ 			$result["Message"] = "No se pudo crear el usuario";
+ 		}
+ 		printInNiceJson($result);
+ 		datauy_get_online_users_geojson();
+	}
+
+	function datauy_edit_profile(){
+		$user = datauy_get_user_from_params();
+		$result = array();
+		if($user==false){
+			$result["Status"] = "error";
+			$result["Message"] = "Usuario o clave incorrectos";
+		}else{
+			//TODO:$email = $_POST['email'];
+			$user->field_show_location['und'][0]['value'] = $_POST['show_location'];
+			$user->field_estado['und'][0]['value'] = $_POST['status'];
+			$user->field_interested_in['und'][0]['value'] = $_POST['interested'];
+			$user->field_gender['und'][0]['value'] = $_POST['gender'];
+			$photo = $_FILES['photo']['tmp_name'];
+			if(isset($photo)){
+				$img_file = save_my_image($photo);
+			}
+ 		 	if(isset($img_file->fid)){
+	 			 $user->picture = $img_file;
+	 		}
+			$user = user_save($user);
+			$result["Name"] =  $user->name;
+ 			$result["Uid"] = $user->uid;
+ 			$result["Status"] = "success";
+ 			$result["ShowLocation"] = $user->field_show_location['und'][0]['value'];
+			$result["Estado"] = $user->field_estado['und'][0]['value'];
+			$result["InterestedIn"] = $user->field_interested_in['und'][0]['value'];
+			$result["Gender"] = $user->field_gender['und'][0]['value'];
+ 			$icon = "anon";
+ 			if(isset($user->picture)){
+ 				$icon = $user->picture->uri;
+ 			}
+ 			$icon = str_replace("public://","http://tomamosuna.thor.datauy.org/sites/tomamos_una/files/",$icon);
+ 			$result["Photo"] = $icon;
+		}
+		printInNiceJson($result);
+		datauy_get_online_users_geojson();
+	}
+
+	function save_my_image($uri) {
+	  //copy file into drupal files directory
+	  $contents = file_get_contents($uri);
+	  //then save into drupal's file system
+	  $file = file_save_data($contents);
+	  return $file;
+	}
+
+	function datauy_get_user_from_params(){
+		$username = $_POST['user'];
+		$password = $_POST['password'];
+		$uid = user_authenticate($username, $password);
+		if($uid){
+			$user = user_load($uid);
+			return $user;
+		}else{
+			return false;
+		}
+	}
+
+	function datauy_get_user_info(){
+		$uid = $_GET['uid'];
+		$result = array();
+		if($uid){
+			$user = user_load($uid);
+			$result["Name"] =  $user->name;
+			$result["Uid"] = $user->uid;
+			$result["Status"] = "success";
+			$result["ShowLocation"] = $user->field_show_location['und'][0]['value'];
+			$result["Estado"] = $user->field_estado['und'][0]['value'];
+			$result["InterestedIn"] = $user->field_interested_in['und'][0]['value'];
+			$result["Gender"] = $user->field_gender['und'][0]['value'];
+			if(isset($user->picture)){
+				$icon = $user->picture->uri;
+			}
+			$icon = str_replace("public://","http://tomamosuna.thor.datauy.org/sites/tomamos_una/files/",$icon);
+			$result["Photo"] = $icon;
+		}else{
+			$result["Status"] = "error";
+			$result["Message"] = "Usuario o clave incorrectos";
+		}
+		printInNiceJson($result);
+		datauy_get_online_users_geojson();
+	}
+
+	function datauy_send_text_message(){
+		$user = datauy_get_user_from_params();
+		$result = array();
+		if($user){
+			$author_uid = $_POST['author_uid'];
+			if($user->uid==$author_uid){
+				$text = $_POST['text'];
+				$destination_uid = $_POST['destination_uid'];
+				$node = new stdClass();
+				$node->type = "mensaje_privado";
+				$node->title = "Mensaje de usuario: " . $user->name;
+				$node->field_destinatario['und'][0]['target_id'] = $destination_uid;
+				$node->field_texto['und'][0]['value'] = $text;
+				node_object_prepare($node);
+				$node->status = 1; //(1 or 0): published or not
+				$node->uid = $user->uid;
+				node_save($node);
+				$result["Status"] = "success";
+			}else{
+				$result["Status"] = "error";
+				$result["Message"] = "Usuario y clave no corresponden con el autor del mensaje";
+			}
+		}else{
+			$result["Status"] = "error";
+			$result["Message"] = "Usuario o clave incorrectos";
+		}
+		printInNiceJson($result);
+		datauy_get_online_users_geojson();
+	}
+
+	function datauy_get_all_messages_to_user(){
+		$uid = $_GET['uid'];
+		$author_uid = $_GET['author_uid'];
+		$messagesToUser = findNodeByDestinatarioUidAndAuthorUid("mensaje_privado",$uid,$author_uid);
+		$messagesFromUser = findNodeByDestinatarioUidAndAuthorUid("mensaje_privado",$author_uid,$uid);
+		$result = array();
+		if($messagesToUser){
+			foreach ($messagesToUser as $key => $message) {
+				$messageArray = array();
+				$messageArray["uid"]=$message->uid;
+				$messageArray["destinatario"]=$message->field_destinatario['und'][0]['target_id'];
+				$messageArray["created"] = $message->created;
+				if($message->field_texto['und'][0]['value']){
+					$messageArray["texto"] = $message->field_texto['und'][0]['value'];
+				}
+				$result[] = $messageArray;
+			}
+			foreach ($messagesFromUser as $key => $message) {
+				$messageArray = array();
+				$messageArray["uid"]=$message->uid;
+				$messageArray["destinatario"]=$message->field_destinatario['und'][0]['target_id'];
+				$messageArray["created"] = $message->created;
+				if($message->field_texto['und'][0]['value']){
+					$messageArray["texto"] = $message->field_texto['und'][0]['value'];
+				}
+				$result[] = $messageArray;
+			}
+			$created = array();
+			foreach ($result as $key => $message) {
+			    $created[$key]  = $message['created'];
+			}
+			array_multisort($created, SORT_ASC, $result);
+		}else{
+			$result["Status"] = "error";
+			$result["Message"] = "No se encontraron mensajes";
+		}
+		printInNiceJson($result);
+		datauy_get_online_users_geojson();
+	}
+
+	function datauy_external_login(){
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+		$user = datauy_get_user_from_params();
+		$result = array();
+		if($user){
+			$form_state = array();
+			$form_state['uid'] = $user->uid;
+			user_login_submit(array(), $form_state);
+			$result["Name"] =  $user->name;
+			$result["Uid"] = $user->uid;
+			$result["Status"] = "success";
+			$result["ShowLocation"] = $user->field_show_location['und'][0]['value'];
+			$result["Estado"] = $user->field_estado['und'][0]['value'];
+			$result["InterestedIn"] = $user->field_interested_in['und'][0]['value'];
+			$result["Gender"] = $user->field_gender['und'][0]['value'];
+			$icon = "anon";
+			if(isset($user->picture)){
+				$icon = $user->picture->uri;
+			}
+			$icon = str_replace("public://","http://tomamosuna.thor.datauy.org/sites/tomamos_una/files/",$icon);
+			$result["Photo"] = $icon;
+		}else{
+			$result["Status"] = "error";
+			$result["Message"] = "Usuario o clave incorrectos";
+		}
+		printInNiceJson($result);
+		datauy_get_online_users_geojson();
+	}
+
+	function printInNiceJson($arrayToEncode){
+		$json_response = json_encode($arrayToEncode,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+		header('Content-Type: application/json');
+		print($json_response);
+	}
+
+	function datauy_get_online_users_geojson(){
+			$bbox = "all";
+			$coordinatesArray;
+			if($bbox!="all"){
+				$coordinatesArray = explode(",",$bbox);
+			}
+			$result = db_select('sessions', 's')
+						->fields('s')
+						->condition('uid', 0,'!=')
+						->condition('timestamp', time()-600,'>=')
+						->execute()
+						->fetchAll();
+			$users = array();
+			foreach($result as $user_raw){
+				if(!isset($users[$user_raw->uid])){
+					$users[$user_raw->uid] = user_load($user_raw->uid);
+				}
+			}
+			$html =  '{"features": [ ';
+			foreach($users as $user){
+				if($user->field_show_location['und'][0]['value']==1){
+					$dentroBbox=true;
+					if($bbox!="all"){
+						$dentroBbox = containerInsideBbox($coordinatesArray,$lon,$lat);
+					}
+					if($dentroBbox){
+						$icon = "anon";
+						if(isset($user->picture)){
+							$icon = $user->picture->uri;
+						}
+						$icon = str_replace("public://","http://tomamosuna.thor.datauy.org/sites/tomamos_una/files/",$icon);
+						$lastlocation =  findLastLocationByUid($user->uid);
+						if($lastlocation!=false){
+							$lat = $lastlocation->field_coordenadas['und'][0]['lat'];
+							$lon = $lastlocation->field_coordenadas['und'][0]['lon'];
+							$location_stamp = $lastlocation->created;
+						}
+						$estado = $user->field_estado['und'][0]['value'];
+						$interested = $user->field_interested_in['und'][0]['value'];
+						$gender = $user->field_gender['und'][0]['value'];
+						$html .= '{"geometry":
+										{"coordinates":	["'.$lon.'","'.$lat.'"],
+										 "type":"Point"
+										},
+									"properties":
+										{"Gender":"'.$gender.'","InterestedIn":"'.$interested.'","Status":"'.$estado.'","LocationTimeStamp":"'.$location_stamp.'","Name":"'.$user->name.'","Icon":"'.$icon.'","Uid":"'.$user->uid.'"},
+									"type":"Feature"
+								},';
+					}
+				}
+			}
+			$html .= '],"type":"FeatureCollection" }';
+			$html = str_replace(",]","]",$html);
+			file_unmanaged_save_data($html,'public://json/online_users_geo.json/',FILE_EXISTS_REPLACE);
+			exit();
+		}
+
+
+?>

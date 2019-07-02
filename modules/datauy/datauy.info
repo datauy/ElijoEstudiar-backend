@@ -1,0 +1,4 @@
+name = DATAUY customization for dondereciclo
+description = Customizaciones desarrolladas por DATAUY para DondeReciclo
+core = 7.x
+package = "DATAUY modules"

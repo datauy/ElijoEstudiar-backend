@@ -1,0 +1,3983 @@
+[
+    {
+        "subsis": "CEIP",
+        "cursos": [
+            {
+                "id": "2092",
+                "nombre": "ESCUELA COMUN",
+                "tag": [
+                    "EDUCACIÓN INICIAL",
+                    "ESCUELA COMUN"
+                ],
+                "tipoId": "2092"
+            },
+            {
+                "id": "2100",
+                "nombre": "JARDIN DE INFANTES",
+                "tag": [
+                    "EDUCACIÓN INICIAL",
+                    "JARDIN DE INFANTES"
+                ],
+                "tipoId": "2100"
+            },
+            {
+                "id": "2092",
+                "nombre": "ESCUELA COMUN",
+                "tag": [
+                    "EDUCACIÓN PRIMARIA",
+                    "ESCUELA COMUN"
+                ],
+                "tipoId": "2092"
+            },
+            {
+                "id": "2099",
+                "nombre": "ESCUELA ESPECIAL",
+                "tag": [
+                    "EDUCACIÓN PRIMARIA",
+                    "ESCUELA ESPECIAL"
+                ],
+                "tipoId": "2099"
+            },
+            {
+                "id": "2100",
+                "nombre": "JARDIN DE INFANTES",
+                "tag": [
+                    "EDUCACIÓN PRIMARIA",
+                    "JARDIN DE INFANTES"
+                ],
+                "tipoId": "2100"
+            },
+            {
+                "id": "2092",
+                "nombre": "ESCUELA COMUN",
+                "tag": [
+                    "EDUCACIÓN INICIAL",
+                    "ESCUELA COMUN"
+                ],
+                "tipoId": "2092"
+            },
+            {
+                "id": "2092",
+                "nombre": "ESCUELA COMUN",
+                "tag": [
+                    "EDUCACIÓN PRIMARIA",
+                    "ESCUELA COMUN"
+                ],
+                "tipoId": "2092"
+            },
+            {
+                "id": "2099",
+                "nombre": "ESCUELA ESPECIAL",
+                "tag": [
+                    "EDUCACIÓN PRIMARIA",
+                    "ESCUELA ESPECIAL"
+                ],
+                "tipoId": "2099"
+            },
+            {
+                "id": "2100",
+                "nombre": "JARDIN DE INFANTES",
+                "tag": [
+                    "EDUCACIÓN INICIAL",
+                    "JARDIN DE INFANTES"
+                ],
+                "tipoId": "2100"
+            },
+            {
+                "id": "2100",
+                "nombre": "JARDIN DE INFANTES",
+                "tag": [
+                    "EDUCACIÓN PRIMARIA",
+                    "JARDIN DE INFANTES"
+                ],
+                "tipoId": "2100"
+            }
+        ]
+    },
+    {
+        "subsis": "CES",
+        "cursos": [
+            {
+                "id": "2106",
+                "nombre": "CICLO BÁSICO",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "CICLO BÁSICO"
+                ],
+                "tipoId": "2106"
+            },
+            {
+                "id": "2105",
+                "nombre": "BACHILLERATO GENERAL (4°)",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO GENERAL (4°)"
+                ],
+                "tipoId": "2105"
+            },
+            {
+                "id": "2142",
+                "nombre": "DIV.BIOLOGICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (5°)"
+                ],
+                "tipoId": "2103"
+            },
+            {
+                "id": "2197",
+                "nombre": "ARTE Y EXPRESION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (6°)"
+                ],
+                "tipoId": "2104"
+            },
+            {
+                "id": "2142",
+                "nombre": "DIV.BIOLOGICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (5°)"
+                ],
+                "tipoId": "2103"
+            },
+            {
+                "id": "2197",
+                "nombre": "ARTE Y EXPRESION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (6°)"
+                ],
+                "tipoId": "2104"
+            },
+            {
+                "id": "2105",
+                "nombre": "BACHILLERATO GENERAL (4°)",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO GENERAL (4°)"
+                ],
+                "tipoId": "2105"
+            },
+            {
+                "id": "2106",
+                "nombre": "CICLO BÁSICO",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "CICLO BÁSICO"
+                ],
+                "tipoId": "2106"
+            },
+            {
+                "id": "2197",
+                "nombre": "ARTE Y EXPRESION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (6°)"
+                ],
+                "tipoId": "2104"
+            },
+            {
+                "id": "2198",
+                "nombre": "CIENCIAS AGRARIAS",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (6°)"
+                ],
+                "tipoId": "2104"
+            },
+            {
+                "id": "2150",
+                "nombre": "CIENCIAS BIOLOGICAS",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (6°)"
+                ],
+                "tipoId": "2104"
+            },
+            {
+                "id": "2144",
+                "nombre": "DIV.ARTE Y EXPRESION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (5°)"
+                ],
+                "tipoId": "2103"
+            },
+            {
+                "id": "2142",
+                "nombre": "DIV.BIOLOGICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (5°)"
+                ],
+                "tipoId": "2103"
+            },
+            {
+                "id": "2143",
+                "nombre": "DIV.CIENTIFICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (5°)"
+                ],
+                "tipoId": "2103"
+            },
+            {
+                "id": "2196",
+                "nombre": "DIV.HUMANISTICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (5°)"
+                ],
+                "tipoId": "2103"
+            },
+            {
+                "id": "2200",
+                "nombre": "FISICO MATEMATICO",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (6°)"
+                ],
+                "tipoId": "2104"
+            },
+            {
+                "id": "2201",
+                "nombre": "MATEMATICA Y DISEÑO",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (6°)"
+                ],
+                "tipoId": "2104"
+            },
+            {
+                "id": "2202",
+                "nombre": "SOCIAL ECONOMIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (6°)"
+                ],
+                "tipoId": "2104"
+            },
+            {
+                "id": "2199",
+                "nombre": "SOCIAL HUMANISTICO",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO DIVERSIFICADO (6°)"
+                ],
+                "tipoId": "2104"
+            }
+        ]
+    },
+    {
+        "subsis": "CETP",
+        "cursos": [
+            {
+                "id": "1780",
+                "nombre": "CICLO BASICO TECNOLOGICO",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "CICLO BASICO TECNOLOGICO"
+                ],
+                "tipoId": "1779"
+            },
+            {
+                "id": "1788",
+                "nombre": "GASTRONOMIA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1813",
+                "nombre": "REDESCUBRIR PARA  FPB TRAYECTO II",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "1905",
+                "nombre": "PROYECTO C. E. C.",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "PROGRAMA CENTROS EDUC. COMUNITARIOS"
+                ],
+                "tipoId": "1904"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1790",
+                "nombre": "CARPINTERIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1839",
+                "nombre": "JOYERIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO FIGARI"
+                ],
+                "tipoId": "1838"
+            },
+            {
+                "id": "1791",
+                "nombre": "DEPORTE Y RECREACION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA FINES"
+                ],
+                "tipoId": "1899"
+            },
+            {
+                "id": "1981",
+                "nombre": "MAQUETISTA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "E. M. P.  ESPECIALIZACION"
+                ],
+                "tipoId": "1980"
+            },
+            {
+                "id": "2019",
+                "nombre": "VESTIMENTA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "CURSO TECNICO"
+                ],
+                "tipoId": "2018"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1851",
+                "nombre": "PREVENCIONISTA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "INGENIERO TECNOLOGICO"
+                ],
+                "tipoId": "1850"
+            },
+            {
+                "id": "1855",
+                "nombre": "VITIVINICULTURA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "1907",
+                "nombre": "AREA ELECTROTECNIA ELECTRONICA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "ARTICULACION"
+                ],
+                "tipoId": "1906"
+            },
+            {
+                "id": "1923",
+                "nombre": "AUDIOVISUALES",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CTT ESPECIALIZACION"
+                ],
+                "tipoId": "1926"
+            },
+            {
+                "id": "1793",
+                "nombre": "MECANICA GENERAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CONVENIO CON FACULTAD DE INGENIERIA"
+                ],
+                "tipoId": "1952"
+            },
+            {
+                "id": "1954",
+                "nombre": "CENTRO TECNICO C.N.C.",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CAPACITACION TECNICA"
+                ],
+                "tipoId": "1953"
+            },
+            {
+                "id": "1936",
+                "nombre": "ENG. DE PIEDRAS PREC.Y S\/PREC",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORMACION PROFESIONAL BASICA (FP)"
+                ],
+                "tipoId": "1935"
+            },
+            {
+                "id": "1940",
+                "nombre": "PIEDRAS SEMIPRECIOSAS",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "CURSO BASICO"
+                ],
+                "tipoId": "1939"
+            },
+            {
+                "id": "1941",
+                "nombre": "CERAMICA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORM. PROFES. EN ARTES Y ARTESANIAS"
+                ],
+                "tipoId": "1942"
+            },
+            {
+                "id": "1991",
+                "nombre": "SOLDADURA SEMIAUTOMATICA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORMACION PROFESIONAL ESPECIALIZADA"
+                ],
+                "tipoId": "1990"
+            },
+            {
+                "id": "1829",
+                "nombre": "ATENCION A LA DEPENDENCIA - MOD 1",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1919",
+                "nombre": "PASTELERIA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAP. PROFUNDIZACION PROFESIONAL"
+                ],
+                "tipoId": "1918"
+            },
+            {
+                "id": "1996",
+                "nombre": "HABILITACION DE EMBARQUE",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL"
+                ],
+                "tipoId": "1995"
+            },
+            {
+                "id": "1998",
+                "nombre": "ELECTRONICA DE CONTROL",
+                "tag": [
+                    "CAPACITACIONES",
+                    "ASCENSOS M. MERCANTE"
+                ],
+                "tipoId": "1997"
+            },
+            {
+                "id": "2025",
+                "nombre": "BEBE",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CURSO BASICO ESPECIALIZACION"
+                ],
+                "tipoId": "2024"
+            },
+            {
+                "id": "1907",
+                "nombre": "AREA ELECTROTECNIA ELECTRONICA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "ARTICULACION"
+                ],
+                "tipoId": "1906"
+            },
+            {
+                "id": "1813",
+                "nombre": "REDESCUBRIR PARA  FPB TRAYECTO II",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "1998",
+                "nombre": "ELECTRONICA DE CONTROL",
+                "tag": [
+                    "CAPACITACIONES",
+                    "ASCENSOS M. MERCANTE"
+                ],
+                "tipoId": "1997"
+            },
+            {
+                "id": "1839",
+                "nombre": "JOYERIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO FIGARI"
+                ],
+                "tipoId": "1838"
+            },
+            {
+                "id": "1790",
+                "nombre": "CARPINTERIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1919",
+                "nombre": "PASTELERIA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAP. PROFUNDIZACION PROFESIONAL"
+                ],
+                "tipoId": "1918"
+            },
+            {
+                "id": "1996",
+                "nombre": "HABILITACION DE EMBARQUE",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL"
+                ],
+                "tipoId": "1995"
+            },
+            {
+                "id": "1829",
+                "nombre": "ATENCION A LA DEPENDENCIA - MOD 1",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1954",
+                "nombre": "CENTRO TECNICO C.N.C.",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CAPACITACION TECNICA"
+                ],
+                "tipoId": "1953"
+            },
+            {
+                "id": "1780",
+                "nombre": "CICLO BASICO TECNOLOGICO",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "CICLO BASICO TECNOLOGICO"
+                ],
+                "tipoId": "1779"
+            },
+            {
+                "id": "1793",
+                "nombre": "MECANICA GENERAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CONVENIO CON FACULTAD DE INGENIERIA"
+                ],
+                "tipoId": "1952"
+            },
+            {
+                "id": "1923",
+                "nombre": "AUDIOVISUALES",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CTT ESPECIALIZACION"
+                ],
+                "tipoId": "1926"
+            },
+            {
+                "id": "1940",
+                "nombre": "PIEDRAS SEMIPRECIOSAS",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "CURSO BASICO"
+                ],
+                "tipoId": "1939"
+            },
+            {
+                "id": "2025",
+                "nombre": "BEBE",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CURSO BASICO ESPECIALIZACION"
+                ],
+                "tipoId": "2024"
+            },
+            {
+                "id": "2019",
+                "nombre": "VESTIMENTA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "CURSO TECNICO"
+                ],
+                "tipoId": "2018"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1981",
+                "nombre": "MAQUETISTA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "E. M. P.  ESPECIALIZACION"
+                ],
+                "tipoId": "1980"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1791",
+                "nombre": "DEPORTE Y RECREACION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA FINES"
+                ],
+                "tipoId": "1899"
+            },
+            {
+                "id": "1941",
+                "nombre": "CERAMICA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORM. PROFES. EN ARTES Y ARTESANIAS"
+                ],
+                "tipoId": "1942"
+            },
+            {
+                "id": "1788",
+                "nombre": "GASTRONOMIA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1936",
+                "nombre": "ENG. DE PIEDRAS PREC.Y S\/PREC",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORMACION PROFESIONAL BASICA (FP)"
+                ],
+                "tipoId": "1935"
+            },
+            {
+                "id": "1991",
+                "nombre": "SOLDADURA SEMIAUTOMATICA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORMACION PROFESIONAL ESPECIALIZADA"
+                ],
+                "tipoId": "1990"
+            },
+            {
+                "id": "1851",
+                "nombre": "PREVENCIONISTA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "INGENIERO TECNOLOGICO"
+                ],
+                "tipoId": "1850"
+            },
+            {
+                "id": "1905",
+                "nombre": "PROYECTO C. E. C.",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "PROGRAMA CENTROS EDUC. COMUNITARIOS"
+                ],
+                "tipoId": "1904"
+            },
+            {
+                "id": "1855",
+                "nombre": "VITIVINICULTURA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1966",
+                "nombre": "ADMINISTRACION Y DOCUMENTACION",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1972",
+                "nombre": "ADMINISTRACION Y GESTION EMPRESARIAL",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1892",
+                "nombre": "AERONAUTICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1892",
+                "nombre": "AERONAUTICA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "INGENIERO TECNOLOGICO"
+                ],
+                "tipoId": "1850"
+            },
+            {
+                "id": "1957",
+                "nombre": "AERONAUTICA AVIONICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1893",
+                "nombre": "AERONAUTICA SIST. MOTOPROPULSORES",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1956",
+                "nombre": "AERONAUTICA SISTEMAS DE AERONAVES",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1933",
+                "nombre": "AGENCIA DE VIAJES Y ALOJAMIENTO",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1817",
+                "nombre": "AGRARIO (R)",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1903",
+                "nombre": "AGRICOLA GANADERO",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1903",
+                "nombre": "AGRICOLA GANADERO",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "2043",
+                "nombre": "AGRICOLA GANADERO EN ALTERNANCIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1909",
+                "nombre": "AGROFORESTAL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "2045",
+                "nombre": "AGRONICA ENFASIS AGRICOLA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2046",
+                "nombre": "AGRONICA ENFASIS FORESTAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2047",
+                "nombre": "AGRONICA ENFASIS GANADERO",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1875",
+                "nombre": "ALOJAMIENTO",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1866",
+                "nombre": "ANALISTA EN MARKETING",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1907",
+                "nombre": "AREA ELECTROTECNIA ELECTRONICA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "ARTICULACION"
+                ],
+                "tipoId": "1906"
+            },
+            {
+                "id": "2065",
+                "nombre": "ARROCERO",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "2064",
+                "nombre": "ARROCERO (R)",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1977",
+                "nombre": "ARTES GRAFICAS",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1977",
+                "nombre": "ARTES GRAFICAS",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "2006",
+                "nombre": "ARTES Y ARTESANIAS FIGARI",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1921",
+                "nombre": "ARTICULACION TECNOLOGO QUIMICO",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "ARTICULACION"
+                ],
+                "tipoId": "1906"
+            },
+            {
+                "id": "1797",
+                "nombre": "ASISTENTE DE DIRECCION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1829",
+                "nombre": "ATENCION A LA DEPENDENCIA - MOD 1",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1830",
+                "nombre": "ATENCION A LA DEPENDENCIA - MOD 2",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1831",
+                "nombre": "ATENCION A LA DEPENDENCIA - MOD 3",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1832",
+                "nombre": "ATENCION A LA DEPENDENCIA - MOD 4",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1971",
+                "nombre": "ATENCION AL PUBLICO Y\/O CLIENTE",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1852",
+                "nombre": "AUDIOVISUAL",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1852",
+                "nombre": "AUDIOVISUAL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1923",
+                "nombre": "AUDIOVISUALES",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1923",
+                "nombre": "AUDIOVISUALES",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CTT ESPECIALIZACION"
+                ],
+                "tipoId": "1926"
+            },
+            {
+                "id": "1959",
+                "nombre": "AUTOTRONICA LAB. S. DE CONTROL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2025",
+                "nombre": "BEBE",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CURSO BASICO ESPECIALIZACION"
+                ],
+                "tipoId": "2024"
+            },
+            {
+                "id": "2031",
+                "nombre": "BELLEZA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "CURSO TECNICO"
+                ],
+                "tipoId": "2018"
+            },
+            {
+                "id": "1789",
+                "nombre": "BELLEZA - CAPILAR",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1810",
+                "nombre": "BELLEZA INTEGRAL ENFASIS CAPILAR",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1984",
+                "nombre": "BIOCONSTRUCCION",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1862",
+                "nombre": "BIOTECNOLOGIA INDUSTRIAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "2004",
+                "nombre": "BRUSHING",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1815",
+                "nombre": "C. B. T.  ALTERNANCIA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "CICLO BASICO TECNOLOGICO"
+                ],
+                "tipoId": "1779"
+            },
+            {
+                "id": "1885",
+                "nombre": "CALDERERIA NAVAL",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1798",
+                "nombre": "CAPILAR",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1790",
+                "nombre": "CARPINTERIA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1790",
+                "nombre": "CARPINTERIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1790",
+                "nombre": "CARPINTERIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1913",
+                "nombre": "CARPINTERIA DE RIBERA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1943",
+                "nombre": "CARPINTERÍA INICIAL",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1954",
+                "nombre": "CENTRO TECNICO C.N.C.",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CAPACITACION TECNICA"
+                ],
+                "tipoId": "1953"
+            },
+            {
+                "id": "1941",
+                "nombre": "CERAMICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO FIGARI"
+                ],
+                "tipoId": "1838"
+            },
+            {
+                "id": "1941",
+                "nombre": "CERAMICA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORM. PROFES. EN ARTES Y ARTESANIAS"
+                ],
+                "tipoId": "1942"
+            },
+            {
+                "id": "1871",
+                "nombre": "CHAPA Y PINTURA AUTOMOTRIZ",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1780",
+                "nombre": "CICLO BASICO TECNOLOGICO",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "CICLO BASICO TECNOLOGICO"
+                ],
+                "tipoId": "1779"
+            },
+            {
+                "id": "2023",
+                "nombre": "COCINA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "CURSO BASICO"
+                ],
+                "tipoId": "1939"
+            },
+            {
+                "id": "2038",
+                "nombre": "COM. SOCIAL OP. PRENSA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2040",
+                "nombre": "COM. SOCIAL OP. RADIODIFUSION",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2041",
+                "nombre": "COM. SOCIAL OP. RR.PP.",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2042",
+                "nombre": "COM. SOCIAL OP.TELEVISION",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2039",
+                "nombre": "COM.SOCIAL OP. PUBLICIDAD",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1978",
+                "nombre": "COMPOSICION ARMADO EN PANTALLA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1911",
+                "nombre": "CONS. DE RECURSOS NATURALES",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1951",
+                "nombre": "CONSERV. GESTION AREAS NATURALES",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2026",
+                "nombre": "CONSERVAS",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CURSO BASICO ESPECIALIZACION"
+                ],
+                "tipoId": "2024"
+            },
+            {
+                "id": "1994",
+                "nombre": "CONST. BASICA CON FIBRA DE VIDRIO",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1985",
+                "nombre": "CONST. ESTRUC. SOLDADAS EN ACERO",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1823",
+                "nombre": "CONST. MUEBLES POR DISEÑO",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1897",
+                "nombre": "CONST. VIVENDAS Y ABERTURAS",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1886",
+                "nombre": "CONST.BASICA FIBRA CARBONO KEVLAR",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1818",
+                "nombre": "CONSTRUCCION",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1818",
+                "nombre": "CONSTRUCCION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1818",
+                "nombre": "CONSTRUCCION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1818",
+                "nombre": "CONSTRUCCION",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1818",
+                "nombre": "CONSTRUCCION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1877",
+                "nombre": "CONSTRUCCION CICLO COMUN",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1910",
+                "nombre": "CONSTRUCCION DE EMBARCACIONES",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1880",
+                "nombre": "CONSTRUCCION DE OBRA CIVIL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1983",
+                "nombre": "CONSTRUCCION ENFASIS ARQUITECTURA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1924",
+                "nombre": "CONTROL AMBIENTAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1970",
+                "nombre": "CORREDOR DE SEGUROS",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2033",
+                "nombre": "CORTE DE CABELLO DE HOMBRE",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1896",
+                "nombre": "CULTIVOS PROTEGIDOS",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1937",
+                "nombre": "D. I. T. CULTURALES S.",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "1938",
+                "nombre": "D. I. T. S. DE LA NATURALEZA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "1891",
+                "nombre": "D. ITINERARIO TURISTICO SOSTENIBLE",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "2022",
+                "nombre": "DECORACION (ALIMENTACION)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORMACION PROFESIONAL ESPECIALIZADA"
+                ],
+                "tipoId": "1990"
+            },
+            {
+                "id": "1819",
+                "nombre": "DEPORTE",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1791",
+                "nombre": "DEPORTE Y RECREACION",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1791",
+                "nombre": "DEPORTE Y RECREACION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1791",
+                "nombre": "DEPORTE Y RECREACION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA FINES"
+                ],
+                "tipoId": "1899"
+            },
+            {
+                "id": "1912",
+                "nombre": "DEPORTES NAUTICOS",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1982",
+                "nombre": "DIBUJO DE LA CONSTRUCCION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "2009",
+                "nombre": "DIBUJO Y PINTURA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO FIGARI"
+                ],
+                "tipoId": "1838"
+            },
+            {
+                "id": "2009",
+                "nombre": "DIBUJO Y PINTURA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORM. PROFES. EN ARTES Y ARTESANIAS"
+                ],
+                "tipoId": "1942"
+            },
+            {
+                "id": "1962",
+                "nombre": "DISEÑO ASISTIDO POR COMPUTADORA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAP. PROFUNDIZACION PROFESIONAL"
+                ],
+                "tipoId": "1918"
+            },
+            {
+                "id": "2036",
+                "nombre": "DISEÑO GRAFICO EN COM. VISUAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1947",
+                "nombre": "E.RENOVABLES FOT. EOLICA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1792",
+                "nombre": "ELECTRICIDAD",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1843",
+                "nombre": "ELECTRO - ELECTRONICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "2062",
+                "nombre": "ELECTROELECTRONICA AUTOMOTRIZ",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1844",
+                "nombre": "ELECTROMECANICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1842",
+                "nombre": "ELECTROMECANICA AUTOMOTRIZ",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1964",
+                "nombre": "ELECTRONICA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "INGENIERO TECNOLOGICO"
+                ],
+                "tipoId": "1850"
+            },
+            {
+                "id": "1998",
+                "nombre": "ELECTRONICA DE CONTROL",
+                "tag": [
+                    "CAPACITACIONES",
+                    "ASCENSOS M. MERCANTE"
+                ],
+                "tipoId": "1997"
+            },
+            {
+                "id": "2055",
+                "nombre": "ELECTRONICA INDUSTRIAL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1799",
+                "nombre": "ELECTROTECNIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1799",
+                "nombre": "ELECTROTECNIA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "INGENIERO TECNOLOGICO"
+                ],
+                "tipoId": "1850"
+            },
+            {
+                "id": "1967",
+                "nombre": "ELECTROTECNIA BASICA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1979",
+                "nombre": "ENCUADERNACION DORADA-BASICO",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1961",
+                "nombre": "ENERGIA EOLICA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CTT ESPECIALIZACION"
+                ],
+                "tipoId": "1926"
+            },
+            {
+                "id": "1849",
+                "nombre": "ENERGIAS RENOVABLES",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1936",
+                "nombre": "ENG. DE PIEDRAS PREC.Y S\/PREC",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORMACION PROFESIONAL BASICA (FP)"
+                ],
+                "tipoId": "1935"
+            },
+            {
+                "id": "1856",
+                "nombre": "ENOLOGIA MODULO ENOLOGICO II",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1857",
+                "nombre": "ENOLOGIA PASANTIA PROYECTO FINAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2010",
+                "nombre": "ESCULTURA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO FIGARI"
+                ],
+                "tipoId": "1838"
+            },
+            {
+                "id": "2010",
+                "nombre": "ESCULTURA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORM. PROFES. EN ARTES Y ARTESANIAS"
+                ],
+                "tipoId": "1942"
+            },
+            {
+                "id": "2000",
+                "nombre": "ESTRUCTURA NAVAL Y SEGURIDAD",
+                "tag": [
+                    "CAPACITACIONES",
+                    "ASCENSOS M. MERCANTE"
+                ],
+                "tipoId": "1997"
+            },
+            {
+                "id": "1950",
+                "nombre": "FOGUISTA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "2044",
+                "nombre": "FORESTAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2054",
+                "nombre": "FORESTAL - BINACIONAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1963",
+                "nombre": "FRESADORA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAP. PROFUNDIZACION PROFESIONAL"
+                ],
+                "tipoId": "1918"
+            },
+            {
+                "id": "2005",
+                "nombre": "GALLETERIA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1788",
+                "nombre": "GASTRONOMIA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1788",
+                "nombre": "GASTRONOMIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1788",
+                "nombre": "GASTRONOMIA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2049",
+                "nombre": "GASTRONOMIA - BINACIONAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1916",
+                "nombre": "GASTRONOMIA BARMAN",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1824",
+                "nombre": "GASTRONOMIA C\/S\/B",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1825",
+                "nombre": "GASTRONOMIA COCINA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1931",
+                "nombre": "GESTION DE ALOJAMIENTO",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1973",
+                "nombre": "GESTION DE PYMES",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1932",
+                "nombre": "GESTION EMPRESAS TURISTICAS",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1874",
+                "nombre": "GESTION EN DEPORTE Y RECREACION",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "1846",
+                "nombre": "GESTION HUMANA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1974",
+                "nombre": "GESTION LOG. ALMACENES CONT. STOCK",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1914",
+                "nombre": "GUARDAPARQUES",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1996",
+                "nombre": "HABILITACION DE EMBARQUE",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL"
+                ],
+                "tipoId": "1995"
+            },
+            {
+                "id": "1859",
+                "nombre": "HIPICA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "2057",
+                "nombre": "HORTIFRUTICULTURA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "2057",
+                "nombre": "HORTIFRUTICULTURA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1888",
+                "nombre": "INDUSTRIAS LACTEAS",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1845",
+                "nombre": "INFOGRAFIA DE ARQUITECTURA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1806",
+                "nombre": "INFORMATICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1806",
+                "nombre": "INFORMATICA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1872",
+                "nombre": "INFORMÁTICA - RURAL",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1987",
+                "nombre": "INFORMATICA CAD",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAP. PROFUNDIZACION PROFESIONAL"
+                ],
+                "tipoId": "1918"
+            },
+            {
+                "id": "2050",
+                "nombre": "INFORMATICA PARA INTERNET",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2048",
+                "nombre": "INFORMATICA PARA INTERNET INTEGRADO",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "2002",
+                "nombre": "INGLES TECNICO MARITIMO",
+                "tag": [
+                    "CAPACITACIONES",
+                    "ASCENSOS M. MERCANTE"
+                ],
+                "tipoId": "1997"
+            },
+            {
+                "id": "1901",
+                "nombre": "INSEMINACION ARTIFICIAL DE BOVINOS",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1902",
+                "nombre": "INSEMINACION ARTIFICIAL DE OVINOS",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1800",
+                "nombre": "INSTALACIONES ELECTRICAS",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1800",
+                "nombre": "INSTALACIONES ELECTRICAS",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1800",
+                "nombre": "INSTALACIONES ELECTRICAS",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1848",
+                "nombre": "INSTALACIONES SANITARIAS",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1848",
+                "nombre": "INSTALACIONES SANITARIAS",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1848",
+                "nombre": "INSTALACIONES SANITARIAS",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1848",
+                "nombre": "INSTALACIONES SANITARIAS",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1930",
+                "nombre": "INSTRUMENTACION Y CONTROL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1847",
+                "nombre": "INTEGRADO BELLEZA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "1879",
+                "nombre": "INTEGRADO CONSTRUCCION",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "1840",
+                "nombre": "INTEGRADO CUERO",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "1915",
+                "nombre": "INTEGRADO DEPORTE",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "1965",
+                "nombre": "INTEGRADO GASTRONOMIA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "2029",
+                "nombre": "INTEGRADO PANADERIA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "1993",
+                "nombre": "INTEGRADO SOLDADURA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "2030",
+                "nombre": "INTEGRADO VESTIMENTA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "2013",
+                "nombre": "INTRO. A LA FOTOGRAFIA DIGITAL",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1839",
+                "nombre": "JOYERIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO FIGARI"
+                ],
+                "tipoId": "1838"
+            },
+            {
+                "id": "1839",
+                "nombre": "JOYERIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORM. PROFES. EN ARTES Y ARTESANIAS"
+                ],
+                "tipoId": "1942"
+            },
+            {
+                "id": "1870",
+                "nombre": "KINESIOLOGIA DEPORTIVA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "2027",
+                "nombre": "LENCERIA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CURSO BASICO ESPECIALIZACION"
+                ],
+                "tipoId": "2024"
+            },
+            {
+                "id": "1865",
+                "nombre": "LOGISTICA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2051",
+                "nombre": "LOGISTICA - BINACIONAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1887",
+                "nombre": "MANEJO SISTEMAS PRODUCCION LECHERA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "2035",
+                "nombre": "MANICURIA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1929",
+                "nombre": "MANT. ELECTROMECANICO INDUSTRIAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1876",
+                "nombre": "MANT.IND. ELECTROMECANICO ELECT.",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1928",
+                "nombre": "MANTENIMIENTO MECANICO INDUSTRIAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1999",
+                "nombre": "MAQ.ELECTRICAS APLIC. AL BUQUE",
+                "tag": [
+                    "CAPACITACIONES",
+                    "ASCENSOS M. MERCANTE"
+                ],
+                "tipoId": "1997"
+            },
+            {
+                "id": "1981",
+                "nombre": "MAQUETISTA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "E. M. P.  ESPECIALIZACION"
+                ],
+                "tipoId": "1980"
+            },
+            {
+                "id": "1890",
+                "nombre": "MAQUILLAJE INTEGRAL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "2034",
+                "nombre": "MAQUILLAJE SOCIAL",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "2001",
+                "nombre": "MAQUINAS NAVALES Y REPARACIONES",
+                "tag": [
+                    "CAPACITACIONES",
+                    "ASCENSOS M. MERCANTE"
+                ],
+                "tipoId": "1997"
+            },
+            {
+                "id": "1884",
+                "nombre": "MAQUINISTA NAVAL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1884",
+                "nombre": "MAQUINISTA NAVAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1801",
+                "nombre": "MASAJE",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1802",
+                "nombre": "MECANICA AUTOMOTRIZ",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1802",
+                "nombre": "MECANICA AUTOMOTRIZ",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1802",
+                "nombre": "MECANICA AUTOMOTRIZ",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1803",
+                "nombre": "MECANICA EN PRODUCCION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1793",
+                "nombre": "MECANICA GENERAL",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1793",
+                "nombre": "MECANICA GENERAL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1793",
+                "nombre": "MECANICA GENERAL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1793",
+                "nombre": "MECANICA GENERAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CONVENIO CON FACULTAD DE INGENIERIA"
+                ],
+                "tipoId": "1952"
+            },
+            {
+                "id": "1882",
+                "nombre": "MECANICA NAVAL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "2058",
+                "nombre": "MECANIZACION AGRICOLA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "2059",
+                "nombre": "MECANIZACION AGROINDUSTRIAL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1960",
+                "nombre": "MECATRONICA - AUTOM. Y CONTROL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2052",
+                "nombre": "MECATRONICA INDUSTRIAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "1858",
+                "nombre": "METALURGICA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "2056",
+                "nombre": "MOTORES DE COMBUSTION INTERNA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1834",
+                "nombre": "MUSICA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1834",
+                "nombre": "MUSICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1883",
+                "nombre": "NAUTICA Y PESCA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1883",
+                "nombre": "NAUTICA Y PESCA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1883",
+                "nombre": "NAUTICA Y PESCA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1944",
+                "nombre": "OBJETOS ART. DE PEQ. FORM. EN CUERO",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1986",
+                "nombre": "OBRA SECA EN YESO PROFUNDIZACION",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAP. PROFUNDIZACION PROFESIONAL"
+                ],
+                "tipoId": "1918"
+            },
+            {
+                "id": "2061",
+                "nombre": "OP. MANT. INST. ELECTRICAS BT - MT",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "2060",
+                "nombre": "OP.MANT. INSTALACIONES TRANSMISION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1975",
+                "nombre": "OPERADOR  INFORMATICO",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1968",
+                "nombre": "OPERADOR INFORMATICO BASICO",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1989",
+                "nombre": "OPERADOR INMOBILIARIO",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1927",
+                "nombre": "OPTICO",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "1917",
+                "nombre": "ORGANIZACION DE EVENTOS",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1820",
+                "nombre": "PANADERIA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1820",
+                "nombre": "PANADERIA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "2020",
+                "nombre": "PANADERIA Y REPOSTERIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORMACION PROFESIONAL BASICA (FP)"
+                ],
+                "tipoId": "1935"
+            },
+            {
+                "id": "1919",
+                "nombre": "PASTELERIA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAP. PROFUNDIZACION PROFESIONAL"
+                ],
+                "tipoId": "1918"
+            },
+            {
+                "id": "1919",
+                "nombre": "PASTELERIA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "2032",
+                "nombre": "PEDICURIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1940",
+                "nombre": "PIEDRAS SEMIPRECIOSAS",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "CURSO BASICO"
+                ],
+                "tipoId": "1939"
+            },
+            {
+                "id": "1851",
+                "nombre": "PREVENCIONISTA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "INGENIERO TECNOLOGICO"
+                ],
+                "tipoId": "1850"
+            },
+            {
+                "id": "1894",
+                "nombre": "PREVENCIONISTA  SEMIPRESENCIAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "INGENIERO TECNOLOGICO"
+                ],
+                "tipoId": "1850"
+            },
+            {
+                "id": "1969",
+                "nombre": "PROCESOS BASICOS SOLDADURA Y FORJA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1873",
+                "nombre": "PROD. AGROP. SUSTENTABLE",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1878",
+                "nombre": "PRODUCCION AGRICOLA GANADERA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1869",
+                "nombre": "PRODUCCION AGROPECUARIA FAMILIAR",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1895",
+                "nombre": "PRODUCCION GRANJERA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1900",
+                "nombre": "PRODUCCION HORTICOLA INTENSIVA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1868",
+                "nombre": "PRODUCCION LECHERA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "2014",
+                "nombre": "PROG. CASAVALLE CARPINTERIA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "2016",
+                "nombre": "PROG.CASAVALLE ELECTRICIDAD",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "2015",
+                "nombre": "PROG.CASAVALLE GASTRONOMIA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "2017",
+                "nombre": "PROG.CASAVALLE VESTIMENTA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "1814",
+                "nombre": "PROGRAMA RUMBO",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "1905",
+                "nombre": "PROYECTO C. E. C.",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "PROGRAMA CENTROS EDUC. COMUNITARIOS"
+                ],
+                "tipoId": "1904"
+            },
+            {
+                "id": "1863",
+                "nombre": "QUIMICA BASICA E INDUSTRIAL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1864",
+                "nombre": "QUIMICA INDUSTRIAL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1826",
+                "nombre": "RECREACION",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1949",
+                "nombre": "REDES Y COMUNICACIONES OPTICAS",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1898",
+                "nombre": "REDES Y SOFTWARE",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1813",
+                "nombre": "REDESCUBRIR PARA  FPB TRAYECTO II",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "ARTICULACION EDUCACION MEDIA BASICA"
+                ],
+                "tipoId": "1812"
+            },
+            {
+                "id": "1867",
+                "nombre": "REFRIGERACION",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1867",
+                "nombre": "REFRIGERACION",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1841",
+                "nombre": "REMATADOR",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1804",
+                "nombre": "REPARACION DE P. C.",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "2028",
+                "nombre": "REPOSTERIA BASICA",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CURSO BASICO ESPECIALIZACION"
+                ],
+                "tipoId": "2024"
+            },
+            {
+                "id": "1920",
+                "nombre": "RESTAURO EN MADERA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1853",
+                "nombre": "ROBOTICA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "1958",
+                "nombre": "ROBOTICA Y TELECOMUNICACIONES",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1816",
+                "nombre": "RURAL",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "CICLO BASICO TECNOLOGICO"
+                ],
+                "tipoId": "1779"
+            },
+            {
+                "id": "1881",
+                "nombre": "S. P. ARROZ PASTURAS - BINACIONAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1860",
+                "nombre": "SALA BAR",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1836",
+                "nombre": "SECRETARIADO BILINGÜE - INGLES",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1837",
+                "nombre": "SECRETARIADO BILINGÜE BINACIONAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2003",
+                "nombre": "SEG.ELEC. PARA LA VIVIENDA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "2007",
+                "nombre": "SERIGRAFIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORMACION PROFESIONAL BASICA (FP)"
+                ],
+                "tipoId": "1935"
+            },
+            {
+                "id": "2007",
+                "nombre": "SERIGRAFIA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1988",
+                "nombre": "SISTEMAS ENERGIAS RENOVABLES",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA FINES"
+                ],
+                "tipoId": "1899"
+            },
+            {
+                "id": "1988",
+                "nombre": "SISTEMAS ENERGIAS RENOVABLES",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1988",
+                "nombre": "SISTEMAS ENERGIAS RENOVABLES",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1889",
+                "nombre": "SOLDADURA INDUSTRIAL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1991",
+                "nombre": "SOLDADURA SEMIAUTOMATICA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORMACION PROFESIONAL ESPECIALIZADA"
+                ],
+                "tipoId": "1990"
+            },
+            {
+                "id": "1811",
+                "nombre": "SOPORTE Y MANTENIMIENTO INFORMATICO",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "2021",
+                "nombre": "TALABARTERIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORMACION PROFESIONAL BASICA (FP)"
+                ],
+                "tipoId": "1935"
+            },
+            {
+                "id": "2011",
+                "nombre": "TALLA EN MADERA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO FIGARI"
+                ],
+                "tipoId": "1838"
+            },
+            {
+                "id": "2011",
+                "nombre": "TALLA EN MADERA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORM. PROFES. EN ARTES Y ARTESANIAS"
+                ],
+                "tipoId": "1942"
+            },
+            {
+                "id": "1976",
+                "nombre": "TAQUIGRAFIA SISTEMA CARISSIMI",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1833",
+                "nombre": "TEC. CREATIVAS JOYERIA FIBRA",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "2012",
+                "nombre": "TECNICAS DE TERMINACION Y ORNAMEN.",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO FIGARI"
+                ],
+                "tipoId": "1838"
+            },
+            {
+                "id": "2012",
+                "nombre": "TECNICAS DE TERMINACION Y ORNAMEN.",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORM. PROFES. EN ARTES Y ARTESANIAS"
+                ],
+                "tipoId": "1942"
+            },
+            {
+                "id": "2037",
+                "nombre": "TECNICO EN COMUNICACION SOCIAL",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "2063",
+                "nombre": "TECNOLOGO CARNICO",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "1908",
+                "nombre": "TECNOLOGO EN INFORMATICA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "2053",
+                "nombre": "TECNOLOGO MADERA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "1955",
+                "nombre": "TECNOLOGO MECANICO",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "1922",
+                "nombre": "TECNOLOGO QUIMICO",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "1946",
+                "nombre": "TELAR ALTO,LIZO Y TAPIZ",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1945",
+                "nombre": "TELAR BAJO LIZO",
+                "tag": [
+                    "CAPACITACIONES",
+                    "CAPACITACION PROFESIONAL INICIAL"
+                ],
+                "tipoId": "1828"
+            },
+            {
+                "id": "1925",
+                "nombre": "TELECOMUNICACIONES",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "CURSO TECNICO TERCIARIO"
+                ],
+                "tipoId": "1808"
+            },
+            {
+                "id": "1948",
+                "nombre": "TERMODINAMICA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "1861",
+                "nombre": "TEXTIL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA PROFESIONAL"
+                ],
+                "tipoId": "1795"
+            },
+            {
+                "id": "1861",
+                "nombre": "TEXTIL",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "BACHILLERATO PROFESIONAL"
+                ],
+                "tipoId": "1809"
+            },
+            {
+                "id": "1992",
+                "nombre": "TUBERIAS",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORMACION PROFESIONAL ESPECIALIZADA"
+                ],
+                "tipoId": "1990"
+            },
+            {
+                "id": "1835",
+                "nombre": "TURISMO",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "EDUCACION MEDIA TECNOLOGICA"
+                ],
+                "tipoId": "1805"
+            },
+            {
+                "id": "2019",
+                "nombre": "VESTIMENTA",
+                "tag": [
+                    "EDUCACION MEDIA SUPERIOR",
+                    "CURSO TECNICO"
+                ],
+                "tipoId": "2018"
+            },
+            {
+                "id": "2019",
+                "nombre": "VESTIMENTA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "CURSO BASICO"
+                ],
+                "tipoId": "1939"
+            },
+            {
+                "id": "1821",
+                "nombre": "VESTIMENTA P.PUNTO",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            },
+            {
+                "id": "2008",
+                "nombre": "VIOLERIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "FORMACION PROFESIONAL BASICA (FP)"
+                ],
+                "tipoId": "1935"
+            },
+            {
+                "id": "1855",
+                "nombre": "VITIVINICULTURA",
+                "tag": [
+                    "EDUC. SUPERIOR TERCIARIA",
+                    "TECNOLOGO"
+                ],
+                "tipoId": "1854"
+            },
+            {
+                "id": "1822",
+                "nombre": "VIVERO",
+                "tag": [
+                    "EDUCACION MEDIA BASICA",
+                    "FORMACION PROFESIONAL BASICA (EMB)"
+                ],
+                "tipoId": "1787"
+            }
+        ]
+    },
+    {
+        "subsis": "CFE",
+        "cursos": [
+            {
+                "id": "2149",
+                "nombre": "ASTRONOMIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2168",
+                "nombre": "EDUCADOR SOCIAL",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "EDUCADOR SOCIAL"
+                ],
+                "tipoId": "2107"
+            },
+            {
+                "id": "2169",
+                "nombre": "ELECTRICIDAD AUTOMOTRIZ (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2175",
+                "nombre": "CERTIFICACIÓN DE LENGUAS EXTRANJERAS",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "CERTIFICACION"
+                ],
+                "tipoId": "2111"
+            },
+            {
+                "id": "2176",
+                "nombre": "MAESTRO DE EDUCACION PRIMARIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAGISTERIO"
+                ],
+                "tipoId": "2108"
+            },
+            {
+                "id": "2177",
+                "nombre": "ASISTENTE TECNICO EN PRIMERA INFANCIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "TECNICATURA"
+                ],
+                "tipoId": "2112"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESOR TECNICO"
+                ],
+                "tipoId": "2113"
+            },
+            {
+                "id": "2175",
+                "nombre": "CERTIFICACIÓN DE LENGUAS EXTRANJERAS",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "CERTIFICACION"
+                ],
+                "tipoId": "2111"
+            },
+            {
+                "id": "2168",
+                "nombre": "EDUCADOR SOCIAL",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "EDUCADOR SOCIAL"
+                ],
+                "tipoId": "2107"
+            },
+            {
+                "id": "2169",
+                "nombre": "ELECTRICIDAD AUTOMOTRIZ (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2176",
+                "nombre": "MAESTRO DE EDUCACION PRIMARIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAGISTERIO"
+                ],
+                "tipoId": "2108"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESOR TECNICO"
+                ],
+                "tipoId": "2113"
+            },
+            {
+                "id": "2149",
+                "nombre": "ASTRONOMIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2177",
+                "nombre": "ASISTENTE TECNICO EN PRIMERA INFANCIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "TECNICATURA"
+                ],
+                "tipoId": "2112"
+            },
+            {
+                "id": "1796",
+                "nombre": "ADMINISTRACION",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESOR TECNICO"
+                ],
+                "tipoId": "2113"
+            },
+            {
+                "id": "2181",
+                "nombre": "ASISTENTE DE LABORATORIO EN TECNOLOGÍAS DIGITALES",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "TECNICATURA"
+                ],
+                "tipoId": "2112"
+            },
+            {
+                "id": "2177",
+                "nombre": "ASISTENTE TECNICO EN PRIMERA INFANCIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "TECNICATURA"
+                ],
+                "tipoId": "2112"
+            },
+            {
+                "id": "2149",
+                "nombre": "ASTRONOMIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2183",
+                "nombre": "CARPINTERIA (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2175",
+                "nombre": "CERTIFICACIÓN DE LENGUAS EXTRANJERAS",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "CERTIFICACION"
+                ],
+                "tipoId": "2111"
+            },
+            {
+                "id": "2150",
+                "nombre": "CIENCIAS BIOLOGICAS",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2156",
+                "nombre": "CIENCIAS GEOGRAFICAS",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2157",
+                "nombre": "COMUNICACION VISUAL",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2184",
+                "nombre": "CONSTRUCCION (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2185",
+                "nombre": "CONTABILIDAD",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESOR TECNICO"
+                ],
+                "tipoId": "2113"
+            },
+            {
+                "id": "2186",
+                "nombre": "CONTABILIDAD Y ECONOMIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESOR TECNICO"
+                ],
+                "tipoId": "2113"
+            },
+            {
+                "id": "2193",
+                "nombre": "DANZA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2158",
+                "nombre": "DERECHO",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2187",
+                "nombre": "DISEÑO E INDUMENTARIA (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2188",
+                "nombre": "DISEÑO E INDUSTRIA TEXTIL (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2159",
+                "nombre": "EDUCACION MUSICAL",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2168",
+                "nombre": "EDUCADOR SOCIAL",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "EDUCADOR SOCIAL"
+                ],
+                "tipoId": "2107"
+            },
+            {
+                "id": "2169",
+                "nombre": "ELECTRICIDAD AUTOMOTRIZ (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2170",
+                "nombre": "ELECTRONICA (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2171",
+                "nombre": "ELECTROTECNIA (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2160",
+                "nombre": "ESPAÑOL",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2167",
+                "nombre": "ESPAÑOL POR COMPLEMENTO",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2161",
+                "nombre": "FILOSOFIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2162",
+                "nombre": "FISICA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2163",
+                "nombre": "FRANCES",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2189",
+                "nombre": "GASTRONOMIA OPCION COCINA (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2164",
+                "nombre": "HISTORIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "1806",
+                "nombre": "INFORMATICA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2152",
+                "nombre": "INGLES (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2165",
+                "nombre": "ITALIANO",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2153",
+                "nombre": "LITERATURA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2176",
+                "nombre": "MAESTRO DE EDUCACION PRIMARIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAGISTERIO"
+                ],
+                "tipoId": "2108"
+            },
+            {
+                "id": "2178",
+                "nombre": "MAESTRO DE PRIMERA INFANCIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAGISTERIO"
+                ],
+                "tipoId": "2108"
+            },
+            {
+                "id": "2151",
+                "nombre": "MATEMATICA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2172",
+                "nombre": "MECANICA AUTOMOTRIZ (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2190",
+                "nombre": "MECANICA INDUSTRIAL  (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2173",
+                "nombre": "MECANICA INDUSTRIAL (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2166",
+                "nombre": "PORTUGUES",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2191",
+                "nombre": "PRODUCCION ANIMAL (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2192",
+                "nombre": "PRODUCCION VEGETAL (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2154",
+                "nombre": "QUIMICA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            },
+            {
+                "id": "2174",
+                "nombre": "REDES Y TELECOMUNICACIONES (CFE)",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "MAESTRO TECNICO"
+                ],
+                "tipoId": "2110"
+            },
+            {
+                "id": "2155",
+                "nombre": "SOCIOLOGIA",
+                "tag": [
+                    "FORMACIÓN PROFESIONAL",
+                    "PROFESORADO"
+                ],
+                "tipoId": "2109"
+            }
+        ]
+    }
+]
+
