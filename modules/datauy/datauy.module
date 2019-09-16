@@ -8,6 +8,7 @@ function datauy_terms_def() {
 		8 => 'field_tipo_curso',
 		9 => 'field_orientaci_n',
 		10 => 'field_categor_a',
+		16 => 0,
 	);
 }
 function datauy_subsis_def() {
@@ -29,7 +30,7 @@ function datauy_subsis_def() {
 			'access arguments' => array('access content'),
 		);
 		$items['api/search/%'] = array(
-			'title' => 'Test page',
+			'title' => 'Search by terms',
 			'type' => MENU_CALLBACK,
 			'page callback' => 'datauy_api_busqueda_terminos',
 			'page arguments' => array(2),
@@ -133,8 +134,6 @@ function datauy_turnos_map($turno, $id) {
 			"2086" => 1, //extendido
 			"2096" => 1, //extendido
 			"2203" => 1, //intemedio
-			"2148" => 1, //intemedio ext
-			"2089" => 1, //intemedio ves
 			"2082" => 1, //matves
 			"2145" => 1, //matextendido
 			"2084" => 1, //rural
@@ -157,8 +156,6 @@ function datauy_turnos_map($turno, $id) {
 			"2148" => 1, //intemedio ext
 			"2089" => 1, //intemedio ves
 			"2082" => 1, //matves
-			"2089" => 1, //intemedio ves
-			"2082" => 1, //matves
 			"2084" => 1, //rural
 			"2097" => 1, //rural
 			"2087" => 1, //completo
@@ -173,6 +170,20 @@ function datauy_turnos_map($turno, $id) {
 			"2088" => 1, //unico
 			"2081" => 1, //vesnoc
 			"2204" => 1, //vesext
+		),
+		'completo' => array (
+			"2080" => 1, //doble
+			"2095" => 1, //doble
+			"2085" => 1, //especial
+			"2086" => 1, //extendido
+			"2096" => 1, //extendido
+			"2145" => 1, //matextendido
+			"2148" => 1, //intemedio ext
+			"2087" => 1, //completo
+			"2094" => 1, //completo
+			"2088" => 1, //unico
+			"2204" => 1, //vesext
+			"2205" => 1, //noct ext
 		),
 	);
 	if ($turno) {
@@ -254,6 +265,16 @@ function datauy_search_terms($search) {
 		if ( !empty($result['taxonomy_term']) ) {
 			return taxonomy_term_load_multiple( array_keys($result['taxonomy_term']) );
 		}
+	}
+	return array();
+}
+function datauy_get_term_by_sinonimo($tid) {
+	$query = new EntityFieldQuery();
+	$result = $query->entityCondition('entity_type', 'taxonomy_term')
+    ->fieldCondition('field_sin_nimos', 'tid', $tid)
+    ->execute();
+	if ( !empty($result['taxonomy_term']) ) {
+		return array_keys($result['taxonomy_term'])[0];
 	}
 	return array();
 }
@@ -1302,7 +1323,12 @@ function datauy_busqueda_terminos($search) {
 		$niveles = datauy_get_vocabulary_terms(7);
 		$tipos = datauy_get_vocabulary_terms(8);
 		foreach ($terms as $term) {
-			if ($term->vocabulary_machine_name == 'orientaci_n'){
+			if ( $term->vocabulary_machine_name == 'sinonimos' ) {
+				$tipo_id = datauy_get_term_by_sinonimo($term->tid);
+				$term->tid = $tipo_id;
+				$field = 'field_tipo_curso';
+			}
+			elseif ($term->vocabulary_machine_name == 'orientaci_n'){
 				$field = 'field_orientaci_n';
 			}
 			elseif ($term->vocabulary_machine_name == 'nivel') {
