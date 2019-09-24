@@ -1452,11 +1452,11 @@ function datauy_busqueda_terminos($search) {
 function datauy_api_soportes() {
 	$subsis = datauy_subsis_def();
 	$result = [
-		'dispositivos' => [
+		'especiales' => [
 			'nombre' => 'Educación especial',
 			'planes' => []
 		],
-		'especiales' => [
+		'dispositivos' => [
 			'nombre' => 'Dispositivos y programas',
 			'planes' => []
 		],
@@ -1496,6 +1496,10 @@ function datauy_api_soportes() {
 			'info' => $term->description,
 			'en_centro' => $en_centro,
 		];
+	}
+	foreach ( $result as $stipo => $soporte ) {
+		if ( empty($soporte['planes']) )
+			unset($result[$stipo]);
 	}
 	printInNiceJson(array_values($result));
 	exit();
