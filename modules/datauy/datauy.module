@@ -1845,6 +1845,8 @@ function datauy_get_previas($tquiero, $ttengo, $resp = 0) {
 							$tengo_child = taxonomy_term_load($tvalue['target_id']);
 							if ( $resp = datauy_get_previas($tquiero, $tengo_child, $resp) ){
 								$resp['from'] = 'menor';
+                //Ver de aplicar reválidas y paginas intermedias
+                return 0;
 								break;
 							}
 						}
