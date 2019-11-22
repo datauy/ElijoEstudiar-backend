@@ -12,10 +12,18 @@ function datauy_terms_def() {
 }
 function datauy_subsis_def() {
 	return array(
-		'Primaria' => 2210,
-		'Secundaria' => 2246,
-		'UTU' => 2247,
-		'Formación en educación' => 2248,
+		'CEIP' => 1,
+		'CES' => 2,
+		'CETP' => 3,
+		'CFE' => 4,
+	);
+}
+function datauy_subsis_web_def() {
+	return array(
+		'Inicial - Primaria' => 1,
+		'Secundaria' => 2,
+		'UTU' => 3,
+		'Formación en educación' => 4,
 	);
 }
 //Hooks
@@ -32,13 +40,6 @@ function datauy_subsis_def() {
 			'title' => 'Search by terms',
 			'type' => MENU_CALLBACK,
 			'page callback' => 'datauy_api_busqueda_terminos',
-			'page arguments' => array(2),
-			'access arguments' => array('access content'),
-		);
-		$items['api/searchByLocalidadDepartamento/%'] = array(
-			'title' => 'Test page',
-			'type' => MENU_CALLBACK,
-			'page callback' => 'datauy_api_busqueda_localidades_departamentos',
 			'page arguments' => array(2),
 			'access arguments' => array('access content'),
 		);
@@ -216,37 +217,20 @@ function datauy_find_curso_by_term($field, $value){
   return array();
 }
 
-function datauy_search_establecimientos_by_localidad($search){
+function datauy_search_centro_by_number($subsis, $numero, $depto){
 	$query = new EntityFieldQuery();
 	$entities = $query->entityCondition('entity_type', 'node')
 		->propertyCondition('type', "establecimiento")
 		->propertyCondition('status', 1)
-		->fieldCondition('field_localidad', 'value', $search, 'CONTAINS')
-		->fieldOrderBy('field_localidad', 'value', 'ASC')
+		->fieldCondition('field_sub_sistema', 'target_id', $subsis)
+    ->fieldCondition('field_n_mero', 'value', $numero)
+    ->fieldCondition('field_departamento', 'target_id', $depto)
 		//->range(0,1)
 		->execute();
 	if (!empty($entities['node'])) {
-		$nids = array_keys($entities['node']);
-		$nodes = node_load_multiple($nids, array('type' => "establecimiento"));
-		return $nodes;
-	}else{
-		return false;
-	}
-}
-
-function datauy_search_establecimientos_by_departamento($search){
-	$query = new EntityFieldQuery();
-	$entities = $query->entityCondition('entity_type', 'node')
-		->propertyCondition('type', "establecimiento")
-		->propertyCondition('status', 1)
-		->fieldCondition('field_departamento', 'value', $search, 'CONTAINS')
-		->fieldOrderBy('field_departamento', 'value', 'ASC')
-		//->range(0,1)
-		->execute();
-	if (!empty($entities['node'])) {
-		$nids = array_keys($entities['node']);
-		$nodes = node_load_multiple($nids, array('type' => "establecimiento"));
-		return $nodes;
+		$nid = array_shift(array_keys($entities['node']));
+		$node = node_load($nid);
+		return $node;
 	}else{
 		return false;
 	}
@@ -363,7 +347,8 @@ function datauy_find_establecimiento_by_rule($rule, $ruee){
 		->fieldCondition('field_ruee', 'value', $ruee)
     ->execute();
   if (!empty($result['node'])) {
-    return array_shift(array_keys($result['node']));
+    $est = array_shift(array_keys($result['node']));
+    return $est;
   }else{
     return false;
   }
@@ -406,15 +391,19 @@ function datauy_find_curso($node){
     return false;
   }
 }
-function datauy_find_oferta($est, $curso, $turno){
+function datauy_find_oferta($est, $oferta){
   $query = new EntityFieldQuery();
-    $result = $query->entityCondition('entity_type', 'node')
+  $query->entityCondition('entity_type', 'node')
     ->propertyCondition('type', "oferta")
     ->propertyCondition('status', 1)
-    ->fieldCondition('field_turno', 'target_id', $turno )
+    ->fieldCondition('field_turno', 'target_id', $oferta['turno'] )
 		->fieldCondition('field_establecimiento', 'target_id', $est )
-		->fieldCondition('field_curso', 'target_id', $curso )
-    ->execute();
+		->fieldCondition('field_curso', 'target_id', $oferta['curso'] );
+  if ( isset($oferta['duraci_n']) )
+    $query->fieldCondition('field_duraci_n', 'target_id', $oferta['duraci_n'] );
+  if ( isset($oferta['modalidad']) )
+    $query->fieldCondition('field_modalidad', 'target_id', $oferta['modalidad'] );
+  $result = $query->execute();
   if (!empty($result['node'])) {
 		$nid = array_shift(array_keys($result['node']));
     return node_load( $nid );
@@ -536,16 +525,24 @@ function datauy_create_establecimiento_node($rowParsed, $subsis_id){
   $node->field_sub_sistema['und'][0]['target_id'] = $subsis_id;
 	if ( $depto = findUbicacionByTitle($rowParsed[6], 0) ) {
 		$node->field_departamento['und'][0]['target_id'] = $depto;
-		if ( $localidad = findUbicacionByTitle($rowParsed[7], $depto) ){
-			$node->field_localidad['und'][0]['target_id'] = $localidad;
-			// TODO: Agregar paraje (resolver búsqueda api)
-		}
-		else {
-			print "\nNo existe localidad: ".$rowParsed[7]."\n";
-		}
+    if ( $localidad = findUbicacionByTitle($rowParsed[7], $depto) ){
+      $node->field_localidad['und'][0]['target_id'] = $localidad;
+      // TODO: Agregar paraje (resolver búsqueda api)
+    }
+    else {
+      //Probamos con paraje
+      if ( $localidad = findUbicacionByTitle($rowParsed[8], $depto) ){
+        $node->field_localidad['und'][0]['target_id'] = $localidad;;
+        $i++;
+      }
+      else {
+        print "\nNO EXISTE UBICACIÓN: ".$rowParsed[6].", ".$rowParsed[7].", ".$rowParsed[8]."\n";
+        $fails++;
+      }
+    }
 	}
 	else {
-		print "\nNo existe localidad: ".$rowParsed[7]."\n";
+		print "\nNo existe departamento: ".$rowParsed[7]." RULE: ".$rowParsed[12]."RUEE: ".$rowParsed[2]."\n";
 	}
   $node->field_paraje['und'][0]['value'] = $rowParsed[8];
   $node->field_direcci_n['und'][0]['value'] = $rowParsed[9]." ".$rowParsed[10];
@@ -605,7 +602,7 @@ function datauy_create_oferta_node($oferta){
 		return array(0, 0);
 	}
 	//Vemos si existe el nodo
-	if ( $node = datauy_find_oferta($est, $oferta['curso'], $oferta['turno']) ){
+	if ( $node = datauy_find_oferta($est, $oferta) ){
 		$updated = 0;
 		//Agregamos  grupos
 		if ( !empty($oferta['grupo']) ){
@@ -654,7 +651,7 @@ function datauy_create_oferta_node($oferta){
 		if ( isset($oferta['grupo']) )
 			$node->field_grupos['und'][0]['value'] = $oferta['grupo'];
 		if ( isset($oferta['duraci_n']) )
-			$node->field_duraci_n['und'] = $oferta['duraci_n'];
+			$node->field_duraci_n['und'][0]['target_id'] = $oferta['duraci_n'];
 		if ( isset($oferta['modalidad']) )
 			$node->field_modalidad['und'][0]['target_id'] = $oferta['modalidad'];
 	}
@@ -697,7 +694,6 @@ function datauy_add_taxonomy($name, $voc, $web = 0){
 
 // Se utiliza csv de
 function datauy_import_establecimientos() {
-	global $user;
 	print "\nArranca import establecimientos".variable_get('file_private_path')."<pre>";
 	//Load subsitemes with name key
 	$subsis = datauy_subsis_def();
@@ -717,7 +713,6 @@ function datauy_import_establecimientos() {
 		}
 		$sub = $rowParsed[3];
 		if ( !($est = datauy_find_establecimiento_by_rule($rowParsed[12], $rowParsed[2])) ) {
-			print "\nNO HAY... agregando ".$rowParsed[4];
 			$created = datauy_create_establecimiento_node($rowParsed, $subsis[$sub]);
 			if ($created) {
 				$i++;
@@ -730,51 +725,82 @@ function datauy_import_establecimientos() {
 			$repeated++;
 			//BORRAR SÓLO ACTUALIZANDO BASE
 			$node = node_load($est);
+      //print_r($node);
+      //exit();
 			if ( $depto = findUbicacionByTitle($rowParsed[6], 0) ) {
-				$node->field_departamento['und'][0]['target_id'] = $depto;
+				//$node->field_departamento['und'][0]['target_id'] = $depto;
 				if ( $localidad = findUbicacionByTitle($rowParsed[7], $depto) ){
 					$node->field_localidad['und'][0]['target_id'] = $localidad;
 					// TODO: Agregar paraje (resolver búsqueda api)
 				}
 				else {
+          print "\nDEPTO: ".$rowParsed[6]."\n";
 					print "\nNo existe localidad: ".$rowParsed[7]."\n";
 					//Probamos con paraje
 					if ( $localidad = findUbicacionByTitle($rowParsed[8], $depto) ){
-						$node->field_localidad['und'][0]['target_id'] = $localidad;
+						//$node->field_localidad['und'][0]['target_id'] = $localidad;
 						print "Agregado por paraje: ".$rowParsed[8]."\n";
+            $i++;
 					}
 					else {
-						print "No se encontró paraje: ".$rowParsed[8]."\n";
+						print "NO se encontró NO LOCALIDAD: ".$rowParsed[8]."\n";
+            $fails++;
 					}
 				}
 			}
 			else {
-				print "\nNo existe DEPTO: ".$rowParsed[6]."\n";
+				print "\nNO existe DEPTO: ".$rowParsed[6]."\n";
+        $fails++;
 			}
-			$node->field_sub_sistema['und'][0]['target_id'] = $subsis[$sub];
-			try {
-		    node_save($node); //Comentado para evitar duplicados
-		  } catch (\Exception $e) {
-		    watchdog('datauy', "No se puede actualizar el nodo RULE:".$rowParsed[12].print_r($e, TRUE) , array(), WATCHDOG_ALERT);
-		  }
+      //Actualizo subsis
+      //$node->field_sub_sistema['und'][0]['target_id'] = $subsis[$sub];
+      if ( $node->field_departamento['und']['0']['target_id'] != $depto || $node->field_localidad['und']['0']['target_id'] != $localidad ) {
+        print "UPDATING: ".$node->nid."\n";
+        $node->field_departamento['und'][0]['target_id'] = $depto;
+        $node->field_localidad['und'][0]['target_id'] = $localidad;
+        try {
+          node_save($node); //Comentado para evitar duplicados
+        } catch (\Exception $e) {
+          watchdog('datauy', "No se puede actualizar el nodo RULE:".$rowParsed[12].print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+        }
+      }
 		}
 		//exit(); //Only take first row
 	}
-	print "Se crearon ".$i." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	print "Se crearon/actualizaron ".$i." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
 	exit();
 }
 
+function datauy_update_establecimientos($est, $params) {
+  $node = node_load($est);
+  if ( isset($params['mail']) ) {
+    $node->field_mail['und']['0']['value'] = $params['mail'];
+  }
+  if ( isset($params['nombre']) ) {
+    $node->title = $params['nombre'];
+  }
+  if ( isset($params['numero']) ) {
+    $node->field_n_mero['und']['0']['value'] = $params['numero'];
+  }
+  if ( isset($params['web']) ) {
+    $node->field_web['und']['0']['value'] = $params['web'];
+  }
+  try {
+    node_save($node); //Comentado para evitar duplicados
+  } catch (\Exception $e) {
+    watchdog('datauy', "No se puede actualizar el nodo:".$node->nid."<br><pre>".print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+  }
+}
 /**
 * Import de Ubicaciones
 */
 function datauy_import_ubicaciones($file, $type) {
-	global $user;
-
+  //type: barrio, localidad, depto
 	print "\nArranca import Ubicaciones ".variable_get('file_private_path')."<pre>";
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$tipos_hand = fopen(variable_get('file_private_path')."/import/$file", 'r') or die("can't open ./import/".$file.".csv");
+	$tipos_hand = fopen(variable_get('file_private_path')."/import/$file", 'r') or die("can't open ./import/".$file);
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
@@ -802,13 +828,12 @@ function datauy_import_ubicaciones($file, $type) {
 }
 // Se utiliza csv de
 function datauy_import_CEIP() {
-	global $user;
-
 	print "\nArranca import CEIP<pre>";
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$tipos_hand = fopen(variable_get('file_private_path').'/import/CEIP_2019_import.csv', 'r') or die("can't open ./import/CEIP_2019_import.csv");
+  $local_path = '/import/CEIP_2019-import.csv';
+	$tipos_hand = fopen(variable_get('file_private_path').$local_path, 'r') or die("can't open .$local_path");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
@@ -818,28 +843,48 @@ function datauy_import_CEIP() {
 			print "\nSale no tiene tipo...";
 			continue;
 		}
-		$nivel = 2693;
-		$tipo = 2699;//datauy_add_taxonomy($rowParsed[0], array('tipo_de_curso', 8));
-		$orientacion = 2701;//datauy_add_taxonomy($rowParsed[0], array('orientaci_n', 9));
-		$nombre_curso = 'PRIMARIA-';
+    //Agregado para actualizar datos del centro desde la planilla
+    if ( $est = datauy_find_establecimiento_by_rule( $rowParsed[18], $rowParsed[17] ) ) {
+      $params = array();
+      if ( isset($rowParsed[19]) && trim($rowParsed[19]) != '' ) {
+        $params['mail'] = $rowParsed[19];
+      }
+      if ( isset($rowParsed[20]) && trim($rowParsed[20]) != '' ) {
+        $params['nombre'] = $rowParsed[20];
+      }
+      if ( isset($rowParsed[21]) && trim($rowParsed[21]) != '' ) {
+        $params['numero'] = $rowParsed[21];
+      }
+      if ( !empty($params) ) {
+        datauy_update_establecimientos($est, $params);
+      }
+  	}
+    else {
+      print "\nEST NO encontrado\nRULE: ".$rowParsed[18]."\nRUEE: ".$rowParsed[17];
+      continue;
+    }
+		$nivel = 6;
+		$tipo = 89;//datauy_add_taxonomy($rowParsed[0], array('tipo_de_curso', 8));
+		$orientacion = 110;//datauy_add_taxonomy($rowParsed[0], array('orientaci_n', 9));
+		$nombre_curso = 'Primaria-';
 		$doble = 0;
 		//No hay año asociado, ej: escuela especial
 		if ( empty($rowParsed[4]) ) {
 			$primer_grado = 0;
 			$ultimo_grado = 0;
-			$tipo = 2700;
-			$orientacion = 2702;
-			$nombre_curso = 'PRIMARIA-';
+			$tipo = 109;
+			$orientacion = 112;
+			$nombre_curso = 'Primaria-';
 		}
 		else {
 			//Verifico el nivel
-			if ( strpos($rowParsed[4], 'AÑOS') ) {
-				$nivel = 2692;
-				$tipo = 2697;
-				$orientacion = 2698;
-				$nombre_curso = 'JARDÍN-';
+			if ( strpos($rowParsed[4], 'años') ) {
+				$nivel = 5;
+				$tipo = 18;
+				$orientacion = 111;
+				$nombre_curso = 'Jardín-';
 				//Chequeo si es todo inicial o es escuela también
-				if ( !strpos($rowParsed[5], 'AÑOS') ) {
+				if ( !strpos($rowParsed[5], 'años') ) {
 					$doble = 1;
 				}
 			}
@@ -861,17 +906,18 @@ function datauy_import_CEIP() {
 				//'c_digo' => null,
 				'a_o' => $primer_grado,
 				//'trayectoria' => null,
-				'subsis' => 2210
+				'subsis' => 1
 			);
 			if ( $curso_id = datauy_create_curso_node($curso_params) ) {
 				$turno = datauy_add_taxonomy($rowParsed[1], array('turno', 11));
 				$cat = datauy_add_taxonomy($rowParsed[3], array('categor_a', 10));
 				$oferta_params = array(
-					'rule' => $rowParsed[22],
-					'ruee' => $rowParsed[21],
+          //'ruee' => $rowParsed[21],
+					//'rule' => $rowParsed[22],
+          'est' => $est,
 					'curso' => $curso_id,
 					'turno' => $turno,
-					'title' => $nombre_curso.$primer_grado.'-'.$rowParsed[17], // TODO: cambiar al nombre del turno
+					'title' => $nombre_curso.$primer_grado.'-'.$est.'-'.$rowParsed[1],
 					'cat' => $cat
 				);
 				$oferta_creada = datauy_create_oferta_node($oferta_params);
@@ -892,28 +938,29 @@ function datauy_import_CEIP() {
 		}
 		//Si es doble ejecutamos la parte de primaria
 		if ( $doble ) {
-			$nombre_curso = 'PRIMARIA-';
+			$nombre_curso = 'Primaria-';
 			$primer_grado = 1;
 			$ultimo_grado = substr($rowParsed[5], 0, 1 );
 			for ($primer_grado; $primer_grado <= $ultimo_grado; $primer_grado++) {
 				$curso_params = array(
 					'title' => $nombre_curso.$primer_grado,
-					'nivel' => 2693,
-					'tipo' => 2699,
-					'orientaci_n' => 2701,
+					'nivel' => 6,
+					'tipo' => 89,
+					'orientaci_n' => 110,
 					//'plan' => '',
 					//'c_digo' => '',
 					'a_o' => $primer_grado,
 					//'trayectoria' => '',
-					'subsis' => 2210
+					'subsis' => 1
 				);
 				if ( $curso_id = datauy_create_curso_node($curso_params) ) {
 					$oferta_params = array(
-						'rule' => $rowParsed[22],
-						'ruee' => $rowParsed[21],
+						//'ruee' => $rowParsed[17],
+            //'rule' => $rowParsed[18],
+            'est' => $est,
 						'curso' => $curso_id,
 						'turno' => $turno,
-						'title' => $nombre_curso.$primer_grado.'-'.$rowParsed[22].'-'.$rowParsed[1],
+						'title' => $nombre_curso.$primer_grado.'-'.$est.'-'.$rowParsed[1],
 						'cat' => $cat
 					);
 					$oferta_creada = datauy_create_oferta_node($oferta_params);
@@ -943,43 +990,61 @@ function datauy_import_CEIP() {
 
 
 function datauy_import_CES() {
-	global $user;
 	print "\nArranca import CES<pre>";
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$tipos_hand = fopen(variable_get('file_private_path').'/import/CES_2019_import.csv', 'r') or die("can't open ./import/CES_correcciones.csv");
+  $local_path = '/import/CES_2019-import.csv';
+	$tipos_hand = fopen(variable_get('file_private_path').$local_path, 'r') or die("can't open $local_path");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
 			continue;
 		}
+    //Agregado para actualizar datos del centro desde la planilla
+    if ( $est = datauy_find_establecimiento_by_rule( $rowParsed[1], $rowParsed[0] ) ) {
+      $params = array();
+      if ( isset($rowParsed[7]) && trim($rowParsed[7]) != '' ) {
+        $params['nombre'] = $rowParsed[7];
+      }
+      if ( isset($rowParsed[9]) && trim($rowParsed[9]) != '' ) {
+        //Sólo los últimos 2 caracteres
+        $params['numero'] = substr($rowParsed[9], -2);
+      }
+      if ( !empty($params) ) {
+        datauy_update_establecimientos($est, $params);
+      }
+  	}
+    else {
+      print "\nEST NO encontrado\nRULE: ".$rowParsed[18]."\nRUEE: ".$rowParsed[17];
+      continue;
+    }
 		$orientacion = 0;
 		//Verificar tipo
 		switch ($rowParsed[2]) {
 			case 4:
-				$nivel = 2695;
-				$tipo = 2736;
-				$orientacion = 2739;
-				$title = 'BACHILLERATO 4°';
+				$nivel = 144;
+				$tipo = 175;
+				$orientacion = 194;
+				$title = 'Bachillerato 4°';
 				break;
 			case 5:
-				$nivel = 2695;
-				$tipo = 2737;
+				$nivel = 144;
+				$tipo = 185;
 				$orientacion = datauy_add_taxonomy($rowParsed[3], array('orientaci_n', 9));
-				$title = 'BACHILLERATO 5° - '.$rowParsed[3];
+				$title = 'Bachillerato 5° - '.$rowParsed[3];
 				break;
 			case 6:
-				$nivel = 2695;
-				$tipo = 2738;
+				$nivel = 144;
+				$tipo = 192;
 				$orientacion = datauy_add_taxonomy($rowParsed[3], array('orientaci_n', 9));
-				$title = 'BACHILLERATO 6° - '.$rowParsed[3];
+				$title = 'Bachillerato 6° - '.$rowParsed[3];
 				break;
 			default:
-				$nivel = 2694;
-				$tipo = 2735;
-				$orientacion = 2740;
-				$title = 'SECUNDARIA CICLO BÁSICO';
+				$nivel = 143;
+				$tipo = 166;
+				$orientacion = 193;
+				$title = 'Secundaria ciclo básico';
 				break;
 		}
 
@@ -990,27 +1055,23 @@ function datauy_import_CES() {
 			'orientaci_n' => $orientacion,
 			'plan' => $rowParsed[5],
 			'a_o' => $rowParsed[2],
-			'subsis' => 2246,
-			'web' => $rowParsed[7],
+			'subsis' => 2,
+			'web' => $rowParsed[8],
 		);
 		if ( $curso_id = datauy_create_curso_node($curso_params) ) {
 			$turno = datauy_add_taxonomy($rowParsed[4], array('turno', 11));
 			$duracion = array();
-			foreach ( explode('/', $rowParsed[6]) as $opciones) {
-				if (!empty($opciones)) {
-					$dur_time = datauy_add_taxonomy($opciones, array('duraci_n', 14));
-					if ( $dur_time )
-					$duracion[] = array('target_id' => $dur_time);
-				}
-			}
 			$oferta_params = array(
 				'title' => $title.'-'.$rowParsed[1].'-'.$rowParsed[4],
-				'rule' => $rowParsed[1],
-				'ruee' => $rowParsed[0],
+				//'rule' => $rowParsed[1],
+				//'ruee' => $rowParsed[0],
+        'est' => $est,
 				'curso' => $curso_id,
 				'turno' => $turno,
-				'duraci_n' => $duracion,
 			);
+      if (!empty($rowParsed[6])) {
+        $oferta_params['duraci_n'] = datauy_add_taxonomy($rowParsed[6], array('duraci_n', 14));
+      }
 			$oferta_creada = datauy_create_oferta_node($oferta_params);
 			if ($oferta_creada[0] && $oferta_creada[1]){
 				$i++;
@@ -1037,12 +1098,11 @@ function datauy_import_CES() {
 
 // Se utiliza csv de
 function datauy_import_CETP() {
-	global $user;
 	print "\nArranca import CETP<pre>";
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$tipos_hand = fopen(variable_get('file_private_path').'/import/CETP_2019_import.csv', 'r') or die("can't open ./import/CETP_import.csv");
+	$tipos_hand = fopen(variable_get('file_private_path').'/import/CETP_2019-import.csv', 'r') or die("can't open ./import/CETP_2019-import.csv");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
@@ -1072,18 +1132,38 @@ function datauy_import_CETP() {
 			'sector' => $sector,
 			'trayectoria' => substr_count($rowParsed[5],'I'),
 			'web' => $rowParsed[16],
-			'subsis' => 2247
+			'subsis' => 3
 		);
 		if ( $curso_id = datauy_create_curso_node($curso_params) ) {
+      if ( $est = datauy_find_establecimiento_by_rule( $rowParsed[18], $rowParsed[17] ) ) {
+        $params = array();
+        if ( isset($rowParsed[14]) && trim($rowParsed[14]) != '' ) {
+          $params['mail'] = $rowParsed[14];
+        }
+        if ( isset($rowParsed[20]) && trim($rowParsed[20]) != '' ) {
+          $params['nombre'] = $rowParsed[20];
+        }
+        if ( isset($rowParsed[19]) && trim($rowParsed[19]) != '' ) {
+          //Sólo los últimos 2 caracteres
+          $params['numero'] = substr($rowParsed[19], -3);
+        }
+        if ( !empty($params) ) {
+          datauy_update_establecimientos($est, $params);
+        }
+    	}
+      else {
+        print "\nEST NO encontrado\nRULE: ".$rowParsed[18]."\nRUEE: ".$rowParsed[17];
+        continue;
+      }
 			//Si no trae rule-rue lo tratamos de levantar por nombre
-			$est = 0;
+			/*$est = 0;
 			if ( empty($rowParsed[18]) ) {
 				if (!$est = datauy_find_establecimiento_by_name($rowParsed[17])) {
 					$fails++;
 					print "CENTRO ERROR: No se encuentra el establecimiento";
 					continue;
 				}
-			}
+			}*/
 			$oferta_params = array(
 				//'rule' => $rowParsed[14],
 				//'ruee' => $rowParsed[13],
@@ -1135,19 +1215,43 @@ function datauy_import_CETP() {
 }
 
 function datauy_import_CFE() {
-	global $user;
 	print "\nArranca import CFE<pre>";
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$tipos_hand = fopen(variable_get('file_private_path').'/import/CFE_2019_import.csv', 'r') or die("can't open ./import/CFE_2019_import.csv");
+	$tipos_hand = fopen(variable_get('file_private_path').'/import/CFE_2019-import.csv', 'r') or die("can't open ./import/CFE_2019-import.csv");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
 			continue;
 		}
-		$nivel = 2696;
-		$title = 'FORMACIÓN EN '.$rowParsed[3];
+    if ( $est = datauy_find_establecimiento_by_rule( $rowParsed[11], $rowParsed[10] ) ) {
+      $params = array();
+      if ( isset($rowParsed[8]) && trim($rowParsed[8]) != '' ) {
+        $params['mail'] = $rowParsed[8];
+      }
+      if ( isset($rowParsed[12]) && trim($rowParsed[12]) != '' ) {
+        $params['nombre'] = $rowParsed[12];
+      }
+      if ( isset($rowParsed[13]) && trim($rowParsed[13]) != '' ) {
+        //Sólo los últimos 2 caracteres
+        $params['numero'] = substr($rowParsed[13], -3);
+      }
+      if ( isset($rowParsed[9]) && trim($rowParsed[9]) != '' ) {
+        //Sólo los últimos 2 caracteres
+        $params['web'] = $rowParsed[9];
+      }
+      if ( !empty($params) ) {
+        datauy_update_establecimientos($est, $params);
+      }
+    }
+    else {
+      print "\nEST NO encontrado\nRULE: ".$rowParsed[18]."\nRUEE: ".$rowParsed[17];
+      $fails++;
+      continue;
+    }
+		$nivel = 454;
+		$title = 'Formación en '.$rowParsed[3];
 		//Verificar tipo
 		$tipo = datauy_add_taxonomy($rowParsed[2], array('tipo_de_curso', 8), $rowParsed[6]);
 		//Verificar orientacion
@@ -1155,6 +1259,7 @@ function datauy_import_CFE() {
 		if (!$orientacion || !$tipo) {
 			//error ya reportado
 			print "Sale no tiene algo...";
+      $fails++;
 			continue;
 		}
 		$curso_params = array(
@@ -1166,7 +1271,7 @@ function datauy_import_CFE() {
 			'web' => $rowParsed[7],
 			//'c_digo' => $rowParsed[3],
 			//'a_o' => $rowParsed[6],
-			'subsis' => 2248
+			'subsis' => 4
 		);
 		if (!empty($rowParsed[1]))
 			$curso_params['titulaci_n'] = datauy_add_taxonomy($rowParsed[1], array('titulaci_n', 12));
@@ -1174,15 +1279,16 @@ function datauy_import_CFE() {
 			if ( empty($rowParsed[4]) ) {
 				//$fails++;
 				//print "No tiene turno: ".print_r($rowParsed, TRUE);
-				$turno = 2733; //Sin Asignar
+				$turno = 220; //Sin turno
 			}
 			else {
 				$turno = datauy_add_taxonomy($rowParsed[6], array('turno', 11));
 			}
 			$oferta_params = array(
 				'title' => $title.'-'.$rowParsed[11].'-'.$rowParsed[4],
-				'rule' => $rowParsed[11],
-				'ruee' => $rowParsed[10],
+				//'rule' => $rowParsed[11],
+				//'ruee' => $rowParsed[10],
+        'est' => $est,
 				'curso' => $curso_id,
 				'turno' => $turno,
 			);
@@ -1251,6 +1357,7 @@ function datauy_import_previas() {
 		}
 		else {
 			print "\n Previa o tipo no encontrado: ".$row[0]." ".$row[1]."\n";
+      $err++;
 		}
 	}
 	print 'END PREVIAS, se agregaron '.$added.' previas; fallaron '.$err;
@@ -1290,54 +1397,87 @@ function datauy_update_nodes() {
 	print "Se actualizaron ".$i."nodos";
 }
 
-
-/******* API *******/
-/**
-	*Búsqueda de dónde estudiar
-	*@param:
-	* String de Búsqueda
-	*@return:
-	* JSON array de localidad, departamento
-*/
-function datauy_api_busqueda_localidades_departamentos($search){
-	$establecimientosByLocalidad = datauy_search_establecimientos_by_localidad($search);
-	$establecimientosByDepartamento = datauy_search_establecimientos_by_departamento($search);
-	$result = array();
-	if($establecimientosByLocalidad!=false){
-		foreach ($establecimientosByLocalidad as $key => $establecimiento) {
-			if(isset($establecimiento->field_localidad["und"][0]["value"]) && isset($establecimiento->field_departamento["und"][0]["value"])){
-				$full_value = $establecimiento->field_localidad["und"][0]["value"] . ", " . $establecimiento->field_departamento["und"][0]["value"];
-				$item = array();
-				if(!array_key_exists($full_value,$result)){
-					$item["loc_dep"] = $full_value;
-					$item["localidad"] = $establecimiento->field_localidad["und"][0]["value"];
-					$item["departamento"] = $establecimiento->field_departamento["und"][0]["value"];
-					$item["coordenadas"] = $establecimiento->field_ubicaci_n["und"][0];
-					$result [$full_value]= $item;
-				}
+function datauy_import_pyd_desc() {
+  $tipos_hand = fopen(variable_get('file_private_path').'/import/soportes_educativos.csv', 'r') or die("can't open ./import/dispositivos.csv");
+	$added = 0;
+	$err = 0;
+  print "ARRANCA P&D<pre>";
+  $first = 1;
+	while (($row = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+    if ($first) {
+      $first = 0;
+      continue;
+    }
+    $term = taxonomy_get_term_by_name($row[1], 'soportes_educativos');
+		if ( empty($term) ){
+			$term = new stdClass();
+			$term->name = $row[1];
+			$term->vid = 17;
+			if ($row[4])
+				$term->field_web['und']['0']['value'] = $row[4];
+			$term->field_tipo_de_soporte['und']['0']['value'] = $row[2];
+      $term->field_sub_sistema['und']['0']['target_id'] = $row[0];
+      $term->description = $row[3];
+			try {
+				taxonomy_term_save($term);
+        $added++;
+			}
+			catch (\Exception $e) {
+				watchdog('datauy', "No se puede crear el término:".$row[1].print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+        print "No se puede crear el término:".$row[1]." ".print_r($e, TRUE);
+				continue;
+        $err++;
 			}
 		}
+    else {
+      print "Term skipped: ".$row[1];
+    }
 	}
-	if($establecimientosByDepartamento!=false){
-		foreach ($establecimientosByDepartamento as $key => $establecimiento) {
-			if(isset($establecimiento->field_localidad["und"][0]["value"]) && isset($establecimiento->field_departamento["und"][0]["value"])){
-				$full_value = $establecimiento->field_localidad["und"][0]["value"] . ", " . $establecimiento->field_departamento["und"][0]["value"];
-				$item = array();
-				if(!array_key_exists($full_value,$result)){
-					$item["loc_dep"] = $full_value;
-					$item["localidad"] = $establecimiento->field_localidad["und"][0]["value"];
-					$item["departamento"] = $establecimiento->field_departamento["und"][0]["value"];
-					$item["coordenadas"] = $establecimiento->field_ubicaci_n["und"][0];
-					$result [$full_value]= $item;
-				}
-			}
-		}
-	}
-	ksort($result);
-	printInNiceJson($result);
-	exit();
+	print 'END P&D desc, se agregaron '.$added.' previas; fallaron '.$err;
+	fclose($tipos_hand) or die("Can't close php://tipos_hand");
 }
 
+function datauy_import_pyd($subsis, $file) {
+  $tipos_hand = fopen(variable_get('file_private_path').'/import/soportes-centros.csv', 'r') or die("can't open ./import/soportes-centros.csv");
+	$added = 0;
+	$err = 0;
+  $first = 1;
+  $repeat = 0;
+  while (($row = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+    if ($first) {
+      $first = 0;
+      continue;
+    }
+    if ( $depto = findUbicacionByTitle($row[2], 0) ) {
+      if ( $centro = datauy_search_centro_by_number($row[0], $row[1], $depto) ) {
+        if ( !in_array( $row[3], array_column($centro->field_soportes['und'], 'target_id') ) ) {
+          $centro->field_soportes['und'][] = [ 'target_id' => $row[3] ];
+          try {
+      			node_save($centro); //Comentado para evitar duplicados
+            $added++;
+      		} catch (\Exception $e) {
+      			watchdog('datauy', "No se puede actualizar el nodo:".$centro->nid.print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+      			print "\nNo se puede actualizar el nodo:".$centro->nid;
+      		}
+        }
+        else {
+          $repeat++;
+        }
+      }
+      else {
+        print "\nNO se encuentra centro: $row[0], $row[1], $row[2] \n";
+        $err++;
+      }
+    }
+    else {
+      print "\nNO se encuentra el depto: $row[2] \n";
+      $err++;
+    }
+	}
+	print "END PREVIAS, se agregaron $added previas; fallaron $err; No se agregaron $repeat por repetidas";
+	fclose($tipos_hand) or die("Can't close php://tipos_hand");
+}
+/******* API *******/
 /**
 	*Búsqueda de términos
 	*@param:
@@ -1450,7 +1590,7 @@ function datauy_busqueda_terminos($search) {
 }
 /** API SOPORTES */
 function datauy_api_soportes() {
-	$subsis = datauy_subsis_def();
+	$subsis = datauy_subsis_web_def();
 	$result = [
 		'especiales' => [
 			'nombre' => 'Educación especial',
@@ -1652,7 +1792,7 @@ function datauy_api_cursos() {
 		);*/
 	}
 	//Chequeamos previas
-	if ( isset($_GET['aprobado_tipo']) ) {
+	if ( isset($_GET['aprobado_tipo']) && $_GET['aprobado_tipo'] != 'all' ) {
 		$aprobado = $_GET['aprobado_tipo'];
 		if ($previas = datauy_get_previas($taxonomies['field_tipo_curso'][$tipo], $taxonomies['field_tipo_curso'][$aprobado]) ) {
 			//print_r($taxonomies['field_tipo_curso'][$aprobado]);
@@ -1734,6 +1874,10 @@ function datauy_get_previas($tquiero, $ttengo, $resp = 0) {
 				}
 				break;
 			case ($diff > 1):
+        //Verifico previa directa
+				if ( datauy_check_is_previa($tquiero, array(array('target_id' => $ttengo->tid))) ){
+					return 0;
+				}
 				// devuelvo previas
 				$resp['type'] = 'mayor';
 				break;
@@ -1759,10 +1903,6 @@ function datauy_check_is_previa($term, $tids) {
 function datauy_assign_depth($term, $previas, $depth, &$assigned) {
 	//Assign depth
 	// TODO: Build function?
-	/*$main = datauy_get_cursos_previa(2100);
-	$term = taxonomy_term_load(2100);
-	$assigned = array();
-	datauy_assign_depth($term, $main, 0, $assigned);*/
 	$paso = 1;
 	if ( isset($term->field_paso['und']) ) {
 		$paso = $term->field_paso['und']['0']['value'];
@@ -1854,6 +1994,27 @@ if($key=='children'){
 $item=array_values($item); // Do This!
 }
 }*/
+
+function datauy_camelize_names($string) {
+	$articles = ['la', 'el', 'de', 'del', 'un', 'una', 'unas', 'unos', 'las', 'los'];
+	$string = strtolower($string);
+	$words = explode(' ', $string);
+	$first = 1;
+	$camel_words = [];
+	foreach ($words as $word) {
+		if ($first) {
+			$first = 0;
+			$camel_words[] = ucfirst($word);
+		}
+		else {
+			if ( !in_array($word, $articles) )
+				$camel_words[] = ucfirst($word);
+		}
+	}
+	$string = implode(' ', $camel_words);
+	return $string;
+}
+
 function datauy_test($quiere_nid, $tiene_nid) {
   global $user;
   print "\nArranca test<pre>";
@@ -1866,14 +2027,14 @@ function datauy_test($quiere_nid, $tiene_nid) {
 		//datauy_import_CES();
 		//datauy_import_CFE();
 		//datauy_import_CETP();
-		datauy_import_ubicaciones('barriosMvd.csv', 'barrio');
+		//datauy_import_ubicaciones($quiere_nid, $tiene_nid);
 		//datauy_update_nodes();
-		/*$node = node_load($quiere_nid);
-		if ( isset($node->field_tipo_curso['und']) ) {
-		}
-		else {
-			print "Error: tipo no seteado";
-		}*/
+    //datauy_import_pyd_desc();
+    //datauy_import_pyd();
+    $main = datauy_get_cursos_previa(89);
+  	$term = taxonomy_term_load(89);
+  	$assigned = array();
+  	datauy_assign_depth($term, $main, 3, $assigned);
 	}
 	exit();
 }
