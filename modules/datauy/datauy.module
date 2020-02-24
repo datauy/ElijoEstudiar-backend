@@ -1503,6 +1503,7 @@ function datauy_api_busqueda_terminos($search, $terms = array()) {
 		exit();
 }
 function datauy_busqueda_terminos($search) {
+	$jres = [];
 		if ( is_object($search) ) {
 			foreach ($search->field_previas['und'] as $tvalue) {
 				$value = $tvalue['target_id'];
@@ -1823,14 +1824,19 @@ function datauy_api_cursos() {
 			$previas['cursos'] = array_values($cursos_arr);
 			//GUardamos búsqueda despublicar en prod
 			$busqueda->field_con_previas['und'][0]['value'] = 1;
-			node_save($busqueda);
+			try {
+				node_save($busqueda);
+			} catch (\Exception $e) {
+				watchdog('datauy', "No se pudo guardar la búsqueda".$e->getMessage() , array(), WATCHDOG_ALERT);
+			}
 			printInNiceJson($previas);
 			exit();
 		}
 	}
-	else {
-		//GUardamos búsqueda despublicar en prod
+	try {
 		node_save($busqueda);
+	} catch (\Exception $e) {
+		watchdog('datauy', "No se pudo guardar la búsqueda".$e->getMessage() , array(), WATCHDOG_ALERT);
 	}
 	printInNiceJson(array_values($cursos_arr));
 	exit();
