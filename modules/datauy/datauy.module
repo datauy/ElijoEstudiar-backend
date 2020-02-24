@@ -132,64 +132,68 @@ function datauy_subsis_web_def() {
 function datauy_turnos_map($turno, $id) {
 	$turnos = array(
 		'matutino' => array (
-			"2069" => 1, //mat
-			"2093" => 1, //mat
-			"2080" => 1, //doble
-			"2095" => 1, //doble
-			"2085" => 1, //especial
-			"2086" => 1, //extendido
-			"2096" => 1, //extendido
-			"2203" => 1, //intemedio
-			"2082" => 1, //matves
-			"2145" => 1, //matextendido
-			"2084" => 1, //rural
-			"2097" => 1, //rural
-			"2087" => 1, //completo
-			"2094" => 1, //completo
-			"2088" => 1, //unico
+			"210" => 1, //mat
+			"125" => 1, //mat
+			"232" => 1, //doble
+			"115" => 1, //doble
+			"126" => 1, //especial
+			"117" => 1, //extendido
+			//"2096" => 1, //extendido
+			"211" => 1, //intemedio
+			"270" => 1, //matves
+			"195" => 1, //matextendido
+			"121" => 1, //rural
+			//"2097" => 1, //rural
+			"113" => 1, //completo
+			//"2094" => 1, //completo
+			//"2088" => 1, //unico
+			"220" => 1 //ST
 		),
 		'vespertino' => array (
-			"2081" => 1, //vesnoc
-			"2204" => 1, //vesext
-			"2079" => 1, //ves
-			"2098" => 1, //ves
-			"2080" => 1, //doble
-			"2095" => 1, //doble
-			"2085" => 1, //especial
-			"2086" => 1, //extendido
-			"2096" => 1, //extendido
-			"2203" => 1, //intemedio
-			"2148" => 1, //intemedio ext
-			"2089" => 1, //intemedio ves
-			"2082" => 1, //matves
-			"2084" => 1, //rural
-			"2097" => 1, //rural
-			"2087" => 1, //completo
-			"2094" => 1, //completo
-			"2088" => 1, //unico
+			"230" => 1, //vesnoc
+			"216" => 1, //vesext
+			"212" => 1, //ves
+			"123" => 1, //ves
+			"232" => 1, //doble
+			"115" => 1, //doble
+			"126" => 1, //especial
+			"117" => 1, //extendido
+			//"2096" => 1, //extendido
+			"211" => 1, //intemedio
+			"197" => 1, //intemedio ext
+			//"2089" => 1, //intemedio ves
+			"270" => 1, //matves
+			"121" => 1, //rural
+			//"2097" => 1, //rural
+			"113" => 1, //completo
+			//"2094" => 1, //completo
+			//"2088" => 1, //unico
+			"220" => 1 //ST
 		),
 		'nocturno' => array (
-			"2078" => 1, //noct
-			"2205" => 1, //noct ext
-			"2084" => 1, //rural
-			"2097" => 1, //rural
-			"2088" => 1, //unico
-			"2081" => 1, //vesnoc
-			"2204" => 1, //vesext
+			"198" => 1, //noct
+			"215" => 1, //noct ext
+			"121" => 1, //rural
+			//"2097" => 1, //rural
+			//"2088" => 1, //unico
+			"230" => 1, //vesnoc
+			"216" => 1, //vesext
+			"220" => 1 //ST
 		),
 		'completo' => array (
-			"2080" => 1, //doble
-			"2095" => 1, //doble
-			"2085" => 1, //especial
-			"2086" => 1, //extendido
-			"2096" => 1, //extendido
-			"2145" => 1, //matextendido
-			"2148" => 1, //intemedio ext
-			"2087" => 1, //completo
-			"2094" => 1, //completo
-			"2088" => 1, //unico
-			"2204" => 1, //vesext
-			"2205" => 1, //noct ext
+			"232" => 1, //doble
+			"115" => 1, //doble
+			"126" => 1, //especial
+			"117" => 1, //extendido
+			//"2096" => 1, //extendido
+			"195" => 1, //matextendido
+			"197" => 1, //intemedio ext
+			"113" => 1, //completo
+			//"2094" => 1, //completo
+			//"2088" => 1, //unico
+			"216" => 1, //vesext
+			"215" => 1, //noct ext
+			"220" => 1 //ST
 		),
 	);
 	if ($turno) {
@@ -861,6 +865,7 @@ function datauy_import_CEIP() {
   	}
     else {
       print "\nEST NO encontrado\nRULE: ".$rowParsed[18]."\nRUEE: ".$rowParsed[17];
+			$fails++;
       continue;
     }
 		$nivel = 6;
@@ -1017,6 +1022,7 @@ function datauy_import_CES() {
   	}
     else {
       print "\nEST NO encontrado\nRULE: ".$rowParsed[18]."\nRUEE: ".$rowParsed[17];
+			$fails++;
       continue;
     }
 		$orientacion = 0;
@@ -1537,47 +1543,16 @@ function datauy_busqueda_terminos($search) {
 				$tipo = $tipos[$ntipo];
 				$nnivel = $node->field_nivel['und']['0']['target_id'];
 				$nivel = $niveles[$nnivel];
-				//$tipo = taxonomy_term_load($node->field_tipo_curso['und']['0']['target_id']);
-				/*if ($term->vocabulary_machine_name == 'orientaci_n') {
-					$nombre = $term->name;
-					$id = $term->tid;
-				}*/
 				if ( isset($node->field_orientaci_n['und']) ) {
 					$orientacion = taxonomy_term_load($node->field_orientaci_n['und']['0']['target_id']);
-					$nombre = $orientacion->name;
-					$id = $orientacion->tid;
-					$tipo_op = 'orientacion';
-					$url = isset($orientacion->field_web['und']) ? $orientacion->field_web['und']['0']['value'] : '';
 				}
 				else {
-					$nombre = $tipo->name;
-					$id = $tipo->tid;
-					$tipo_op = 'tipo';
-					$url = isset($tipo->field_web['und']) ? $tipo->field_web['und']['0']['value'] : '';
+					$orientacion = $tipo;
 				}
-				//$key = $term->tid.'-'.$tipo->tid.'-'.$nivel->tid;
 				//No agregar a menos que sea diferente
-				if ( isset($result[$subsis->name][$id]) )
+				if ( isset($result[$subsis->name][$orientacion->tid]) )
 					continue;
-				$result[$subsis->name][$id] = array(
-					'id' => $id,
-					'nombre' => $nombre,
-					'tag' => array(
-						array(
-							'nombre' => $tipo->name,
-							'tipo'	=> 'tipo',
-							'url'	=> isset($tipo->field_web['und']) ? $tipo->field_web['und']['0']['value'] : '',
-						),
-						array(
-							'nombre' => $nivel->name,
-							'tipo'	=> 'nivel',
-							'url' => isset($nivel->field_web['und']) ? $nivel->field_web['und']['0']['value'] : '',
-						),
-					),
-					'tipoId' => $tipo->tid,
-					'nivelId' => $nivel->tid,
-					'url' => $url,
-				);
+				$result[$subsis->name][$orientacion->tid] = datauy_set_curso_tags($orientacion, $tipo, $nivel);
 			}
 		}
 		foreach ($result as $subsis => $sub_arr) {
@@ -1587,6 +1562,28 @@ function datauy_busqueda_terminos($search) {
 			);
 		}
 		return $jres;
+}
+
+function datauy_set_curso_tags($orientacion, $tipo, $nivel) {
+	return array(
+		'id' => $orientacion->tid,
+		'nombre' => $orientacion->name,
+		'tag' => array(
+			array(
+				'nombre' => $tipo->name,
+				'tipo'	=> 'tipo',
+				'url'	=> isset($tipo->field_web['und']) ? $tipo->field_web['und']['0']['value'] : '',
+			),
+			array(
+				'nombre' => $nivel->name,
+				'tipo'	=> 'nivel',
+				'url' => isset($nivel->field_web['und']) ? $nivel->field_web['und']['0']['value'] : '',
+			),
+		),
+		'tipoId' => $tipo->tid,
+		'nivelId' => $nivel->tid,
+		'url' => isset($orientacion->field_web['und']) ? $orientacion->field_web['und']['0']['value'] : '',
+	);
 }
 /** API SOPORTES */
 function datauy_api_soportes() {
@@ -1659,49 +1656,54 @@ function datauy_api_cursos() {
 	foreach ($references as $vid => $field) {
 		$taxonomies[$field] = datauy_get_vocabulary_terms($vid);
 	}
+	//Registro de búsquedas
+	$busqueda = new stdClass();
+	$busqueda->type = "busquedas";
+	$busqueda->title = "Búsqueda" . date('Y-m-d H:i:s');
+	$busqueda->status = 0; //(1 or 0): published or not
+	node_object_prepare($busqueda);
 	//$taxonomies['field_turno'] = datauy_get_vocabulary_terms(11);
 	//PARAMS
 	if ( isset($_GET['edad']) && $_GET['edad'] != 'all') {
-			$edad = $_GET['edad'];
+		$edad = $_GET['edad'];
+		$busqueda->field_edad['und'][0]['value'] = $edad;
 	}
 	else {
 		$edad = 0;
 	}
-	//NIVEL
-	if ( isset($_GET['nivel']) && $_GET['nivel'] != 'all' ) {
-		$nivel = $_GET['nivel'];
-		if ( isset($taxonomies['field_nivel'][$nivel]) ) {
-			$nivel_obj = $taxonomies['field_nivel'][$nivel];
-		}
-		else {
-			printInNiceJson(array(
-				"status" => 0,
-				"message" => "Nivel no encontrado"
-			));
-			exit();
-		}
-	}
-	if ( isset($_GET['orientacion']) )
+	if ( isset($_GET['orientacion']) ){
 		$orientacion = $_GET['orientacion'];
+		$busqueda->field_orientaci_n['und'][0]['target_id'] = $orientacion;
+	}
 	else
 		$orientacion = 'all';
-	if ( isset($_GET['tipo']) )
+	if ( isset($_GET['tipo']) ) {
 		$tipo = $_GET['tipo'];
+		$busqueda->field_tipo_curso['und'][0]['target_id'] = $tipo;
+	}
 	else
 		$tipo = 'all';
+	// TODO: Arreglar turnos!!!!! Hacer query acá y dejar la vista...
 	$turnos = array();
 	if ( isset($_GET['turnos']) && $_GET['turnos'] != 'all' ) {
+		$busqueda->field_turnos['und'][0]['value'] = $_GET['turnos'];
 		$turnos_arr = explode(',', $_GET['turnos']);
 		//Agrupamos turnos
 		foreach ($turnos_arr as $turno_str) {
-			$turnos += datauy_turnos_map($turno_str);
+			$turnos += datauy_turnos_map($turno_str, 0);
 		}
 	}
 	else {
 		$turnos = array('all'=>1);
-	}// TODO: Arreglar turnos!!!!! Hacer query acá y dejar la vista...
-	if ( isset($_GET['ubicacion']) )
+	}
+	if ( isset($_GET['ubicacion']) && $_GET['ubicacion'] != 'all' ) {
+		$ubica_arr = explode(',', $_GET['ubicacion']);
+		$busqueda->field_ubicaci_n['und'][0] = array(
+	    'input_format' => GEOFIELD_INPUT_LAT_LON,
+	    'geom' => array('lat' => $ubica_arr[1], 'lon' => $ubica_arr[0]),
+	  );
 		$ubicacion = $_GET['ubicacion'];
+	}
 	else
 		$ubicacion = 'all';
 	if ( isset($_GET['centro']) )
@@ -1741,23 +1743,36 @@ function datauy_api_cursos() {
 			);
 			//Levantamos taxonomías
 			foreach ($references as $field) {
-				$field_arr = $curso_obj->$field;
-				if ( isset($field_arr['und']) ) {
-					$tid = $field_arr['und']['0']['target_id'];
-					$tax_field = $taxonomies[$field][$tid];
-					$cursos_arr[$curso->nid][$field] = $tax_field->name;
+				if ( isset($curso_obj->$field) ) {
+					$field_arr = $curso_obj->$field;
+					if ( isset($field_arr['und']) ) {
+						$tid = $field_arr['und']['0']['target_id'];
+						$tax_field = $taxonomies[$field][$tid];
+						$cursos_arr[$curso->nid][$field] = $tax_field->name;
+					}
+					else {
+						$cursos_arr[$curso->nid][$field] = '';
+					}
 				}
-				else {
-					$cursos_arr[$curso->nid][$field] = '';
-				}
+				//else {
+				//	$cursos_arr[$curso->nid][$field] = '';
+				//}
 			}
 			if ( $cursos_arr[$curso->nid]['field_orientaci_n'] == '' ) {
 				$cursos_arr[$curso->nid]['field_orientaci_n'] = $cursos_arr[$curso->nid]['field_tipo_curso'];
 			}
+			$oid = $curso_obj->field_orientaci_n['und']['0']['target_id'];
+			$tipoid = $curso_obj->field_tipo_curso['und']['0']['target_id'];
+			$nid = $curso_obj->field_nivel['und']['0']['target_id'];
+			$cursos_arr[$curso->nid]['tags'] = datauy_set_curso_tags($taxonomies['field_orientaci_n'][$oid], $taxonomies['field_tipo_curso'][$tipoid], $taxonomies['field_nivel'][$nid]);
 		}
 		if (!isset($cursos_est[$curso->nid][$est->nid])) {
 			//Contador para mantener el orden
-			$cursos_est[$curso->nid][$est->nid] = count($cursos_arr[$curso->nid]['oferta']);
+			if ( isset($cursos_arr[$curso->nid]['oferta']) )
+				$count = count($cursos_arr[$curso->nid]['oferta']);
+			else
+				$count = 0;
+			$cursos_est[$curso->nid][$est->nid] = $count;
 			$cursos_arr[$curso->nid]['oferta'][] = array(
 				'nombre' => $est->title,
 				'lat' => $est->field_ubicaci_n['und'][0]['lat'],
@@ -1793,21 +1808,29 @@ function datauy_api_cursos() {
 	}
 	//Chequeamos previas
 	if ( isset($_GET['aprobado_tipo']) && $_GET['aprobado_tipo'] != 'all' ) {
-		$aprobado = $_GET['aprobado_tipo'];
-		if ($previas = datauy_get_previas($taxonomies['field_tipo_curso'][$tipo], $taxonomies['field_tipo_curso'][$aprobado]) ) {
+		$aprobado_tipo = $_GET['aprobado_tipo'];
+		$aprobado = $taxonomies['field_tipo_curso'][$aprobado_tipo];
+		$busqueda->field_aprobado_tipo['und'][0]['target_id'] = $aprobado_tipo;
+		if ( isset($_GET['aprobado']) && $_GET['aprobado'] != 'all' ) {
+			$aprobado_id = $_GET['aprobado'];
+			$aprobado = $taxonomies['field_orientaci_n'][$aprobado_id];
+			$busqueda->field_aprobado['und'][0]['target_id'] = $_GET['aprobado'];
+		}
+		if ($previas = datauy_get_previas($taxonomies['field_tipo_curso'][$tipo], $taxonomies['field_tipo_curso'][$aprobado_tipo]) ) {
 			//print_r($taxonomies['field_tipo_curso'][$aprobado]);
 			// TODO: Devolver TODOS los datos necesarios
-			$previas['curso'] = array(
-				'id' => $orientacion,
-				'orientacion' => $taxonomies['field_orientaci_n'][$orientacion]->name,
-				'tipo' => $taxonomies['field_tipo_curso'][$tipo]->name,
-				'nivel' => $taxonomies['field_nivel'][$nivel]->name,
-				'urlTipo' => '',
-			);
-			$previas['tipo_aprobado'] = $taxonomies['field_tipo_curso'][$aprobado]->name;
+			$previas['aprobado'] = $aprobado->name;
+			$previas['cursos'] = array_values($cursos_arr);
+			//GUardamos búsqueda despublicar en prod
+			$busqueda->field_con_previas['und'][0]['value'] = 1;
+			node_save($busqueda);
 			printInNiceJson($previas);
 			exit();
 		}
+	}
+	else {
+		//GUardamos búsqueda despublicar en prod
+		node_save($busqueda);
 	}
 	printInNiceJson(array_values($cursos_arr));
 	exit();
