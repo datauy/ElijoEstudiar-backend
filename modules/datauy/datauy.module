@@ -564,25 +564,32 @@ function datauy_create_establecimiento_node($rowParsed, $subsis_id){
 
 function datauy_update_establecimiento(){
 	print "\nArranca update establecimiento<pre>";
-	$i=0;
-	$fails = 0;
-	$tipos_hand = fopen(drupal_get_path('module', 'datauy').'/import/update_establecimientos.csv', 'r') or die("can't open ./import/update_establecimientos.csv");
+	$i = 0;
+	//first fail
+	$fails = -1;
+	$not_processed = 0;
+	$tipos_hand = fopen(variable_get('file_private_path').'/import/update_establecimientos_body.csv', 'r') or die("can't open ./import/update_establecimientos_body.csv");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if ( !($est = datauy_find_establecimiento_by_rule( $rowParsed[1], $rowParsed[0] )) ) {
 			$fails++;
 			continue;
 		}
-		if ( !empty($rowParsed[3]) )
-			$est->field_mail['und']['0']['value'] = $rowParsed[3];
-		if ( !empty($rowParsed[4]) )
-			$est->field_web['und']['0']['value'] = $rowParsed[4];
-		try {
-	    node_save($node); //Comentado para evitar duplicados
-	    $i++;
-	  } catch (\Exception $e) {
-	    watchdog('datauy', "No se puede actualizar el establecimiento: ".$rowParsed[0].' - '.$rowParsed[1].print_r($e, TRUE) , array(), WATCHDOG_ALERT);
-	    $fails++;
-	  }
+		if ( !empty($rowParsed[3]) ) {
+			$centro = node_load($est);
+			$centro->body['und'][0]['value'] = $rowParsed[3];
+			try {
+				node_save($centro); //Comentado para evitar duplicados
+				$i++;
+			} catch (\Exception $e) {
+				watchdog('datauy', "No se puede actualizar el establecimiento: ".$rowParsed[0].' - '.$rowParsed[1].print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+				$fails++;
+			}
+		}
+		else {
+			$not_processed++;
+		}
+		//if ( !empty($rowParsed[4]) )
+		//	$est->field_web['und']['0']['value'] = $rowParsed[4];
 		/* Ver si es necesario luego expandir esta función, por ahora se recojen mails y webs.
 		if (!$i){
 			$i++;
@@ -595,6 +602,7 @@ function datauy_update_establecimiento(){
 			continue;
 		}*/
 	}
+	print "Se crearon/actualizaron ".$i." nodos, no se procesaron ".$not_processed." por no tener datos. Fallaron ".$fails;
 }
 // returns (nid, created)
 function datauy_create_oferta_node($oferta){
@@ -788,6 +796,9 @@ function datauy_update_establecimientos($est, $params) {
   }
   if ( isset($params['web']) ) {
     $node->field_web['und']['0']['value'] = $params['web'];
+  }
+	if ( isset($params['desc']) ) {
+    $node->body = $params['desc'];
   }
   try {
     node_save($node); //Comentado para evitar duplicados
@@ -2049,7 +2060,7 @@ function datauy_camelize_names($string) {
 function datauy_test($quiere_nid, $tiene_nid) {
   global $user;
   print "\nArranca test<pre>";
-  if ( $user->uid == 1 || $user->uid == 12 || $user->uid == 18 || $user->uid == 19 ){
+  if ( $user->uid == 1 ){
 		//datauy_build_tree();
 		//traigo las previas del padre
 		//datauy_import_previas();
@@ -2062,10 +2073,11 @@ function datauy_test($quiere_nid, $tiene_nid) {
 		//datauy_update_nodes();
     //datauy_import_pyd_desc();
     //datauy_import_pyd();
-    $main = datauy_get_cursos_previa(89);
-  	$term = taxonomy_term_load(89);
-  	$assigned = array();
-  	datauy_assign_depth($term, $main, 3, $assigned);
+    //$main = datauy_get_cursos_previa(89);
+  	//$term = taxonomy_term_load(89);
+  	//$assigned = array();
+  	//datauy_assign_depth($term, $main, 3, $assigned);
+		datauy_update_establecimiento();
 	}
 	exit();
 }
@@ -2333,24 +2345,6 @@ function datauy_test($quiere_nid, $tiene_nid) {
 			return false;
 		}
 		return true;
-	}
-
-	function datauy_node_update($node){
-		if($node->type == 'cerveza' || $node->type == 'venue' || $node->type == 'cerveceria'){
-	    register_shutdown_function('datauy_post_insert',$node->nid);
-	  }
-	}
-
-	function datauy_node_insert($node){
-	  if($node->type == 'cerveza' || $node->type == 'venue' || $node->type == 'cerveceria'){
-	    register_shutdown_function('datauy_post_insert',$node->nid);
-	  }
-	}
-
-	function datauy_node_delete($node){
-		if($node->type == 'cerveza' || $node->type == 'venue' || $node->type == 'cerveceria'){
-	    register_shutdown_function('datauy_post_insert',$node->nid);
-	  }
 	}
 
 	function datauy_post_insert($nid) {
