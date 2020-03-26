@@ -1544,7 +1544,7 @@ function datauy_import_pyd_desc() {
 }
 
 function datauy_import_pyd($subsis, $file) {
-  $tipos_hand = fopen(variable_get('file_private_path').'/import/soportes-centros.csv', 'r') or die("can't open ./import/soportes-centros.csv");
+  $tipos_hand = fopen(variable_get('file_private_path').'/import/soportes-cpds.csv', 'r') or die("can't open ./import/soportes-centros_mandela.csv");
 	$added = 0;
 	$err = 0;
   $first = 1;
@@ -1554,10 +1554,12 @@ function datauy_import_pyd($subsis, $file) {
       $first = 0;
       continue;
     }
-    if ( $depto = findUbicacionByTitle($row[2], 0) ) {
-      if ( $centro = datauy_search_centro_by_number($row[0], $row[1], $depto) ) {
-        if ( !in_array( $row[3], array_column($centro->field_soportes['und'], 'target_id') ) ) {
-          $centro->field_soportes['und'][] = [ 'target_id' => $row[3] ];
+    //if ( $depto = findUbicacionByTitle($row[2], 0) ) {
+      //if ( $centro = datauy_search_centro_by_number($row[0], $row[1], $depto) ) {
+			if ( $centro_id = datauy_find_establecimiento_by_rule($row[3], $row[2]) ) {
+				$centro = node_load($centro_id);
+        if ( !in_array( $row[4], array_column($centro->field_soportes['und'], 'target_id') ) ) {
+          $centro->field_soportes['und'][] = [ 'target_id' => $row[4] ];
           try {
       			node_save($centro); //Comentado para evitar duplicados
             $added++;
@@ -1574,13 +1576,13 @@ function datauy_import_pyd($subsis, $file) {
         print "\nNO se encuentra centro: $row[0], $row[1], $row[2] \n";
         $err++;
       }
-    }
+    /*}
     else {
       print "\nNO se encuentra el depto: $row[2] \n";
       $err++;
-    }
+    }*/
 	}
-	print "END PREVIAS, se agregaron $added previas; fallaron $err; No se agregaron $repeat por repetidas";
+	print "END SOPORTES, se agregaron $added soportes a centros; fallaron $err; No se agregaron $repeat por repetidas";
 	fclose($tipos_hand) or die("Can't close php://tipos_hand");
 }
 /******* API *******/
@@ -2241,13 +2243,13 @@ function datauy_test($quiere_nid, $tiene_nid) {
 		//datauy_import_ubicaciones($quiere_nid, $tiene_nid);
 		//datauy_update_nodes();
     //datauy_import_pyd_desc();
-    //datauy_import_pyd();
+    datauy_import_pyd();
     //$main = datauy_get_cursos_previa(89);
   	//$term = taxonomy_term_load(89);
   	//$assigned = array();
   	//datauy_assign_depth($term, $main, 3, $assigned);
 		//datauy_update_establecimiento();
-		datauy_update_edades();
+		//datauy_update_edades();
 	}
 	exit();
 }
