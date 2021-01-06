@@ -69,4 +69,4 @@ Once it has finished, the registry table will be rebuilt and will contain the ne
 `drush cc drush`
 
 Y Listo!!!
-
+PD: Si se actualiza la versión de PHP a 7.x hay que hacer un hack para que funcione porque algunas funciones cambian en las versiones y esta se hizo con PHP 5.5 at line 762 of module.inc, just before it uses cached_get():  `require_once DRUPAL_ROOT . '/includes/cache.inc';`
