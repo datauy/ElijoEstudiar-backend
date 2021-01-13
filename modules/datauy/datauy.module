@@ -890,8 +890,9 @@ function datauy_import_establecimientos() {
 		}
 		//exit(); //Only take first row
 	}
-	$message .= "Se crearon/actualizaron ".($i - 1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
-	watchdog('datauy', $message);
+	$res = "Se crearon/actualizaron ".($i - 1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	$message .= $res;
+	watchdog('datauy', $res);
 	print $message;
 	return 1;
 }
@@ -1120,8 +1121,9 @@ function datauy_import_CEIP() {
 		//Crear curso en caso que no exista
 	}
 	fclose($tipos_hand) or die("Can't close php://tipos_hand");
-	$message .= "Se crearon ".($i-1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
-	watchdog('datauy', $message);
+	$res = "Se crearon/actualizaron ".($i - 1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	$message .= $res;
+	watchdog('datauy', $res);
 	print $message;
 	return 1;
 }
@@ -1234,8 +1236,9 @@ function datauy_import_CES() {
 		//$region = taxonomy_get_term_by_name('CAMPUS REGIONAL EDUC. TECNOLOGICA LITORAL NORTE', 'regional');
 		//Crear curso en caso que no exista
 	}
-	$message .=  "Se crearon ".($i-1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
-	watchdog('datauy', $message);
+	$res = "Se crearon/actualizaron ".($i - 1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	$message .= $res;
+	watchdog('datauy', $res);
 	print $message;
 	return 1;
 }
@@ -1278,8 +1281,9 @@ function datauy_import_7_8_9() {
       continue;
     }
 	}
-	$message .=  "Se crearon ".($i-1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
-	print $message;
+	$res = "Se crearon/actualizaron ".($i - 1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	$message .= $res;
+	watchdog('datauy', $res);
 }
 // Se utiliza csv de
 function datauy_import_CETP() {
@@ -1397,8 +1401,9 @@ function datauy_import_CETP() {
 		//Crear curso en caso que no exista
 	}
 	fclose($tipos_hand) or die("Can't close php://tipos_hand");
-	$message .=  "Se crearon ".($i-1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
-	watchdog('datauy', $message);
+	$res = "Se crearon/actualizaron ".($i - 1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	$message .= $res;
+	watchdog('datauy', $res);
 	print $message;
 	return 1;
 }
@@ -1502,8 +1507,9 @@ function datauy_import_CFE() {
 		//$region = taxonomy_get_term_by_name('CAMPUS REGIONAL EDUC. TECNOLOGICA LITORAL NORTE', 'regional');
 		//Crear curso en caso que no exista
 	}
-	$message .=  "Se crearon ".($i-1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
-	watchdog('datauy', $message);
+	$res = "Se crearon/actualizaron ".($i - 1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	$message .= $res;
+	watchdog('datauy', $res);
 	print $message;
 	return 1;
 }
@@ -2320,11 +2326,11 @@ function datauy_test($quiere_nid, $tiene_nid) {
 		//datauy_build_tree();
 		//traigo las previas del padre
 		//datauy_import_previas();
-		//datauy_import_establecimientos();
-		//datauy_import_CEIP();
-		//datauy_import_CES();
-		//datauy_import_CETP();
-		//datauy_import_CFE();
+		datauy_import_establecimientos();
+		datauy_import_CEIP();
+		datauy_import_CES();
+		datauy_import_CETP();
+		datauy_import_CFE();
 		datauy_import_7_8_9();
 		//datauy_import_ubicaciones($quiere_nid, $tiene_nid);
 		//datauy_update_nodes();
