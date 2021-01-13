@@ -399,6 +399,20 @@ function datauy_find_establecimiento_by_rule($rule, $ruee){
     return false;
   }
 }
+function datauy_find_establecimiento_by_ruee($ruee){
+  $query = new EntityFieldQuery();
+    $result = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', "establecimiento")
+    ->propertyCondition('status', 1)
+		->fieldCondition('field_ruee', 'value', $ruee)
+    ->execute();
+  if (!empty($result['node'])) {
+		$est = array_shift(array_keys($result['node']));
+    return $est;
+  }else{
+    return false;
+  }
+}
 function datauy_find_establecimiento_by_name($name){
   $query = new EntityFieldQuery();
     $result = $query->entityCondition('entity_type', 'node')
@@ -589,6 +603,7 @@ function datauy_create_establecimiento_node($rowParsed, $subsis_id){
 	}
 	else {
 		print "\nNo existe departamento: ".$rowParsed[7]." RULE: ".$rowParsed[12]."RUEE: ".$rowParsed[2]."\n";
+		return 0;
 	}
   $node->field_paraje['und'][0]['value'] = $rowParsed[8];
   $node->field_direcci_n['und'][0]['value'] = $rowParsed[9]." ".$rowParsed[10];
@@ -699,7 +714,7 @@ function datauy_create_oferta_node($oferta){
 		$est = $oferta['est'];
 	}
 	elseif ( !($est = datauy_find_establecimiento_by_rule( $oferta['rule'], $oferta['ruee'] )) ) {
-		print "\nEST NO encontrado\nRULE: ".$oferta['rule']."\nRUEE: ".$oferta['ruee'];
+		print "\nOFERTA EST NO encontrado: ".print_r($oferta);
 		return array(0, 0);
 	}
 	//Vemos si existe el nodo
@@ -768,17 +783,23 @@ function datauy_create_oferta_node($oferta){
 function datauy_add_taxonomy($name, $voc, $web = 0){
 	if (!empty($name)) {
 		$term = taxonomy_get_term_by_name("$name", $voc[0]);
+		if ($voc == 0) {
+			print_r($term);
+		}
 		if ( empty($term) ){
+			print "\nTERM VACÍO: $name";
 			$term = new stdClass();
 			$term->name = $name;
 			$term->vid = $voc[1];
 			if ($web)
 				$term->field_web['und']['0']['value'] = $web;
 			try {
+				print "\nSAVING TERM: ".print_r($term, true);
 				taxonomy_term_save($term);
 			}
 			catch (\Exception $e) {
 				watchdog('datauy', "No se puede crear el término:".$name.print_r($e, TRUE) , array(), WATCHDOG_ALERT);
+				print "\nNO SE PUEDE CREAR!!!\n";
 				return 0;
 			}
 		}
@@ -795,7 +816,8 @@ function datauy_add_taxonomy($name, $voc, $web = 0){
 
 // Se utiliza csv de
 function datauy_import_establecimientos() {
-	print "\nArranca import establecimientos".variable_get('file_private_path')."<pre>";
+	$wrapper = file_stream_wrapper_get_instance_by_uri('public://');
+	$message = "\nArranca import establecimientos".$wrapper->realpath()."<pre>";
 	//Load subsitemes with name key
 	$subsis = datauy_subsis_def();
 	/*$subsis_tree = taxonomy_get_tree(2);
@@ -806,7 +828,8 @@ function datauy_import_establecimientos() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$tipos_hand = fopen(variable_get('file_private_path').'/import/centros_ANEP_2019.csv', 'r') or die("can't open ./import/centros_ANEP.csv");
+	$fpath = './sites/ElijoEstudiar-backend/files/import/centros-2020.csv';
+	$tipos_hand = fopen($fpath, 'r') or die("can't open $fpath");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
@@ -835,28 +858,27 @@ function datauy_import_establecimientos() {
 					// TODO: Agregar paraje (resolver búsqueda api)
 				}
 				else {
-          print "\nDEPTO: ".$rowParsed[6]."\n";
-					print "\nNo existe localidad: ".$rowParsed[7]."\n";
 					//Probamos con paraje
 					if ( $localidad = findUbicacionByTitle($rowParsed[8], $depto) ){
 						//$node->field_localidad['und'][0]['target_id'] = $localidad;
-						print "Agregado por paraje: ".$rowParsed[8]."\n";
             $i++;
 					}
 					else {
-						print "NO se encontró NO LOCALIDAD: ".$rowParsed[8]."\n";
+						$message .= "\nDepartamento: ".$rowParsed[6].", no se encuentra localidad: ".$rowParsed[8]."\n";
             $fails++;
+						continue;
 					}
 				}
 			}
 			else {
-				print "\nNO existe DEPTO: ".$rowParsed[6]."\n";
+				$message .= "\nNO existe DEPTO: ".$rowParsed[6]."\n";
         $fails++;
+				continue;
 			}
       //Actualizo subsis
       //$node->field_sub_sistema['und'][0]['target_id'] = $subsis[$sub];
-      if ( $node->field_departamento['und']['0']['target_id'] != $depto || $node->field_localidad['und']['0']['target_id'] != $localidad ) {
-        print "UPDATING: ".$node->nid."\n";
+      if ( $node->field_departamento['und']['0']['target_id'] != $depto || !isset($node->field_localidad['und']) || $node->field_localidad['und']['0']['target_id'] != $localidad ) {
+        $message .= "UPDATING: ".$node->nid."\n";
         $node->field_departamento['und'][0]['target_id'] = $depto;
         $node->field_localidad['und'][0]['target_id'] = $localidad;
         try {
@@ -868,8 +890,10 @@ function datauy_import_establecimientos() {
 		}
 		//exit(); //Only take first row
 	}
-	print "Se crearon/actualizaron ".$i." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
-	exit();
+	$message .= "Se crearon/actualizaron ".($i - 1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	watchdog('datauy', $message);
+	print $message;
+	return 1;
 }
 
 function datauy_update_establecimientos($est, $params) {
@@ -932,24 +956,30 @@ function datauy_import_ubicaciones($file, $type) {
 }
 // Se utiliza csv de
 function datauy_import_CEIP() {
-	print "\nArranca import CEIP<pre>";
+	$message = "\nArranca import CEIP<pre>";
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-  $local_path = '/import/CEIP_2019-import.csv';
-	$tipos_hand = fopen(variable_get('file_private_path').$local_path, 'r') or die("can't open .$local_path");
+  $local_path = './sites/ElijoEstudiar-backend/files/import/CEIP-2020.csv';
+	$tipos_hand = fopen($local_path, 'r') or die("can't open $local_path");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
 			continue;
 		}
 		if ( empty($rowParsed[0])  ) {
-			print "\nSale no tiene tipo...";
+			$message .= "\nSale no tiene tipo...";
 			continue;
 		}
     //Agregado para actualizar datos del centro desde la planilla
-    if ( $est = datauy_find_establecimiento_by_rule( $rowParsed[18], $rowParsed[17] ) ) {
-      $params = array();
+		if ( isset($rowParsed[18]) && !empty($rowParsed[18]) ) {
+			$est = datauy_find_establecimiento_by_rule( $rowParsed[18], $rowParsed[17] );
+		}
+    else {
+      $est = datauy_find_establecimiento_by_name($rowParsed[19]);
+  	}
+		if ( isset($est) && $est ) {
+			$params = array();
       if ( isset($rowParsed[19]) && trim($rowParsed[19]) != '' ) {
         $params['mail'] = $rowParsed[19];
       }
@@ -962,9 +992,9 @@ function datauy_import_CEIP() {
       if ( !empty($params) ) {
         datauy_update_establecimientos($est, $params);
       }
-  	}
+		}
     else {
-      print "\nEST NO encontrado\nRULE: ".$rowParsed[18]."\nRUEE: ".$rowParsed[17];
+      $message .= "\nEST NO encontrado $i: ".print_r($rowParsed, true);
 			$fails++;
       continue;
     }
@@ -1038,7 +1068,7 @@ function datauy_import_CEIP() {
 			}
 			else {
 				$fails++;
-				print "No se pudo crear el curso: ".print_r($nivel, TRUE);
+				$message .= "No se pudo crear el curso: ".print_r($nivel, TRUE);
 			}
 		}
 		//Si es doble ejecutamos la parte de primaria
@@ -1081,7 +1111,7 @@ function datauy_import_CEIP() {
 				}
 				else {
 					$fails++;
-					print "No se pudo crear el curso: ".print_r($nivel, TRUE);
+					$message .= "No se pudo crear el curso: ".print_r($nivel, TRUE);
 				}
 			}
 		}
@@ -1090,26 +1120,33 @@ function datauy_import_CEIP() {
 		//Crear curso en caso que no exista
 	}
 	fclose($tipos_hand) or die("Can't close php://tipos_hand");
-	print "Se crearon ".$i." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	$message .= "Se crearon ".($i-1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	watchdog('datauy', $message);
+	print $message;
+	return 1;
 }
 
 
 function datauy_import_CES() {
-	print "\nArranca import CES<pre>";
+	$message = "\nArranca import CES<pre>";
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-  $local_path = '/import/CES_2019-import.csv';
-	$tipos_hand = fopen(variable_get('file_private_path').$local_path, 'r') or die("can't open $local_path");
+  $local_path = './sites/ElijoEstudiar-backend/files/import/CES-2020.csv';
+	$tipos_hand = fopen($local_path, 'r') or die("can't open $local_path");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
 			continue;
 		}
     //Agregado para actualizar datos del centro desde la planilla
+		$ruee = $rowParsed[0];
+		if ( $ruee == 0 ) {
+			$ruee = $rowParsed[9];
+		}
     if ( $est = datauy_find_establecimiento_by_rule( $rowParsed[1], $rowParsed[0] ) ) {
       $params = array();
-      if ( isset($rowParsed[7]) && trim($rowParsed[7]) != '' ) {
+      /*if ( isset($rowParsed[7]) && trim($rowParsed[7]) != '' ) {
         $params['nombre'] = $rowParsed[7];
       }
       if ( isset($rowParsed[9]) && trim($rowParsed[9]) != '' ) {
@@ -1118,10 +1155,10 @@ function datauy_import_CES() {
       }
       if ( !empty($params) ) {
         datauy_update_establecimientos($est, $params);
-      }
+      }*/
   	}
     else {
-      print "\nEST NO encontrado\nRULE: ".$rowParsed[18]."\nRUEE: ".$rowParsed[17];
+      $message .= "\nEST NO encontrado: ".print_r($rowParsed, true);
 			$fails++;
       continue;
     }
@@ -1183,8 +1220,6 @@ function datauy_import_CES() {
 				$i++;
 			}
 			elseif ($oferta_creada[0]) {
-				print "\nREPEATED: ";
-				print_r($oferta_params);
 				$repeated++;
 			}
 			else {
@@ -1193,22 +1228,67 @@ function datauy_import_CES() {
 		}
 		else {
 			$fails++;
-			print "No se pudo crear el curso: ".print_r($nivel, TRUE);
+			$message .= "No se pudo crear el curso: ".print_r($nivel, TRUE);
 		}
 		//Para la región se evaluará su pertinencia
 		//$region = taxonomy_get_term_by_name('CAMPUS REGIONAL EDUC. TECNOLOGICA LITORAL NORTE', 'regional');
 		//Crear curso en caso que no exista
 	}
-	print "Se crearon ".$i." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	$message .=  "Se crearon ".($i-1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	watchdog('datauy', $message);
+	print $message;
+	return 1;
 }
-
-// Se utiliza csv de
-function datauy_import_CETP() {
-	print "\nArranca import CETP<pre>";
+//
+function datauy_import_7_8_9() {
+	$message = "\nArranca import 7 8 9<pre>";
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$tipos_hand = fopen(variable_get('file_private_path').'/import/CETP_2019-import.csv', 'r') or die("can't open ./import/CETP_2019-import.csv");
+  $local_path = './sites/ElijoEstudiar-backend/files/import/CEIP-7_8_9-2020.csv';
+	$tipos_hand = fopen($local_path, 'r') or die("can't open $local_path");
+	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+		if (!$i){
+			$i++;
+			continue;
+		}
+		if ( $est = datauy_find_establecimiento_by_rule( $rowParsed[8], $rowParsed[9] ) ) {
+			$oferta_params = array(
+				'title' => 'Ciclo básico 7-8-9 -'.$rowParsed[8],
+				//'rule' => $rowParsed[1],
+				//'ruee' => $rowParsed[0],
+        'est' => $est,
+				'curso' => 42690,
+				'turno' => 220,
+			);
+			$oferta_creada = datauy_create_oferta_node($oferta_params);
+			if ($oferta_creada[0] && $oferta_creada[1]){
+				$i++;
+			}
+			elseif ($oferta_creada[0]) {
+				$repeated++;
+			}
+			else {
+				$fails++;
+			}
+  	}
+    else {
+      $message .= "\nEST NO encontrado: ".print_r($rowParsed, true);
+			$fails++;
+      continue;
+    }
+	}
+	$message .=  "Se crearon ".($i-1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	print $message;
+}
+// Se utiliza csv de
+function datauy_import_CETP() {
+	$message =  "\nArranca import CETP<pre>";
+	$i=0;
+	$fails = 0;
+	$repeated = 0;
+	$fname = './sites/ElijoEstudiar-backend/files/import/CETP-2020.csv';
+	$tipos_hand = fopen($fname, 'r') or die("can't open $fname");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
@@ -1220,13 +1300,14 @@ function datauy_import_CETP() {
 		$tipo = datauy_add_taxonomy($rowParsed[1], array('tipo_de_curso', 8), $rowParsed[15]);
 		//Verificar orientacion
 		$orientacion = datauy_add_taxonomy($rowParsed[4], array('orientaci_n', 9), $rowParsed[16]);
-		$turno = datauy_add_taxonomy($rowParsed[10], array('turno', 11));
 		if (!$orientacion || !$tipo || !$nivel ) {
 			//error ya reportado
-			print "Sale no tiene algo...";
+			$message .=  "\nSale no tiene algo: $orientacion || $tipo || $nivel\n". print_r($rowParsed, true);
+			$fails++;
 			continue;
 		}
-		$sector = datauy_add_taxonomy($rowParsed[11], array('sector_de_estudio', 15));
+		$turno = datauy_add_taxonomy($rowParsed[10], array('turno', 10));
+		//$sector = datauy_add_taxonomy($rowParsed[11], array('sector_de_estudio', 15));
 		$curso_params = array(
 			'title' => $rowParsed[4].'-'.$rowParsed[6],
 			'nivel' => $nivel,
@@ -1235,7 +1316,7 @@ function datauy_import_CETP() {
 			'plan' => $rowParsed[2],
 			'c_digo' => $rowParsed[3],
 			'a_o' => $rowParsed[6],
-			'sector' => $sector,
+			//'sector' => $sector,
 			'trayectoria' => substr_count($rowParsed[5],'I'),
 			'web' => $rowParsed[16],
 			'subsis' => 3
@@ -1243,7 +1324,7 @@ function datauy_import_CETP() {
 		if ( $curso_id = datauy_create_curso_node($curso_params) ) {
       if ( $est = datauy_find_establecimiento_by_rule( $rowParsed[18], $rowParsed[17] ) ) {
         $params = array();
-        if ( isset($rowParsed[14]) && trim($rowParsed[14]) != '' ) {
+        /*if ( isset($rowParsed[14]) && trim($rowParsed[14]) != '' ) {
           $params['mail'] = $rowParsed[14];
         }
         if ( isset($rowParsed[20]) && trim($rowParsed[20]) != '' ) {
@@ -1255,10 +1336,11 @@ function datauy_import_CETP() {
         }
         if ( !empty($params) ) {
           datauy_update_establecimientos($est, $params);
-        }
+        }*/
     	}
       else {
-        print "\nEST NO encontrado\nRULE: ".$rowParsed[18]."\nRUEE: ".$rowParsed[17];
+        $message .=  "\nEST NO encontrado rule/ruee: $rowParsed[18], $rowParsed[17]";
+				$fails++;
         continue;
       }
 			//Si no trae rule-rue lo tratamos de levantar por nombre
@@ -1266,7 +1348,7 @@ function datauy_import_CETP() {
 			if ( empty($rowParsed[18]) ) {
 				if (!$est = datauy_find_establecimiento_by_name($rowParsed[17])) {
 					$fails++;
-					print "CENTRO ERROR: No se encuentra el establecimiento";
+					$message .=  "CENTRO ERROR: No se encuentra el establecimiento";
 					continue;
 				}
 			}*/
@@ -1300,8 +1382,6 @@ function datauy_import_CETP() {
 				$i++;
 			}
 			elseif ($oferta_creada[0]) {
-				print "\nREPEATED: ";
-				print_r($oferta_params);
 				$repeated++;
 			}
 			else {
@@ -1310,37 +1390,40 @@ function datauy_import_CETP() {
 		}
 		else {
 			$fails++;
-			print "No se pudo crear el curso: ".print_r($nivel, TRUE);
+			$message .=  "\nNo se pudo crear el curso: ".print_r($rowParsed, TRUE);
 		}
 		//Para la región se evaluará su pertinencia
 		//$region = taxonomy_get_term_by_name('CAMPUS REGIONAL EDUC. TECNOLOGICA LITORAL NORTE', 'regional');
 		//Crear curso en caso que no exista
 	}
-	print "Se crearon ".($i-1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
 	fclose($tipos_hand) or die("Can't close php://tipos_hand");
+	$message .=  "Se crearon ".($i-1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	watchdog('datauy', $message);
+	print $message;
+	return 1;
 }
-
+//
 function datauy_import_CFE() {
-	print "\nArranca import CFE<pre>";
+	$message .=  "\nArranca import CFE<pre>";
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$tipos_hand = fopen(variable_get('file_private_path').'/import/CFE_2019-import.csv', 'r') or die("can't open ./import/CFE_2019-import.csv");
+	$tipos_hand = fopen('./sites/ElijoEstudiar-backend/files/import/CFE-2020.csv', 'r') or die("can't open ./import/CFE-2020.csv");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
 			continue;
 		}
-    if ( $est = datauy_find_establecimiento_by_rule( $rowParsed[11], $rowParsed[10] ) ) {
+    if ( $est = datauy_find_establecimiento_by_ruee( $rowParsed[10] ) ) {
       $params = array();
-      if ( isset($rowParsed[8]) && trim($rowParsed[8]) != '' ) {
+      /*if ( isset($rowParsed[8]) && trim($rowParsed[8]) != '' ) {
         $params['mail'] = $rowParsed[8];
       }
       if ( isset($rowParsed[12]) && trim($rowParsed[12]) != '' ) {
         $params['nombre'] = $rowParsed[12];
       }
       if ( isset($rowParsed[13]) && trim($rowParsed[13]) != '' ) {
-        //Sólo los últimos 2 caracteres
+      //Sólo los últimos 2 caracteres
         $params['numero'] = substr($rowParsed[13], -3);
       }
       if ( isset($rowParsed[9]) && trim($rowParsed[9]) != '' ) {
@@ -1349,10 +1432,10 @@ function datauy_import_CFE() {
       }
       if ( !empty($params) ) {
         datauy_update_establecimientos($est, $params);
-      }
+      }*/
     }
     else {
-      print "\nEST NO encontrado\nRULE: ".$rowParsed[18]."\nRUEE: ".$rowParsed[17];
+      $message .=  "\nEST NO encontrado: $rowParsed[10]";
       $fails++;
       continue;
     }
@@ -1364,7 +1447,7 @@ function datauy_import_CFE() {
 		$orientacion = datauy_add_taxonomy($rowParsed[3], array('orientaci_n', 9), $rowParsed[7]);
 		if (!$orientacion || !$tipo) {
 			//error ya reportado
-			print "Sale no tiene algo...";
+			$message .=  "Sale no tiene algo...";
       $fails++;
 			continue;
 		}
@@ -1384,14 +1467,14 @@ function datauy_import_CFE() {
 		if ( $curso_id = datauy_create_curso_node($curso_params) ) {
 			if ( empty($rowParsed[4]) ) {
 				//$fails++;
-				//print "No tiene turno: ".print_r($rowParsed, TRUE);
+				//$message .=  "No tiene turno: ".print_r($rowParsed, TRUE);
 				$turno = 220; //Sin turno
 			}
 			else {
 				$turno = datauy_add_taxonomy($rowParsed[6], array('turno', 11));
 			}
 			$oferta_params = array(
-				'title' => $title.'-'.$rowParsed[11].'-'.$rowParsed[4],
+				'title' => $title.'-'.$rowParsed[10].'-'.$rowParsed[4],
 				//'rule' => $rowParsed[11],
 				//'ruee' => $rowParsed[10],
         'est' => $est,
@@ -1406,8 +1489,6 @@ function datauy_import_CFE() {
 			}
 			elseif ($oferta_creada[0]) {
 				$repeated++;
-				print "\nREPEATED: ";
-				print_r($oferta_params);
 			}
 			else {
 				$fails++;
@@ -1415,14 +1496,16 @@ function datauy_import_CFE() {
 		}
 		else {
 			$fails++;
-			print "No se pudo crear el curso: ".print_r($nivel, TRUE);
+			$message .=  "No se pudo crear el curso: ".print_r($nivel, TRUE);
 		}
 		//Para la región se evaluará su pertinencia
 		//$region = taxonomy_get_term_by_name('CAMPUS REGIONAL EDUC. TECNOLOGICA LITORAL NORTE', 'regional');
 		//Crear curso en caso que no exista
 	}
-	print "Se crearon ".$i." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
-	exit();
+	$message .=  "Se crearon ".($i-1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	watchdog('datauy', $message);
+	print $message;
+	return 1;
 }
 
 function datauy_import_tipos() {
@@ -2230,20 +2313,23 @@ function datauy_camelize_names($string) {
 
 function datauy_test($quiere_nid, $tiene_nid) {
   global $user;
+
   print "\nArranca test<pre>";
   if ( $user->uid == 1 ){
+		set_time_limit(0);
 		//datauy_build_tree();
 		//traigo las previas del padre
 		//datauy_import_previas();
 		//datauy_import_establecimientos();
 		//datauy_import_CEIP();
 		//datauy_import_CES();
-		//datauy_import_CFE();
 		//datauy_import_CETP();
+		//datauy_import_CFE();
+		datauy_import_7_8_9();
 		//datauy_import_ubicaciones($quiere_nid, $tiene_nid);
 		//datauy_update_nodes();
     //datauy_import_pyd_desc();
-    datauy_import_pyd();
+    //datauy_import_pyd();
     //$main = datauy_get_cursos_previa(89);
   	//$term = taxonomy_term_load(89);
   	//$assigned = array();
