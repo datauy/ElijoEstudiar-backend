@@ -229,6 +229,20 @@ function datauy_get_oferta4centro($est) {
   }
 }
 
+function datauy_get_all_oferta($est) {
+	$query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', "oferta")
+    ->propertyCondition('status', 1)
+		->range(0,500);
+  $result = $query->execute();
+  if (!empty($result['node'])) {
+		return array_keys($result['node']);
+  }else{
+    return false;
+  }
+}
+
 function datauy_find_curso_by_term($field, $value){
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
@@ -919,6 +933,19 @@ function datauy_update_establecimientos($est, $params) {
   } catch (\Exception $e) {
     watchdog('datauy', "No se puede actualizar el nodo:".$node->nid."<br><pre>".print_r($e, TRUE) , array(), WATCHDOG_ALERT);
   }
+}
+/**
+* Delete all oferta from production before charge
+*/
+function delete_all_oferta() {
+	$oferta_ids = datauy_get_all_oferta();
+	$i = 1;
+	while ($oferta_ids) {
+		node_delete_multiple($oferta_ids);
+		$i++;
+		$oferta_ids = datauy_get_all_oferta();
+	}
+	print "Se borraron ".($i*500)." nodos";
 }
 /**
 * Import de Ubicaciones
@@ -2326,6 +2353,7 @@ function datauy_test($quiere_nid, $tiene_nid) {
 		//datauy_build_tree();
 		//traigo las previas del padre
 		//datauy_import_previas();
+		delete_all_oferta();
 		datauy_import_establecimientos();
 		datauy_import_CEIP();
 		datauy_import_CES();
