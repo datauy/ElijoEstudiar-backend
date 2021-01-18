@@ -808,7 +808,6 @@ function datauy_add_taxonomy($name, $voc, $web = 0){
 			if ($web)
 				$term->field_web['und']['0']['value'] = $web;
 			try {
-				print "\nSAVING TERM: ".print_r($term, true);
 				taxonomy_term_save($term);
 			}
 			catch (\Exception $e) {
@@ -1337,7 +1336,7 @@ function datauy_import_CETP() {
 			$fails++;
 			continue;
 		}
-		$turno = datauy_add_taxonomy($rowParsed[10], array('turno', 10));
+		$turno = datauy_add_taxonomy($rowParsed[10], array('turno', 11));
 		//$sector = datauy_add_taxonomy($rowParsed[11], array('sector_de_estudio', 15));
 		$curso_params = array(
 			'title' => $rowParsed[4].'-'.$rowParsed[6],
@@ -2353,13 +2352,13 @@ function datauy_test($quiere_nid, $tiene_nid) {
 		//datauy_build_tree();
 		//traigo las previas del padre
 		//datauy_import_previas();
-		delete_all_oferta();
-		datauy_import_establecimientos();
-		datauy_import_CEIP();
-		datauy_import_CES();
+		//delete_all_oferta();
+		//datauy_import_establecimientos();
+		//datauy_import_CEIP();
+		//datauy_import_CES();
 		datauy_import_CETP();
-		datauy_import_CFE();
-		datauy_import_7_8_9();
+		//datauy_import_CFE();
+		//datauy_import_7_8_9();
 		//datauy_import_ubicaciones($quiere_nid, $tiene_nid);
 		//datauy_update_nodes();
     //datauy_import_pyd_desc();
