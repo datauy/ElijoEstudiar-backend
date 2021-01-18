@@ -229,7 +229,7 @@ function datauy_get_oferta4centro($est) {
   }
 }
 
-function datauy_get_all_oferta($est) {
+function datauy_get_all_oferta() {
 	$query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->propertyCondition('type', "oferta")
