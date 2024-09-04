@@ -846,7 +846,7 @@ function datauy_import_establecimientos() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$fpath = './sites/ElijoEstudiar-backend/import/2023/centros_utec.csv';
+	$fpath = './sites/ElijoEstudiar-backend/import/2023/centros_UTEC.csv';
 	$tipos_hand = fopen($fpath, 'r') or die("can't open $fpath");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
