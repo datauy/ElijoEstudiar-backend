@@ -16,6 +16,8 @@ function datauy_subsis_def() {
 		'CES' => 2,
 		'CETP' => 3,
 		'CFE' => 4,
+		'UTEC' => 992,
+		'UDELAR' => 993
 	);
 }
 function datauy_subsis_web_def() {
@@ -24,6 +26,8 @@ function datauy_subsis_web_def() {
 		'Secundaria' => 2,
 		'UTU' => 3,
 		'Formación en educación' => 4,
+		'UTEC' => 992,
+		'UDELAR' => 993
 	);
 }
 //Hooks
@@ -407,7 +411,8 @@ function datauy_find_establecimiento_by_rule($rule, $ruee){
 		->fieldCondition('field_ruee', 'value', $ruee)
     ->execute();
   if (!empty($result['node'])) {
-		$est = array_shift(array_keys($result['node']));
+		$node = array_keys($result['node']);
+		$est = array_shift($node);
     return $est;
   }else{
     return false;
@@ -841,7 +846,7 @@ function datauy_import_establecimientos() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$fpath = './sites/ElijoEstudiar-backend/files/import/centros-2020.csv';
+	$fpath = './sites/ElijoEstudiar-backend/import/2023/centros_utec.csv';
 	$tipos_hand = fopen($fpath, 'r') or die("can't open $fpath");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -987,7 +992,7 @@ function datauy_import_CEIP() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-  $local_path = './sites/ElijoEstudiar-backend/files/import/CEIP-2020.csv';
+  $local_path = './sites/ElijoEstudiar-backend/import/2023/CEIP.csv';
 	$tipos_hand = fopen($local_path, 'r') or die("can't open $local_path");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -1160,7 +1165,7 @@ function datauy_import_CES() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-  $local_path = './sites/ElijoEstudiar-backend/files/import/CES-2020.csv';
+  $local_path = './sites/ElijoEstudiar-backend/import/2023/CES.csv';
 	$tipos_hand = fopen($local_path, 'r') or die("can't open $local_path");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -1274,7 +1279,7 @@ function datauy_import_7_8_9() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-  $local_path = './sites/ElijoEstudiar-backend/files/import/CEIP-7_8_9-2020.csv';
+  $local_path = './sites/ElijoEstudiar-backend/import/2023/CEIP-7_8_9.csv';
 	$tipos_hand = fopen($local_path, 'r') or die("can't open $local_path");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -1317,7 +1322,7 @@ function datauy_import_CETP() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$fname = './sites/ElijoEstudiar-backend/files/import/CETP-2020.csv';
+	$fname = './sites/ElijoEstudiar-backend/import/2023/CETP.csv';
 	$tipos_hand = fopen($fname, 'r') or die("can't open $fname");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -1439,7 +1444,7 @@ function datauy_import_CFE() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$tipos_hand = fopen('./sites/ElijoEstudiar-backend/files/import/CFE-2020.csv', 'r') or die("can't open ./import/CFE-2020.csv");
+	$tipos_hand = fopen('./sites/ElijoEstudiar-backend/import/2023/CFE.csv', 'r') or die("can't open ./import/CFE-2020.csv");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
@@ -1539,7 +1544,74 @@ function datauy_import_CFE() {
 	print $message;
 	return 1;
 }
-
+//
+function datauy_import_UTEC() {
+	$message .=  "\nArranca import UTEC<pre>";
+	$i=0;
+	$fails = 0;
+	$repeated = 0;
+	$tipos_hand = fopen('./sites/ElijoEstudiar-backend/import/2023/UTEC.csv', 'r') or die("can't open ./import/2023/UTEC.csv");
+	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+		if (!$i){
+			$i++;
+			continue;
+		}
+    if ( !$est = datauy_find_establecimiento_by_name($rowParsed[1].' - '.$rowParsed[2]) ) {
+      $message .=  "\nEST NO encontrado: $rowParsed[1]";
+      $fails++;
+      continue;
+    }
+		$nivel = 625;
+		//Verificar tipo
+		//TODO: Fuente WEB del tipo
+		$tipo = datauy_add_taxonomy($rowParsed[4], array('tipo_de_curso', 8));
+		//Verificar orientacion
+		$curso_params = array(
+			'title' => $rowParsed[4],
+			'nivel' => $nivel,
+			'tipo' => $tipo,
+			'web' => $rowParsed[9],
+			'subsis' => 992,
+			'titulaci_n' => datauy_add_taxonomy($rowParsed[3], array('titulaci_n', 12))
+		);
+		if ( $curso_id = datauy_create_curso_node($curso_params) ) {
+			$turno = 220; //Sin turno
+			$oferta_params = array(
+				'title' => $rowParsed[5],
+				//'rule' => $rowParsed[11],
+				//'ruee' => $rowParsed[10],
+        'est' => $est,
+				'curso' => $curso_id,
+				'turno' => $turno,
+				'duraci_n' => datauy_add_taxonomy($rowParsed[7], array('duraci_n', 14)),
+				'modalidad' => datauy_add_taxonomy($rowParsed[8], array('modalidad', 13))
+			);
+			$oferta_creada = datauy_create_oferta_node($oferta_params);
+			if ($oferta_creada[0] && $oferta_creada[1]){
+				$i++;
+			}
+			elseif ($oferta_creada[0]) {
+				$repeated++;
+			}
+			else {
+				$fails++;
+			}
+		}
+		else {
+			$fails++;
+			$message .=  "No se pudo crear el curso: ".print_r($nivel, TRUE);
+		}
+		//Para la región se evaluará su pertinencia
+		//$region = taxonomy_get_term_by_name('CAMPUS REGIONAL EDUC. TECNOLOGICA LITORAL NORTE', 'regional');
+		//Crear curso en caso que no exista
+	}
+	$res = "Se crearon/actualizaron ".($i - 1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	$message .= $res;
+	watchdog('datauy', $res);
+	print $message;
+	return 1;
+}
+//
 function datauy_import_tipos() {
 	$tipos_hand = fopen(drupal_get_path('module', 'datauy').'/import/tipos_act.csv', 'r') or die("can't open ./import/tipos_act.csv");
 	while (($row = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
@@ -2353,10 +2425,11 @@ function datauy_test($quiere_nid, $tiene_nid) {
 		//traigo las previas del padre
 		//datauy_import_previas();
 		//delete_all_oferta();
-		//datauy_import_establecimientos();
+		datauy_import_establecimientos();
+		//datauy_import_UTEC();
 		//datauy_import_CEIP();
 		//datauy_import_CES();
-		datauy_import_CETP();
+		//datauy_import_CETP();
 		//datauy_import_CFE();
 		//datauy_import_7_8_9();
 		//datauy_import_ubicaciones($quiere_nid, $tiene_nid);
