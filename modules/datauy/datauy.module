@@ -454,6 +454,7 @@ function datauy_find_curso($node){
     $query->entityCondition('entity_type', 'node')
     ->propertyCondition('type', "cursos")
     ->propertyCondition('status', 1)
+		->propertyCondition('title', $node->title)
 		->fieldCondition('field_nivel', 'target_id', $node->field_nivel['und'][0]['target_id'] )
 		->fieldCondition('field_tipo_curso', 'target_id', $node->field_tipo_curso['und'][0]['target_id'] );
 		if ( isset($node->field_a_o['und']) )
@@ -1571,11 +1572,13 @@ function datauy_import_UTEC() {
 		//Verificar tipo
 		//TODO: Fuente WEB del tipo
 		$tipo = datauy_add_taxonomy($rowParsed[3], array('tipo_de_curso', 8));
+		$orientacion = datauy_add_taxonomy($rowParsed[5], array('orientaci_n', 9), $rowParsed[10]);
 		//Verificar orientacion
 		$curso_params = array(
 			'title' => $rowParsed[5],
 			'nivel' => $nivel,
 			'tipo' => $tipo,
+			'orientaci_n' => $orientacion,
 			'web' => $rowParsed[10],
 			'subsis' => 992,
 			'titulaci_n' => datauy_add_taxonomy($rowParsed[4], array('titulaci_n', 12))
@@ -2432,8 +2435,8 @@ function datauy_test($quiere_nid, $tiene_nid) {
 		//traigo las previas del padre
 		//datauy_import_previas();
 		//delete_all_oferta();
-		datauy_import_establecimientos();
-		//datauy_import_UTEC();
+		//datauy_import_establecimientos();
+		datauy_import_UTEC();
 		//datauy_import_CEIP();
 		//datauy_import_CES();
 		//datauy_import_CETP();
