@@ -484,7 +484,8 @@ function datauy_find_oferta($est, $oferta){
     $query->fieldCondition('field_modalidad', 'target_id', $oferta['modalidad'] );
   $result = $query->execute();
   if (!empty($result['node'])) {
-		$nid = array_shift(array_keys($result['node']));
+		$node = array_keys($result['node']);
+		$nid = array_shift($node);
     return node_load( $nid );
   }else{
     return false;
@@ -514,8 +515,10 @@ function findUbicacionByTitle($title, $padre){
 	if( $padre )
 	 	$query->fieldCondition('field_padre', 'target_id', $padre );
 	$entities = $query->execute();
-	if (!empty($entities['node']))
-		return array_shift( array_keys($entities['node']) );
+	if (!empty($entities['node'])) {
+		$node = array_keys($entities['node']);
+		return array_shift( $node );
+	}
 
 	return false;
 }
@@ -1564,17 +1567,18 @@ function datauy_import_UTEC() {
 		$nivel = 625;
 		//Verificar tipo
 		//TODO: Fuente WEB del tipo
-		$tipo = datauy_add_taxonomy($rowParsed[4], array('tipo_de_curso', 8));
+		$tipo = datauy_add_taxonomy($rowParsed[3], array('tipo_de_curso', 8));
 		//Verificar orientacion
 		$curso_params = array(
-			'title' => $rowParsed[4],
+			'title' => $rowParsed[5],
 			'nivel' => $nivel,
 			'tipo' => $tipo,
-			'web' => $rowParsed[9],
+			'web' => $rowParsed[10],
 			'subsis' => 992,
-			'titulaci_n' => datauy_add_taxonomy($rowParsed[3], array('titulaci_n', 12))
+			'titulaci_n' => datauy_add_taxonomy($rowParsed[4], array('titulaci_n', 12))
 		);
 		if ( $curso_id = datauy_create_curso_node($curso_params) ) {
+			watchdog('datauy', "Curso CREADO: $curso_id: \n".print_r($curso_params, true));
 			$turno = 220; //Sin turno
 			$oferta_params = array(
 				'title' => $rowParsed[5],
@@ -1583,8 +1587,8 @@ function datauy_import_UTEC() {
         'est' => $est,
 				'curso' => $curso_id,
 				'turno' => $turno,
-				'duraci_n' => datauy_add_taxonomy($rowParsed[7], array('duraci_n', 14)),
-				'modalidad' => datauy_add_taxonomy($rowParsed[8], array('modalidad', 13))
+				'duraci_n' => datauy_add_taxonomy($rowParsed[6], array('duraci_n', 14)),
+				'modalidad' => datauy_add_taxonomy($rowParsed[7], array('modalidad', 13))
 			);
 			$oferta_creada = datauy_create_oferta_node($oferta_params);
 			if ($oferta_creada[0] && $oferta_creada[1]){

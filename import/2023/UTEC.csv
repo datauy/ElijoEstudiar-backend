@@ -1,214 +1,40 @@
-Nombre Institución (s/a),Servicio ,Nombre (Sede),Nivel,Típo de Carrera,Nombre de la carrera,Perfil de egreso,Duración (años),Modalidad de Dictado,Departamento de Dictado,ZONA ,Becas,Porcentaje de la Beca,Posibilidades de Financiación,Ingresados Masculino,Ingresados Femenino,Ingresados Total,Ingresos Metropolitana,Ingresos Centrosur,IngresosEste,Ingresos Norte,Ingresos Suroeste,Ingresos Regiones del Interior,Matriculados Masculino,Matriculados Femenino,Matriculados Total,Egresados Masculino,Egresados Femenino,Egresados Total,Egresos Metropolitana,Egresos Centrosur,EgresosEste,Egresos Norte,Egresos Suroeste,Egresos Regiones del Interior,Fuente,Observaciones
-UTEC/ UDELAR/ CETP,ITR Suroeste,Polo Tecnológico,Pregrado,Tecnologo,Tecnólogo Químico,"Emplear criterios adecuados para la toma de muestras
-Realizar medidas de propiedades físicas
-Preparar y estandarizar soluciones
-Realizar análisis químicos de acuerdo con técnicas que se le suministren, empleando instrumental adecuado
-Evaluar críticamente los resultados obtenidos en los análisis realizados y efectuar su eventual validación
-Realizar tareas vinculadas con la gestión ambiental y la seguridad laboral
-Realizar tareas vinculadas a la gestión de calidad
-Manejar bibliografía técnica sencilla en español e inglés
-Usar software de instrumentos automatizados de laboratorio o de planta
-En función de los cursos optativos que el estudiante haya realizado, contará con una formación adicional en las áres de alimentos, análisis químico industrial, productos farmacéuticos, analisis de agua potable, aguas residuales y gases de combustión)",2 AÑOS,Presencial,Paysandú,Suroeste,,,,79,102,181,,,,,,,152,250,402,13,36,49,,,,,,,https://utec.edu.uy/es/educacion/carrera/tecnologo-quimico/,La clasificación en algunas áreas y tendencias depende de las materias opcionales seleccionadas por el estudiante
-UTEC,ITR Suroeste,Nueva Helvecia,Pregrado,Tecnologo,Tecnólogo en Manejo de Sistemas de Producción Lechera,"Administrar, monitorear y controlar los SPL, a partir de las buenas prácticas y los desarrollos tecnológicos derivados de la innovación en un contexto globalizado de producción de leche, promoviendo la preservación del medio ambiente y recursos naturales.
-Organizar y manejar el capital humano de los SPL teniendo en cuenta la salud y seguridad ocupacional así como las condiciones de trabajo decente asegurando la sustentabilidad y competitividad del sistema.
-Desarrollar actividades de investigación aplicada en base a la búsqueda, organización, sistematización e interpretación de los datos relacionados con los procesos de los SPL con el fin de contribuir al mejoramiento continuo de los SPL.",2 AÑOS,Presencial,Colonia,Suroeste,,,,5,4,9,,,,,9,9,13,7,20,0,0,0,,,,,,,https://utec.edu.uy/es/educacion/carrera/tecnologo-en-manejo-de-sistemas-de-produccion-lechera/,
-UTEC,ITR Norte,Rivera,Pregrado,Tecnologo,Tecnólogo en Análisis y Desarrollo de Sistemas,"Especificar requisitos de sistemas de información
-Proyectar y modelar software a través de metodologías adecuadas
-Desarrollar y testear aplicaciones en tecnologías de desarrollo de software
-Utilizar técnicas y patrones de construcción de sistemas de información
-Garantizar la calidad de los sistemas desarrollados
-Elaborar textos y resúmenes técnicos acerca de los procesos de desarrollo de aplicaciones
-Gerenciar proyectos y coordinar equipos de desarrollo de sistemas de información
-Prestar consultorías en el área de análisis y desarrollo de software
-Desarrollar emprendimientos en el área de las TI
-Promover la reflexión y el pensamiento crítico, así como la autonomía y la capacidad emprendedora
-Incentivar la formación y actualización continua, procurando siempre la calificación profesional
-Instalar y configurar sistemas operacionales que atiendan los requisitos de los sistemas informáticos
-Planificar y ejecutar proyectos de investigación para la creación de nuevos productos",3 AÑOS,Presencial,Rivera,Norte,,,,41,26,67,,,,,,,153,46,199,3,1,4,,,,,,,https://utec.edu.uy/es/educacion/carrera/tecnologo-en-analisis-y-desarrollo-de-sistemas/,
-UTEC/ UDELAR/ CETP,ITR Centro Sur,San José,Pregrado,Tecnologo,Tecnólogo en Informática,"Desarrollo y testing de software
-Administración de infraestructuras de bases de datos y redes
-Construir y evaluar soluciones informáticas que abarquen tareas de construcción, pruebas y documentación integrando distintas tecnologías.",3 AÑOS,Presencial,San José ,Centro Sur,https://utec.edu.uy/es/educacion/carrera/tecnologo-en-informatica/,15/09/2023,NO,,,,,,,,,,,,,,,,,,,,,,,
-UTEC/ UDELAR/ CETP,ITR Suroeste,Paylana,Pregrado,Tecnologo,Tecnólogo en Informática,"Desarrollo y testing de software
-Administración de infraestructuras de bases de datos y redes
-Construir y evaluar soluciones informáticas que abarquen tareas de construcción, pruebas y documentación integrando distintas tecnologías.",3 AÑOS,Presencial,Paysandú,Suroeste,https://utec.edu.uy/es/educacion/carrera/tecnologo-en-informatica/,15/09/2023,NO,,,,,,,,,,,,,,,,,,,,,,,
-UTEC/ UDELAR/ CETP,ITR Este,Maldonado,Pregrado,Tecnologo,Tecnólogo en Informática,"Desarrollo y testing de software
-Administración de infraestructuras de bases de datos y redes
-Construir y evaluar soluciones informáticas que abarquen tareas de construcción, pruebas y documentación integrando distintas tecnologías.",3 AÑOS,Presencial,Maldonado,Este,,,,278,28,306,,,,,,,432,47,479,12,1,13,,,,,,,https://utec.edu.uy/es/educacion/carrera/tecnologo-en-informatica/,
-UTEC/ UDELAR/ CETP,ITR Suroeste,Instituto Altamente Especializado,Pregrado,Tecnologo,Tecnólogo Industrial Mecánico,"Realizar tareas técnicas en las siguientes áreas: Ingeniería de Planta, enfatizando el uso de la energía en servicios industriales el conocimiento de materiales con vistas al mantenimiento y la administración de servicios.
-Mantenimiento de equipos e instalaciones (planificación, supervisión, documentación).
-Ingeniería de Diseño Mecánico, con énfasis en el conocimiento de los materiales y los procesos de fabricación para el diseño de instalaciones, de máquinas o de productos y/o de sus modificaciones.
-Producción Industrial (control, organización, supervisión, control de calidad).
-Administración (provisión de insumos, costos).
-Desarrollo de proyectos.
-Seguridad laboral.",3 AÑOS,Presencial,Paysandú,Suroeste,,,,223,16,239,,,,,,,486,43,529,10,2,12,,,,,,,https://utec.edu.uy/es/educacion/carrera/tecnologo-industrial-mecanico/,
-UTEC,ITR Suroeste,Paylana,Pregrado,Tecnologo,Tecnólogo en Control Ambiental,"Comprensión de interacciones bióticas y abióticas en los ecosistemas.
-Promoción y control de las variables ambientales en dimensión análitica integral.
-Comprensión de la normativa y sistemas de gestión ambientales.
-Contribución para la aplicación y la búsqueda de soluciones ambientales","1,5 AÑOS (adicionales a nivel Técnico Control Ambiental UTU)",Presencial y virtual,Paysandú,Suroeste,,,,7,9,16,,,,,,,12,12,24,0,0,0,,,,,,,https://utec.edu.uy/es/educacion/carrera/tecnologo-en-control-ambiental/,
-UTEC,ITR Suroeste,mercedes,Grado,Licenciatura,Licenciatura en Jazz y Música Creativa,"Performance Musical: interpretación y performance de piezas e improvisaciones musicales, en ensambles con diferentes formatos instrumentales.
-Composición y Arreglos: composición, arreglos, orquestación y dirección de obras originales basadas en diversos géneros y estilos musicales. Asesoramiento a nuevos emprendimientos musicales.
-Sonido y Producción Musical: producción musical y sonora a través de la implementación de medios tecnológicos vinculados al registro, edición y postproducción de sonido, orientada a formatos discográficos, audiovisuales y en vivo.
-Investigación y Gestión de Proyectos: desarrollo de proyectos de investigación básica y/o artística y gestión de industrias creativas.
-Arte y Sociedad: conciencia del rol del arte en la sociedad actual y del impacto comunitario a través de la expresión artística y/o la transmisión de conocimientos y habilidades musicales.",4 AÑOS,Presencial y virtual,Soriano,Suroeste,,,,11,6,17,,,,,17,17,38,12,50,0,0,0,,,,,,,https://utec.edu.uy/es/educacion/carrera/licenciatura-en-jazz-y-musica-creativa/,
-UTEC,ITR Suroeste,Fray Bentos,Grado,Ingeniería,Ingeniería en Mecatrónica,"Los egresados de esta carrera serán competentes para:
-
-Instalar y poner en servicio maquinaria automatizada, principalmente en contextos industriales y de servicios.
-Realizar el mantenimiento operacional y la mejora de rendimientos de instalaciones y/o maquinaria automatizada.
-Supervisar y/o participar de proyectos en el área de Mecatrónica.
-Desarrollar relaciones profesionales con clientes y proveedores (nacionales e internacionales).
-El egresado será un profesional con formación integral, moral y ética, con capacidad para crear su propio emprendimiento, de innovar, investigar, diseñar, operar, mantener y hacer consultoria en procesos con sofisticados sistemas de automatización, control asistido por computadora y/o tecnologias de información y comunicación.",5 AÑOS,Presencial y virtual,Río Negro,Suroeste,,,,68,9,77,,,,,77,77,184,25,209,4,1,5,,,,,5,5,https://utec.edu.uy/es/educacion/carrera/ingenieria-en-mecatronica/,
-UTEC,ITR Norte,Rivera,Grado,Ingeniería,Ingeniería en Control y Automática,"Los egresados de esta carrera serán competentes para:
-
-Instalar y poner en servicio maquinaria automatizada, principalmente en los contextos industriales y de servicio.
-Realizar el mantenimiento operacional e implementar estrategias para la mejora del rendimiento de las instalaciones y/o maquinaria automatizada.
-Supervisar y/o participar de proyectos en el área de Mecatrónica.",5 AÑOS,Presencial ,Rivera,Norte,,,,47,7,54,,,,54,,54,104,10,114,0,0,0,,,,,,,https://utec.edu.uy/es/educacion/carrera/ingenieria-en-control-y-automatica/,
-UTEC,ITR Suroeste,Fray Bentos,Grado,Ingeniería,Ingeniería Biomédica,"Los egresados de esta carrera serán competentes para:
-
-Diseño e implementación de instalaciones en Instituciones Hospitalarias: eléctricas, de gases, de equipos médicos, de comunicación, entre otras.
-Diseño y realización de instrumentos y sistemas de instrumentos para uso médico, utilizando recursos de Ingeniería Biomédica.
-Gestión de Equipamiento Médico en la industria, en Instituciones Hospitalarias y en organismos de gobierno competentes en el sector de la salud",5 AÑOS,Presencial,Río Negro,Suroeste,,,,21,18,39,,,,,39,39,52,37,89,1,0,1,,,,,1,1,https://utec.edu.uy/es/educacion/carrera/ingenieria-biomedica/,
-UTEC,ITR Norte,Rivera,Grado,Ingeniería,Ingeniería en Logística,"Los egresados de esta carrera serán competentes para:
-
-Diseño, implementación y gestión de cadenas de suministros focalizadas en la demanda y en entornos de incertidumbre, de acuerdo con los principales objetivos de la empresa.
-Desarrollo de proyectos de investigación aplicada, de innovación en nuevos productos o servicios, así como estudios sobre oferta y demanda vinculados a la actividad logística.
-Gestión de proyectos logísticos de mejora o innovación de acuerdo con diagnósticos en los diferentes tipos de áreas (Cadena de Suministros o de un Área de Actividad Logística pública-privada), que redunden en factores de aumento de la competitividad.
-Dirección de la Cadena de suministros y los procesos de producción, abastecimiento, almacenamiento, transporte, distribución y logística inversa, en contextos de restricción financiera, de manera efectiva y eficiente, dentro de un marco de seguridad laboral, cuidado del medioambiente, con ética profesional y responsabilidad social.
-Dirección de Centros Logísticos de acuerdo con los sistemas de calidad (KPI y CMI) y las demandas de información de los sistemas de gestión, aplicando las buenas prácticas en Logística nacional e internacional",5 AÑOS,Presencial,Rivera,Norte/ Suroeste,,,,81,44,125,,,,65,60,125,221,139,360,11,9,20,,,,8,12,20,https://utec.edu.uy/es/educacion/carrera/ingenieria-en-logistica/,
-UTEC,ITR Suroeste,Fray Bentos,Grado,Ingeniería,Ingeniería en Logística,"Los egresados de esta carrera serán competentes para:
-
-Diseño, implementación y gestión de cadenas de suministros focalizadas en la demanda y en entornos de incertidumbre, de acuerdo con los principales objetivos de la empresa.
-Desarrollo de proyectos de investigación aplicada, de innovación en nuevos productos o servicios, así como estudios sobre oferta y demanda vinculados a la actividad logística.
-Gestión de proyectos logísticos de mejora o innovación de acuerdo con diagnósticos en los diferentes tipos de áreas (Cadena de Suministros o de un Área de Actividad Logística pública-privada), que redunden en factores de aumento de la competitividad.
-Dirección de la Cadena de suministros y los procesos de producción, abastecimiento, almacenamiento, transporte, distribución y logística inversa, en contextos de restricción financiera, de manera efectiva y eficiente, dentro de un marco de seguridad laboral, cuidado del medioambiente, con ética profesional y responsabilidad social.
-Dirección de Centros Logísticos de acuerdo con los sistemas de calidad (KPI y CMI) y las demandas de información de los sistemas de gestión, aplicando las buenas prácticas en Logística nacional e internacional",5 AÑOS,Presencial,Río Negro,Norte/ Suroeste,https://utec.edu.uy/es/educacion/carrera/ingenieria-en-logistica/,15/09/2023,Automatización en la industria logistica/ Robotica en la industria logistica/ Logistica inversa y ambiental,,,,,,,,,NO,NO,SI,NO,NO,NO,NO,NO,NO,NO,NO,SI,NO,NO,
-UTEC,ITR Suroeste,Paylana,Grado,Licenciatura,Licenciatura en Análisis Alimentario,"a Licenciatura en Análisis Alimentario forma profesionales para la industria de alimentos y derivados del país con competencias para emprender proyectos de innovación y desarrollo en el sector, lo que permite proyectar al egresado en el ámbito laboral donde va a desarrollar su actividad social y productiva.
-
-La Licenciatura forma profesionales para la industria , abarcando desde los procesos básicos de alimentos, agua y derivados, asi como los controles fiscoquímicos y operacionales del proceso, en el último tramo el enfoque es en el área alimentaria, haciendo énfasis en los controles necesarios para la producción de alimentos de consumo interno y exportación, bajo la reglamentación vigente, considerando impactos ambientales, certificaciones y habilitaciones necesarias para determinar que un alimento es apto para consumo humano.
-
-El diseño y la innovación están siempre presentes en la carerra, nos acercamos durante la trayectoria educativa al área de agroalimentos, aguas y bebidas, tecnología de miel y derivados, tecnología de cereales, hortifruticultura, enología y tenología y ciencia de elaboración de cerveza.
-
-Al aprobar el cuarto semestre se obtiene el título intermedio de Técnico en Procesos y Análisis Químico.",4 AÑOS,Presencial y virtual,Paysandú,Suroeste,,,,20,42,62,,,,,62,62,43,115,158,2,12,14,,,,,14,14,https://utec.edu.uy/es/educacion/carrera/licenciatura-en-analisis-alimentario/,
-UTEC,ITR Suroeste,La Paz,Grado,Licenciatura,Licenciatura en Ciencia y Tecnología de Lácteos,"Creación y gestión de empresas de leche y productos lácteos.
-Desarrollo y control de los procesos productivos de leche y productos lácteos de acuerdo a modelos de calidad reconocidos nacional e internacionalmente.
-Formación profesional para el desarrollo de proyectos de investigación aplicada e innovación en nuevos productos de la leche y sus derivados, así como estudios sobre el mercado y los consumidores.
-Asesoramiento a industrias, pequeñas y medianas empresas, pequeños productores de alimentos lácteos, restaurantes, comercios y servicios sobre el manejo de productos lácteos.",4 AÑOS,Presencial y virtual,Colonia,Suroeste,,,,7,18,25,,,,,25,25,26,41,67,0,2,2,,,,,2,2,https://utec.edu.uy/es/educacion/carrera/licenciatura-en-ciencia-y-tecnologia-de-lacteos/,
-UTEC,ITR Centro Sur,Durazno,Grado,Ingeniería,Ingeniería en Energías Renovables,"Promover, diseñar, implementar y administrar el uso de energía limpia a partir de fuentes primarias de energía como son la energía solar, eólica e hidráulica, con una visión sustentable y eficiente.
-Diseñar plan de desarrollo para un sistema energía solar o eólica, integrados a la red eléctrica.
-Diseñar sistemas solares de calentamiento de espacios o agua para uso doméstico.
-Diseño de sistemas solares térmicos o fotovoltaicos, incluyendo los componentes del sistema, para viviendas y comercios.
-Proponer cambios en los procesos o la infraestructura para mejorar el rendimiento de generación de energía o reducir costos de operación.
-Conocer el marco regulatorio adecuado para aplicar en los sistemas de generación de energías renovables.
-Desarrollar planes de monitoreo y evaluación de sistemas de energía eólica o solar. Interpretar esquemas o documentación referida a dichos sistemas de generación de energía.
-Instalación y operación de sistemas de microgeneración.",5 AÑOS,Presencial  ,Durazno,Centrosur,,,,40,11,51,,51,,,,51,128,42,170,10,9,19,,19,,,,19,https://utec.edu.uy/es/educacion/carrera/ingenieria-en-energias-renovables/,
-UTEC,ITR Centro Sur,Durazno,Grado,Ingeniería,Ingeniería en Agua y Desarrollo Sostenible,"Los egresados de esta carrera serán competentes para:
-
-Concepción, diseño y optimización de los distritos y módulos de riego existentes en el país.
-Gestión integral de efluentes agropecuarios y agroindustriales.
-Diseño de sistemas de drenaje agrícola y recuperación de suelos salinos.
-Asesoramiento a productores, industriales y tomadores de decisión de aspectos tecnológicos, económicos, normativos y ambientales sobre sistemas de riego, drenaje y manejo de efluentes.
-Investigación, innovación y desarrollo de emprendimientos de base científica, tecnológica e ingenieril en las áreas de competencia.",5 AÑOS,Presencial y virtual,Durazno / Cerro Largo,Centrosur/ Norte,,,,49,52,101,,52,,49,,101,82,67,149,0,0,0,,,,0,,,https://utec.edu.uy/es/educacion/carrera/ingenieria-en-agua-y-desarrollo-sostenible/,
-UTEC,ITR Centro Sur,Durazno,Grado,Ingeniería,Ingeniería Agroambiental,"La Ingeniería Agroambiental forma profesionales capaces de manejar, desarrollar y aplicar ciencia y tecnología con el objetivo de mejorar la competitividad económica y el bienestar de la población a través del manejo sostenible de la tierra y sus recursos naturales. Como agente de cambio, el egresado participará con creatividad, innovación y liderazgo en la transformación que el sector demanda. Su formación multidisciplinaria le proporcionará herramientas para desempeñarse en todo tipo de organizaciones (públicas, privadas, académicas) actuando como vínculo entre el área tecnológica, de investigación, social y económica en un contexto comprometido con el respeto al medio ambiente",5 AÑOS,Presencial y virtual,Durazno,Centrosur,,,,23,26,49,,49,,,,49,34,56,90,0,1,1,,1,,,,1,https://utec.edu.uy/es/educacion/carrera/ingenieria-agroambiental/,
-UTEC,ITR Centro Sur,Durazno,Grado,Licenciatura,Licenciatura en Tecnologías de la Información ,"Desarrollo y Testing: Aplicar el paradigma de programación funcional utilizando lenguajes específicos. Reconocer patrones y aplicar algoritmos de aprendizaje (Machine Learning) para proyectos de desarrollo. Diseñar y testear automatizaciones de procesos
-Gestionar la información generada por mecanismos robotizados.
-Infraestructura tecnológica: Desarrollar modelos y servicios de cloud computing adecuados a arquitecturas pre definidas. Diseñar propuestas de mejoramiento atento a normas nacionales e internacionales y políticas de calidad (UNIT 27000 y UNIT 20000). Diseñar planes de contingencia para atender a la ciberseguridad en ambientes cloud.
-Gestión de proyectos: Desarrollar integralmente modelos de negocio en TI. Implementar proyectos aplicando pautas de gestión de proyectos y de metodologías ágiles.
-Emprendimiento: Asesoramiento y gestión de negocios integrales de TI para empresas atendiendo la normativa aplicable. Aplicación/ consideración de criterios éticos y compromiso / dimensión social en las soluciones TI.
-Data Science: Gestionar la información de bases de datos relacionales y no relacionales para optimizar procesos. Entender los procesos derivados del uso de big data. Identificar oportunidades de mejora de procesos y productos en base a la aplicación de Internet de las cosas.",4 AÑOS,Presencial y virtual,Durazno,Centrosur/Norte/ Este/ Suroeste,,,,214,72,286,,123,42,40,81,286,494,139,633,59,24,83,,49,,0,34,83,https://utec.edu.uy/es/educacion/carrera/licenciatura-en-tecnologias-de-la-informacion/,
-UTEC,ITR Suroeste,Fray Bentos,Grado,Licenciatura,Licenciatura en Tecnologías de la Información ,"Desarrollo y Testing: Aplicar el paradigma de programación funcional utilizando lenguajes específicos. Reconocer patrones y aplicar algoritmos de aprendizaje (Machine Learning) para proyectos de desarrollo. Diseñar y testear automatizaciones de procesos
-Gestionar la información generada por mecanismos robotizados.
-Infraestructura tecnológica: Desarrollar modelos y servicios de cloud computing adecuados a arquitecturas pre definidas. Diseñar propuestas de mejoramiento atento a normas nacionales e internacionales y políticas de calidad (UNIT 27000 y UNIT 20000). Diseñar planes de contingencia para atender a la ciberseguridad en ambientes cloud.
-Gestión de proyectos: Desarrollar integralmente modelos de negocio en TI. Implementar proyectos aplicando pautas de gestión de proyectos y de metodologías ágiles.
-Emprendimiento: Asesoramiento y gestión de negocios integrales de TI para empresas atendiendo la normativa aplicable. Aplicación/ consideración de criterios éticos y compromiso / dimensión social en las soluciones TI.
-Data Science: Gestionar la información de bases de datos relacionales y no relacionales para optimizar procesos. Entender los procesos derivados del uso de big data. Identificar oportunidades de mejora de procesos y productos en base a la aplicación de Internet de las cosas.",4 AÑOS,Presencial y virtual,Río Negro/ Cerro Largo/ Lavalleja,Centrosur/Norte/ Este/ Suroeste,https://utec.edu.uy/es/educacion/carrera/licenciatura-en-tecnologias-de-la-informacion/,15/09/2023,Data Science/ Fundamentos del Machine Learning/ Ciberseguridad en ambientes de cloud/ Diseño de Experiencia de Usuario/ Emprendimiento,,,,,,,,,,,,,,,,,,,,,,,
-UTEC,ITR Norte,Melo,Grado,Licenciatura,Licenciatura en Tecnologías de la Información ,"Desarrollo y Testing: Aplicar el paradigma de programación funcional utilizando lenguajes específicos. Reconocer patrones y aplicar algoritmos de aprendizaje (Machine Learning) para proyectos de desarrollo. Diseñar y testear automatizaciones de procesos
-Gestionar la información generada por mecanismos robotizados.
-Infraestructura tecnológica: Desarrollar modelos y servicios de cloud computing adecuados a arquitecturas pre definidas. Diseñar propuestas de mejoramiento atento a normas nacionales e internacionales y políticas de calidad (UNIT 27000 y UNIT 20000). Diseñar planes de contingencia para atender a la ciberseguridad en ambientes cloud.
-Gestión de proyectos: Desarrollar integralmente modelos de negocio en TI. Implementar proyectos aplicando pautas de gestión de proyectos y de metodologías ágiles.
-Emprendimiento: Asesoramiento y gestión de negocios integrales de TI para empresas atendiendo la normativa aplicable. Aplicación/ consideración de criterios éticos y compromiso / dimensión social en las soluciones TI.
-Data Science: Gestionar la información de bases de datos relacionales y no relacionales para optimizar procesos. Entender los procesos derivados del uso de big data. Identificar oportunidades de mejora de procesos y productos en base a la aplicación de Internet de las cosas.",4 AÑOS,Presencial y virtual,Cerro Largo,Centrosur/Norte/ Este/ Suroeste,,,,SI,SI,SI,SI,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,SI,,,,,,,
-UTEC,ITR Este,Minas,Grado,Licenciatura,Licenciatura en Tecnologías de la Información ,"Desarrollo y Testing: Aplicar el paradigma de programación funcional utilizando lenguajes específicos. Reconocer patrones y aplicar algoritmos de aprendizaje (Machine Learning) para proyectos de desarrollo. Diseñar y testear automatizaciones de procesos
-Gestionar la información generada por mecanismos robotizados.
-Infraestructura tecnológica: Desarrollar modelos y servicios de cloud computing adecuados a arquitecturas pre definidas. Diseñar propuestas de mejoramiento atento a normas nacionales e internacionales y políticas de calidad (UNIT 27000 y UNIT 20000). Diseñar planes de contingencia para atender a la ciberseguridad en ambientes cloud.
-Gestión de proyectos: Desarrollar integralmente modelos de negocio en TI. Implementar proyectos aplicando pautas de gestión de proyectos y de metodologías ágiles.
-Emprendimiento: Asesoramiento y gestión de negocios integrales de TI para empresas atendiendo la normativa aplicable. Aplicación/ consideración de criterios éticos y compromiso / dimensión social en las soluciones TI.
-Data Science: Gestionar la información de bases de datos relacionales y no relacionales para optimizar procesos. Entender los procesos derivados del uso de big data. Identificar oportunidades de mejora de procesos y productos en base a la aplicación de Internet de las cosas.",4 AÑOS,Presencial y virtual,Lavalleja,Centrosur/Norte/ Este/ Suroeste,,,,SI,SI,SI,SI,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,SI,,,,,,,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Especialización en Fabricación Digital e Innovación,"Los egresados serán capaces de:
-
-Optimizar procesos de desarrollo de soluciones utilizando metodologías de innovación abierta y fabricación digital.
-Diseñar, facilitar y liderar procesos de diseño de productos físicos.
-Determinar indicadores para verificar si los procesos creados logran los objetivos establecidos.
-Encontrar mejoras posibles para procesos de producción de productos o desarrollo de servicios.
-Generar conocimiento práctico en el uso de máquinas de fabricación digital.
-Liderar procesos de innovación vinculada a problemáticas identificadas en su entorno profesional","0,8 AÑOS",Presencial y virtual,Montevideo,Metropolitana,,,,0,0,0,0,,,,,,6,2,8,5,1,6,6,,,,,,https://utec.edu.uy/es/educacion/posgrado/especializacion-en-fabricacion-digital-e-innovacion/,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Especialización en Aprendizaje Automático,"La Especialización en Machine Learning pretende capacitar a sus participantes en el desarrollo de soluciones computacionales que emplean el aprendizaje automático de máquinas. El egresado desarrollará una visión técnica que le permitirá identificar problemáticas o áreas de oportunidad relacionadas con el análisis de datos mediante el uso de herramientas tecnológicas. Podrá aplicar metodologías de analítica descriptiva, diagnóstica y predictiva para optimizar procesos productivos, administrativos, financieros y/o tecnológicos, además de promover la toma de decisiones basadas en hechos y datos concretos. Desde un punto de vista técnico, los egresados serán capaces de:
-
-analizar grandes volúmenes de datos
-plantear modelos matemáticos y utilizar herramientas estadísticas para realizar predicciones basadas en datos
-identificar y desarrollar modelos y metodologías adecuadas para extraer información significativa para la toma de decisiones
-desarrollar y crear algoritmos de aprendizaje automático para extraer información significativa de datos aparentemente no estructurados
-aplicar métodos de aprendizaje no supervisado, incluidas las metodologías de agrupamiento de datos (clustering) y redes neuronales","1,1 AÑOS",Presencial y virtual,Montevideo,Metropolitana,NO,,NO,0,0,0,0,,,,,,4,1,5,3,1,4,4,,,,,,https://utec.edu.uy/es/educacion/posgrado/especializacion-en-aprendizaje-automatico/,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Especialización en Tecnología Educativa,"Los participantes que finalicen la especialización serán capaces de:
-
-Analizar y gestionar el uso de herramientas digitales de manera reflexiva para poder decidir cómo, cuándo y para qué usarlas en la realidad de cada contexto.
-Transformar medios y herramientas digitales en recursos educativos con fines didácticos.
-Identificar y reflexionar sobre el potencial pedagógico y didáctico de las tecnologías educativas consolidadas y emergentes.
-Diseñar experiencias de aprendizaje digitales alineadas con los objetivos educativos y realidades de cada contexto.",1 AÑO,Virtual,Montevideo,Metropolitana,,,,17,16,33,33,,,,,,17,16,33,0,0,0,0,,,,,,https://utec.edu.uy/es/educacion/posgrado/especializacion-en-tecnologia-educativa/,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Especialización en Ciberseguridad,"Desde un punto de vista relacionado a competencias técnicas, los egresados de la Especialización en Ciberseguridad serán capaces de:
-
-Analizar y aplicar las técnicas básicas de prevención, protección y detección de ataques a un sistema informático.
-Evaluar y tomar las decisiones más adecuadas en cuanto a la selección y uso de herramientas y tecnologías del mercado en el ámbito de la ciberseguridad y la privacidad.
-Identificar, examinar y evaluar los principales riesgos de un dominio informático y diseñar estrategias para gestionarlos.
-Analizar la implementación y despliegue de soluciones criptográficas para validar su funcionamiento.
-Conocer las herramientas y los métodos de pentesting en los servidores de datos.
-Fortalecer los diferentes tipos de bases de datos, para asegurar la integridad, la disponibilidad y la confidencialidad de la información almacenada.
-Formular y desarrollar soluciones integrales e innovadoras en el ámbito de la ciberseguridad y privacidad, teniendo en cuenta las dinámicas de transformación y las tendencias tecnológicas.
-Realizar una configuración segura y robusta de un servidor GNU/Linux o Windows.
-Utilizar herramientas para la administración y la protección de redes cableadas e inalámbricas, y la gestión de alertas de seguridad.
-Mantener y controlar los sistemas informáticos, preparando ataques para encontrar malas configuraciones.","0,9 años",Virtual,Montevideo,Metropolitana,SI,50%,NO,,,0,,,,,,,,,0,,,0,,,,,,,https://utec.edu.uy/es/educacion/posgrado/especializacion-en-ciberseguridad/,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Diploma,Diploma en Evaluación para el Cambio,"Entender la evaluación: conocer las principales características de la disciplina, sus propósitos, funciones y la distinción de otras disciplinas.
-Diseñar una evaluación: comprender el contexto del proyecto, formular el modelo lógico, identificar las preguntas de evaluación y diseñar los indicadores, analizarlos y criticarlos.
-Implementar una evaluación: explorar fuentes de información existentes, así como diseñar y aplicar instrumentos de relevamiento de información, articulando con el contexto de la intervención y el diseño de la evaluación.
-Encargar una evaluación: conocer las fases del proyecto de la evaluación, sus principales requerimientos y características con el propósito de desempeñar un adecuado rol de contraparte del encargo.","0,8 AÑOS",Virtual,Montevideo,Metropolitana,SI,100%,SI,5,13,18,18,,,,,,7,13,20,0,0,0,0,,,,,,https://utec.edu.uy/es/educacion/posgrado/diploma-en-evaluacion-para-el-cambio/,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Maestría,Maestría en Diseño de Ambientes de Aprendizaje,"Los profesionales en diseño de ambientes de aprendizaje con énfasis en enseñanza y aprendizaje de lenguas serán capaces de: 
-
-analizar y diagnosticar problemas educativos actuales, con especial énfasis en el diseño de ambientes de aprendizaje, el uso de tecnologías, políticas educativas y aspectos comunitarios de los procesos de aprendizaje.  
-diseñar ambientes de aprendizaje de lenguas alineados con objetivos educativos y las realidades de cada contexto;
-evaluar problemas educacionales en el área de lenguas y el impacto de las soluciones diseñadas;
-liderar procesos de acompañamiento a docentes, estudiantes e instituciones en la adaptación de propuestas innovadoras;
-diseñar e implementar proyectos de investigación para contribuir a la construcción de conocimiento sobre su área de interés.",2 AÑOS,Virtual,Montevideo,Metropolitana,,,,14,36,50,50,,,,,,19,33,52,1,1,2,2,,,,,,https://utec.edu.uy/es/educacion/posgrado/maestria-en-diseno-de-ambientes-de-aprendizaje/,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Maestría,Maestría Profesional en Ciencia de Datos,"Desde un punto de vista técnico, los egresados serán capaces de: 
-
-analizar grandes volúmenes de datos, 
-plantear modelos matemáticos y utilizar herramientas estadísticas para realizar predicciones basadas en datos, 
-identificar y desarrollar modelos y metodologías adecuadas para extraer información significativa para la toma de decisiones, 
-desarrollar y crear algoritmos de aprendizaje automático para extraer información significativa de datos aparentemente no estructurados, 
-aplicar métodos de aprendizaje no supervisado, incluidas las metodologías de agrupamiento de datos (clustering) y redes neuronales. ",2 AÑOS,Presencial y virtual,Montevideo,Metropolitana,SI,,NO,19,7,26,26,,,,,,61,31,92,14,5,19,19,,,,,,https://utec.edu.uy/es/educacion/posgrado/maestria-profesional-en-ciencia-de-datos/,
-UTEC,ITR Norte,Rivera,Posgrado,Especialización,Posgrado en Robótica e Inteligencia Artificial,"Los egresados de este curso tendrán competencia para:
-
-Desarrollar procesos y proyectos relacionados a la Robótica e Inteligencia Artificial, incluyendo temas ligados a áreas de la Industria 4.0 e Internet de las cosas.
-Evaluar el impacto social y posibles desbordamientos éticos que el uso de estas tecnologías puede causar en la sociedad.
-Actuar, más específicamente, en los temas de aprendizaje de la máquina, robótica de manipuladores, robotics operating system (ROS), visión computacional, internet de las cosas, Industrias 4.0, y robótica educacional.
-Incorporar los temas del curso de forma creativa, emprendedora e interdisciplinar en temas vinculados a las áreas de actuación profesional del propio estudiante.",1 AÑO,Presencial y virtual,Rivera,Norte,,,,26,3,29,,,,29,,29,27,3,30,0,0,0,,,,0,,,https://utec.edu.uy/es/educacion/posgrado/posgrado-en-robotica-e-inteligencia-artificial/,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Posgrado en Saneamiento e Ingeniería Sanitaria,"Comprender y analizar los sistemas de drenaje y alcantarillado urbano y tecnologías de proceso de tratamiento de aguas residuales, lodos yresiduos solidos. Diseñar sistemas de depuración de aguadas residuales. Desarrollar enfoques racionales hacia la gestión sostenible de aguas residuales. Comprender el papel del saneamiento en el ciclo del agua urbana. ",1 AÑO,Presencial y virtual,Durazno/ Montevideo,Centrosur/ Metropolitana,SI,100%,SI,,,0,,,,,,,,,0,,,0,,,,,,,https://utec.edu.uy/es/educacion/posgrado/programa-de-posgrado-en-saneamiento-e-ingenieria-sanitaria/,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Maestría,Posgrado en Saneamiento e Ingeniería Sanitaria,"Comprender y analizar los sistemas de drenaje y alcantarillado urbano y tecnologías de proceso de tratamiento de aguas residuales, lodos yresiduos solidos. Diseñar sistemas de depuración de aguadas residuales. Desarrollar enfoques racionales hacia la gestión sostenible de aguas residuales. Comprender el papel del saneamiento en el ciclo del agua urbana. ",2 AÑOS,Presencial y virtual,Durazno,Centrosur,SI,100%,SI,25,20,45,45,,,,,,25,20,45,0,0,0,0,,,,,,https://utec.edu.uy/es/educacion/posgrado/programa-de-posgrado-en-saneamiento-e-ingenieria-sanitaria/,
-UTU/ UTEC,ITR Suroeste,Fray Bentos,Pregrado,Tecnologo,Tecnologo en Mecatrónica,"Instalar y poner en servicio maquinaria automatizada, principalmente en los contextos industriales y de servicios.  Realizar el mantenimiento operacional e implementar estrategias para la mejora del rendimiento de instalaciones y/o maquinaria automatizada.  Supervisar y/o participar de proyectos en el área de Mecatrónica. Desarrollar relaciones profesionales con clientes y proveedores (nacionales e internacionales).",3 AÑOS,Presencial,Rivera,Norte,,,,,,0,,,,,,,,,0,,,0,,,,,,,https://educacionterciaria.utu.edu.uy/tecn%C3%B3logo-mecatronica,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Maestría,Maestría en Gestión de Cadena de Suministro,"El egresado estará capacitado para aplicar las metodologías cuantitativas y cualitativas necesarias para el relevamiento, diagnóstico, evaluación, diseño e implementación de las mejores prácticas en gestión de SCM y logística. A su vez, adquirirá herramientas analíticas y de gestión para decidir sobre la utilización eficiente de activos, la productividad organizacional, la optimización de costos y el cumplimiento del nivel de servicio que el cliente requiera, en un entorno dinámico y ajustado a las restricciones existentes. Por otra parte, deberá generar capacidades para integrar en las organizaciones visiones estratégicas, operacionales y tácticas en SCM y logística integrando modelos centralizados y descentralizados a través de proyectos y herramientas de mejora continua.",2 AÑOS,Presencial y virtual,Montevideo,Metropolitana,SI,,SI,0,0,0,0,,,,,,8,7,15,0,0,0,0,,,,,,Anuario Estadistico de Educación 2022,
-UTEC,ITR Norte,Rivera,Grado,Licenciatura,Licenciatura en Ingeniería de Datos e Inteligencia Artificial,"os egresados de esta carrera serán competentes para:
-
-Aplicar matemática, estadística, minería de datos y técnicas de creación de modelos predictivos para obtener información, predecir comportamientos y generar valor a partir de los datos.
-Diseñar, construir, poner en funcionamiento, asegurar y monitorear sistemas de procesamiento y análisis de datos.
-Desarrollar sistemas que aprendan mediante la experiencia y el uso de datos.",4 AÑOS,Presencial ,Rivera,Norte,,,,,,,,,,,,,,,,,,,,,,,,,https://utec.edu.uy/es/educacion/carrera/licenciatura-en-ingenieria-de-datos-e-inteligencia-artificial/,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Programa de Posgrado en BioCiencia y Sostenibilidad Alimentaria,"El programa está diseñado para formar profesionales que incorporen una visión integral de las Biociencias para el diseño de productos con una visión multidisciplinaria y actualizada.
-El egresado adquirirá conocimientos especializados de Biotecnología con Seguridad y Sostenibilidad Alimentaria necesarios para la elaboración y comercialización de alimentos, teniendo en cuenta la dimensión social y sanitaria integral con enfoque al sector productivo.
-El mismo contribuirá a la investigación e innovación biotecnológica y a la generación de alimentos con atributos específicos, aplicando un análisis crítico y pensamiento autónomo, con compromiso social y actitud ética. Utilizará herramientas instrumentales de biotecnología y nutrición, con habilidades especializadas para su uso en investigación, diseño y desarrollo de alimentos, así como en el manejo de herramientas básicas computacionales.
-Podrá realizar asesoramiento, consultorías y promover la bioseguridad en aspectos relacionados con la biotecnología y la nutrición.",,,Paysandú,Centrosur,,,,,,,,,,,,,,,,,,,,,,,,,https://utec.edu.uy/es/educacion/posgrado/programa-de-posgrado-en-biociencias-y-sostenibilidad-alimentaria/,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Maestría,Maestría Profesional en Evaluación Transformadora para la sostenibilidad,"Se espera que las personas que egresen de la maestría profesional cuenten con las competencias para contribuir desde la evaluación, como una herramienta para la transformación, para influenciar, trabajar e intervenir en su realidad local así como tener las competencias necesarias para comprender conceptos de desarrollo sostenible desde la estrategia organizacional a través del diseño e interpretación de indicadores, reportes de sostenibilidad y formulación de recomendaciones en el marco de las nuevas economías.
-
-
-Los profesionales egresados/as de la titulación a nivel de maestría profesional serán capaces de:
-
-Comprender la evaluación como una herramienta para la transformación y la transición a la sostenibilidad en un marco de comprensión crítica de los enfoques denominados nuevas economías.
-Proponer el diseño de evaluaciones con un enfoque de triple impacto en el marco de la transición hacia la sostenibilidad.
-Adaptarse y orientarse a las condiciones estipuladas bajo los estándares del paradigma de la sostenibilidad.
-Formular recomendaciones enmarcadas en la responsabilidad social y desarrollo sostenible.",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Especialización en Educación Superior Tecnológica y Profesional,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Nombre Institución (s/a),Servicio ,Nombre (Sede),Nivel,Típo de Carrera,Nombre de la carrera,Duración (años),Modalidad de Dictado,Departamento de Dictado,ZONA ,Fuente,Becas
+UTEC/ UDELAR/ CETP,ITR Suroeste,Polo Tecnológico,Pregrado,Tecnologo,Tecnólogo Químico,2 AÑOS,Presencial,Paysandú,Suroeste,https://utec.edu.uy/es/educacion/carrera/tecnologo-quimico/,
+UTEC,ITR Suroeste,Nueva Helvecia,Pregrado,Tecnologo,Tecnólogo en Manejo de Sistemas de Producción Lechera,2 AÑOS,Presencial,Colonia,Suroeste,https://utec.edu.uy/es/educacion/carrera/tecnologo-en-manejo-de-sistemas-de-produccion-lechera/,
+UTEC,ITR Norte,Rivera,Pregrado,Tecnologo,Tecnólogo en Análisis y Desarrollo de Sistemas,3 AÑOS,Presencial,Rivera,Norte,https://utec.edu.uy/es/educacion/carrera/tecnologo-en-analisis-y-desarrollo-de-sistemas/,
+UTEC/ UDELAR/ CETP,ITR Centro Sur,San José,Pregrado,Tecnologo,Tecnólogo en Informática,3 AÑOS,Presencial,San José ,Centro Sur,,https://utec.edu.uy/es/educacion/carrera/tecnologo-en-informatica/
+UTEC/ UDELAR/ CETP,ITR Suroeste,Paylana,Pregrado,Tecnologo,Tecnólogo en Informática,3 AÑOS,Presencial,Paysandú,Suroeste,,https://utec.edu.uy/es/educacion/carrera/tecnologo-en-informatica/
+UTEC/ UDELAR/ CETP,ITR Este,Maldonado,Pregrado,Tecnologo,Tecnólogo en Informática,3 AÑOS,Presencial,Maldonado,Este,https://utec.edu.uy/es/educacion/carrera/tecnologo-en-informatica/,
+UTEC/ UDELAR/ CETP,ITR Suroeste,Instituto Altamente Especializado,Pregrado,Tecnologo,Tecnólogo Industrial Mecánico,3 AÑOS,Presencial,Paysandú,Suroeste,https://utec.edu.uy/es/educacion/carrera/tecnologo-industrial-mecanico/,
+UTEC,ITR Suroeste,Paylana,Pregrado,Tecnologo,Tecnólogo en Control Ambiental,"1,5 AÑOS (adicionales a nivel Técnico Control Ambiental UTU)",Presencial y virtual,Paysandú,Suroeste,https://utec.edu.uy/es/educacion/carrera/tecnologo-en-control-ambiental/,
+UTEC,ITR Suroeste,mercedes,Grado,Licenciatura,Licenciatura en Jazz y Música Creativa,4 AÑOS,Presencial y virtual,Soriano,Suroeste,https://utec.edu.uy/es/educacion/carrera/licenciatura-en-jazz-y-musica-creativa/,
+UTEC,ITR Suroeste,Fray Bentos,Grado,Ingeniería,Ingeniería en Mecatrónica,5 AÑOS,Presencial y virtual,Río Negro,Suroeste,https://utec.edu.uy/es/educacion/carrera/ingenieria-en-mecatronica/,
+UTEC,ITR Norte,Rivera,Grado,Ingeniería,Ingeniería en Control y Automática,5 AÑOS,Presencial ,Rivera,Norte,https://utec.edu.uy/es/educacion/carrera/ingenieria-en-control-y-automatica/,
+UTEC,ITR Suroeste,Fray Bentos,Grado,Ingeniería,Ingeniería Biomédica,5 AÑOS,Presencial,Río Negro,Suroeste,https://utec.edu.uy/es/educacion/carrera/ingenieria-biomedica/,
+UTEC,ITR Norte,Rivera,Grado,Ingeniería,Ingeniería en Logística,5 AÑOS,Presencial,Rivera,Norte/ Suroeste,https://utec.edu.uy/es/educacion/carrera/ingenieria-en-logistica/,
+UTEC,ITR Suroeste,Fray Bentos,Grado,Ingeniería,Ingeniería en Logística,5 AÑOS,Presencial,Río Negro,Norte/ Suroeste,NO,https://utec.edu.uy/es/educacion/carrera/ingenieria-en-logistica/
+UTEC,ITR Suroeste,Paylana,Grado,Licenciatura,Licenciatura en Análisis Alimentario,4 AÑOS,Presencial y virtual,Paysandú,Suroeste,https://utec.edu.uy/es/educacion/carrera/licenciatura-en-analisis-alimentario/,
+UTEC,ITR Suroeste,La Paz,Grado,Licenciatura,Licenciatura en Ciencia y Tecnología de Lácteos,4 AÑOS,Presencial y virtual,Colonia,Suroeste,https://utec.edu.uy/es/educacion/carrera/licenciatura-en-ciencia-y-tecnologia-de-lacteos/,
+UTEC,ITR Centro Sur,Durazno,Grado,Ingeniería,Ingeniería en Energías Renovables,5 AÑOS,Presencial  ,Durazno,Centrosur,https://utec.edu.uy/es/educacion/carrera/ingenieria-en-energias-renovables/,
+UTEC,ITR Centro Sur,Durazno,Grado,Ingeniería,Ingeniería en Agua y Desarrollo Sostenible,5 AÑOS,Presencial y virtual,Durazno / Cerro Largo,Centrosur/ Norte,https://utec.edu.uy/es/educacion/carrera/ingenieria-en-agua-y-desarrollo-sostenible/,
+UTEC,ITR Centro Sur,Durazno,Grado,Ingeniería,Ingeniería Agroambiental,5 AÑOS,Presencial y virtual,Durazno,Centrosur,https://utec.edu.uy/es/educacion/carrera/ingenieria-agroambiental/,
+UTEC,ITR Centro Sur,Durazno,Grado,Licenciatura,Licenciatura en Tecnologías de la Información ,4 AÑOS,Presencial y virtual,Durazno,Centrosur/Norte/ Este/ Suroeste,https://utec.edu.uy/es/educacion/carrera/licenciatura-en-tecnologias-de-la-informacion/,
+UTEC,ITR Suroeste,Fray Bentos,Grado,Licenciatura,Licenciatura en Tecnologías de la Información ,4 AÑOS,Presencial y virtual,Río Negro/ Cerro Largo/ Lavalleja,Centrosur/Norte/ Este/ Suroeste,,https://utec.edu.uy/es/educacion/carrera/licenciatura-en-tecnologias-de-la-informacion/
+UTEC,ITR Norte,Melo,Grado,Licenciatura,Licenciatura en Tecnologías de la Información ,4 AÑOS,Presencial y virtual,Cerro Largo,Centrosur/Norte/ Este/ Suroeste,,
+UTEC,ITR Este,Minas,Grado,Licenciatura,Licenciatura en Tecnologías de la Información ,4 AÑOS,Presencial y virtual,Lavalleja,Centrosur/Norte/ Este/ Suroeste,,
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Especialización en Fabricación Digital e Innovación,"0,8 AÑOS",Presencial y virtual,Montevideo,Metropolitana,https://utec.edu.uy/es/educacion/posgrado/especializacion-en-fabricacion-digital-e-innovacion/,
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Especialización en Aprendizaje Automático,"1,1 AÑOS",Presencial y virtual,Montevideo,Metropolitana,https://utec.edu.uy/es/educacion/posgrado/especializacion-en-aprendizaje-automatico/,NO
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Especialización en Tecnología Educativa,1 AÑO,Virtual,Montevideo,Metropolitana,https://utec.edu.uy/es/educacion/posgrado/especializacion-en-tecnologia-educativa/,
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Especialización en Ciberseguridad,"0,9 años",Virtual,Montevideo,Metropolitana,https://utec.edu.uy/es/educacion/posgrado/especializacion-en-ciberseguridad/,SI
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Diploma,Diploma en Evaluación para el Cambio,"0,8 AÑOS",Virtual,Montevideo,Metropolitana,https://utec.edu.uy/es/educacion/posgrado/diploma-en-evaluacion-para-el-cambio/,SI
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Maestría,Maestría en Diseño de Ambientes de Aprendizaje,2 AÑOS,Virtual,Montevideo,Metropolitana,https://utec.edu.uy/es/educacion/posgrado/maestria-en-diseno-de-ambientes-de-aprendizaje/,
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Maestría,Maestría Profesional en Ciencia de Datos,2 AÑOS,Presencial y virtual,Montevideo,Metropolitana,https://utec.edu.uy/es/educacion/posgrado/maestria-profesional-en-ciencia-de-datos/,SI
+UTEC,ITR Norte,Rivera,Posgrado,Especialización,Posgrado en Robótica e Inteligencia Artificial,1 AÑO,Presencial y virtual,Rivera,Norte,https://utec.edu.uy/es/educacion/posgrado/posgrado-en-robotica-e-inteligencia-artificial/,
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Posgrado en Saneamiento e Ingeniería Sanitaria,1 AÑO,Presencial y virtual,Durazno/ Montevideo,Centrosur/ Metropolitana,https://utec.edu.uy/es/educacion/posgrado/programa-de-posgrado-en-saneamiento-e-ingenieria-sanitaria/,SI
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Maestría,Posgrado en Saneamiento e Ingeniería Sanitaria,2 AÑOS,Presencial y virtual,Durazno,Centrosur,https://utec.edu.uy/es/educacion/posgrado/programa-de-posgrado-en-saneamiento-e-ingenieria-sanitaria/,SI
+UTU/ UTEC,ITR Suroeste,Fray Bentos,Pregrado,Tecnologo,Tecnologo en Mecatrónica,3 AÑOS,Presencial,Rivera,Norte,https://educacionterciaria.utu.edu.uy/tecn%C3%B3logo-mecatronica,
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Maestría,Maestría en Gestión de Cadena de Suministro,2 AÑOS,Presencial y virtual,Montevideo,Metropolitana,Anuario Estadistico de Educación 2022,SI
+UTEC,ITR Norte,Rivera,Grado,Licenciatura,Licenciatura en Ingeniería de Datos e Inteligencia Artificial,4 AÑOS,Presencial ,Rivera,Norte,https://utec.edu.uy/es/educacion/carrera/licenciatura-en-ingenieria-de-datos-e-inteligencia-artificial/,
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Programa de Posgrado en BioCiencia y Sostenibilidad Alimentaria,,,Paysandú,Centrosur,https://utec.edu.uy/es/educacion/posgrado/programa-de-posgrado-en-biociencias-y-sostenibilidad-alimentaria/,
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Maestría,Maestría Profesional en Evaluación Transformadora para la sostenibilidad,,,,,,
+UTEC,ITR Centro Sur,Montevideo,Posgrado,Especialización,Especialización en Educación Superior Tecnológica y Profesional,,,,,,
