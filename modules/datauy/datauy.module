@@ -440,7 +440,8 @@ function datauy_find_establecimiento_by_name($name){
 		->propertyCondition('title', $name)
     ->execute();
   if (!empty($result['node'])) {
-    return array_shift(array_keys($result['node']));
+		$node = array_keys($result['node']);
+    return array_shift($node);
   }else{
     return false;
   }
@@ -552,6 +553,7 @@ function datauy_create_curso_node($params){
 
   //$node->field_number['und'][0]['value'] = $rowParsed[3];
 	if ( !($nid = datauy_find_curso($node)) ){
+		watchdog('datauy', "NO EXISTE EL NODO, SE CREA");
 		try {
 			node_save($node); //Comentado para evitar duplicados
 		} catch (\Exception $e) {
@@ -561,6 +563,7 @@ function datauy_create_curso_node($params){
 		$nid = $node->nid;
 	}
 	else {
+		watchdog('datauy', "YA EXISTE EL NODO: ".print_r($node, true));
 		$nid = array_shift($nid);
 	}
 	return $nid;
