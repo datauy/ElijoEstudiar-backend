@@ -446,6 +446,84 @@ function datauy_find_establecimiento_by_name($name){
     return false;
   }
 }
+function datauy_search_cursos($node){
+  if( empty( $node ) ){
+    return false;
+  }
+  $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', "cursos")
+    ->propertyCondition('status', 1)
+		//->fieldCondition('field_nivel', 'target_id', $node->field_nivel['und'][0]['target_id'] )
+		//->addTag('establecimiento')
+		->fieldCondition('field_tipo_curso', 'target_id', $node->field_tipo_curso['und'][0]['target_id'] );
+		if ( isset($node->field_a_o['und']) )
+			$query->fieldCondition('field_a_o', 'value', $node->field_a_o['und'][0]['value'] );
+		if ( isset($node->field_plan['und']) )
+    	$query->fieldCondition('field_plan', 'value', $node->field_plan['und'][0]['value'] );
+		if ( isset($node->field_c_digo['und']) )
+			$query->fieldCondition('field_c_digo', 'value', $node->field_c_digo['und'][0]['value'] );
+		if ( isset($node->field_orientaci_n['und']) )
+    	$query->fieldCondition('field_orientaci_n', 'target_id', $node->field_orientaci_n['und'][0]['target_id'] );
+		
+    $result = $query->range(0,20)->execute();
+  if (!empty($result['node'])) {
+    return array_keys($result['node']);
+  }else{
+    return false;
+  }
+}
+//
+function datauy_search_oferta($cursos, $turnos = false, $est = false){
+	$query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+	->propertyCondition('type', "oferta")
+	->propertyCondition('status', 1)
+	//->fieldCondition('field_turno', 'target_id', $oferta['turno'] )
+	->fieldCondition('field_curso', 'target_id', $cursos, 'in' )
+	->addTag('oferta');
+	if ( $est )
+		$query->fieldCondition('field_establecimiento', 'target_id', $est );
+	if ( $turnos )
+		$query->fieldCondition('field_turno', 'target_id', array_keys($turnos), 'in' );
+	$result = $query->execute();
+	if (!empty($result['node'])) {
+		return array_keys($result['node']);
+	}
+	else{
+		return false;
+	}
+}
+/**
+ * Implements hook_query_TAG_alter
+ * @param QueryAlterableInterface $query
+ */
+function datauy_query_oferta_alter($query) {
+	if (isset($_GET['ubicacion']) && $_GET['ubicacion'] ) {
+		$ubicacion = explode(',', $_GET['ubicacion'] );
+		$table_alias = 'field_ubicaci_n';
+		$lat_alias = 'ubic' . '.' . $table_alias . '_lat';
+		$lon_alias = 'ubic' . '.' . $table_alias . '_lon';
+		$haversine_options = array(
+			'origin_latitude' => $ubicacion[0],
+			'origin_longitude' => $ubicacion[1],
+			'destination_latitude' => $lat_alias,
+			'destination_longitude' => $lon_alias,
+			'earth_radius' => GEOFIELD_KILOMETERS,
+		);
+		$query->leftJoin('field_data_field_establecimiento', 'est', 'node.nid = est.entity_id');
+		$query->leftJoin('field_data_field_ubicaci_n', 'ubic', 'est.field_establecimiento_target_id = ubic.entity_id');
+		$query->orderby(geofield_haversine($haversine_options), 'asc');
+	}
+	//$query->condition('curso.field_tipo_curso_target_id', '1088', '=' );
+	//$query->leftJoin('field_data_field_curso', 'curso', 'node.field_data_field_curso = curso.entity_id');
+			/*$or_max = db_or()
+			->condition('max.field_edad_max_value', array($edad), '>=')
+			->isNull('max.field_edad_max_value');
+			$query->condition($or_max);
+			*/
+}
+
 function datauy_find_curso($node){
   if( empty( $node ) ){
     return false;
@@ -853,7 +931,7 @@ function datauy_import_establecimientos() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$fpath = './sites/ElijoEstudiar-backend/import/2023/centros_UTEC.csv';
+	$fpath = './sites/ElijoEstudiar-backend/import/2023/UDELAR_centros.csv';
 	$tipos_hand = fopen($fpath, 'r') or die("can't open $fpath");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -1622,6 +1700,76 @@ function datauy_import_UTEC() {
 	return 1;
 }
 //
+function datauy_import_UDELAR() {
+	$message .=  "\nArranca import UDELAR<pre>";
+	$i=0;
+	$fails = 0;
+	$repeated = 0;
+	$tipos_hand = fopen('./sites/ElijoEstudiar-backend/import/2023/UDELAR.csv', 'r') or die("can't open ./import/2023/UDELAR.csv");
+	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
+		if (!$i){
+			$i++;
+			continue;
+		}
+    if ( !$est = datauy_find_establecimiento_by_name($rowParsed[3]) ) {
+      $message .=  "\nEST NO encontrado: $rowParsed[1]";
+      $fails++;
+      continue;
+    }
+		$nivel = 625;
+		//Verificar tipo
+		//TODO: Fuente WEB del tipo
+		$tipo = datauy_add_taxonomy($rowParsed[6], array('tipo_de_curso', 8));
+		$orientacion = datauy_add_taxonomy($rowParsed[0], array('orientaci_n', 9), $rowParsed[5]);
+		//Verificar orientacion
+		$curso_params = array(
+			'title' => $rowParsed[0],
+			'nivel' => $nivel,
+			'tipo' => $tipo,
+			'orientaci_n' => $orientacion,
+			'web' => $rowParsed[5],
+			'subsis' => 993,
+			'titulaci_n' => datauy_add_taxonomy($rowParsed[7], array('titulaci_n', 12))
+		);
+		if ( $curso_id = datauy_create_curso_node($curso_params) ) {
+			watchdog('datauy', "Curso CREADO: $curso_id: \n".print_r($curso_params, true));
+			$turno = 220; //Sin turno
+			$oferta_params = array(
+				'title' => $rowParsed[5],
+				//'rule' => $rowParsed[11],
+				//'ruee' => $rowParsed[10],
+        'est' => $est,
+				'curso' => $curso_id,
+				'turno' => $turno,
+				'duraci_n' => datauy_add_taxonomy($rowParsed[1], array('duraci_n', 14)),
+				//'modalidad' => datauy_add_taxonomy($rowParsed[7], array('modalidad', 13))
+			);
+			$oferta_creada = datauy_create_oferta_node($oferta_params);
+			if ($oferta_creada[0] && $oferta_creada[1]){
+				$i++;
+			}
+			elseif ($oferta_creada[0]) {
+				$repeated++;
+			}
+			else {
+				$fails++;
+			}
+		}
+		else {
+			$fails++;
+			$message .=  "No se pudo crear el curso: ".print_r($rowParsed[0], TRUE);
+		}
+		//Para la región se evaluará su pertinencia
+		//$region = taxonomy_get_term_by_name('CAMPUS REGIONAL EDUC. TECNOLOGICA LITORAL NORTE', 'regional');
+		//Crear curso en caso que no exista
+	}
+	$res = "Se crearon/actualizaron ".($i - 1)." nodos, no se agregaron ".$repeated." por estar repetidos. Fallaron ".$fails;
+	$message .= $res;
+	watchdog('datauy', $res);
+	print $message;
+	return 1;
+}
+//
 function datauy_import_tipos() {
 	$tipos_hand = fopen(drupal_get_path('module', 'datauy').'/import/tipos_act.csv', 'r') or die("can't open ./import/tipos_act.csv");
 	while (($row = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
@@ -1983,19 +2131,20 @@ function datauy_api_cursos() {
 	}
 	else
 		$tipo = 'all';
-	// TODO: Arreglar turnos!!!!! Hacer query acá y dejar la vista...
-	$turnos = array();
+	// TODO: Arreglar turnos!!!!!.
+	$turnos = false;
 	if ( isset($_GET['turnos']) && $_GET['turnos'] != 'all' ) {
-		$busqueda->field_turnos['und'][0]['value'] = $_GET['turnos'];
 		$turnos_arr = explode(',', $_GET['turnos']);
-		//Agrupamos turnos
-		foreach ($turnos_arr as $turno_str) {
-			$turnos += datauy_turnos_map($turno_str, 0);
+		if ( count($turnos_arr) < 4 ) {
+			$turnos = [];
+			//Agrupamos turnos
+			foreach ($turnos_arr as $turno_str) {
+				$turnos += datauy_turnos_map($turno_str, 0);
+			}
+			$busqueda->field_turnos['und'][0]['value'] = $turnos;
 		}
 	}
-	else {
-		$turnos = array('all'=>1);
-	}
+	$ubicacion = false;
 	if ( isset($_GET['ubicacion']) && $_GET['ubicacion'] != 'all' ) {
 		$ubica_arr = explode(',', $_GET['ubicacion']);
 		$busqueda->field_ubicaci_n['und'][0] = array(
@@ -2004,114 +2153,116 @@ function datauy_api_cursos() {
 	  );
 		$ubicacion = $_GET['ubicacion'];
 	}
-	else
-		$ubicacion = 'all';
+	$centro = false;
 	if ( isset($_GET['centro']) ){
 		$centro = $_GET['centro'];
-		$busqueda->field_tipo_curso['und'][0]['target_id'] = $centro;
+		$busqueda->field_establecimiento['und'][0]['target_id'] = $centro;
 	}
-	else
-		$centro = 'all';
 	// TODO: levantar filtros por edad
 	// TODO: Mapear turnos
-	$cursos_arr = [];
+	/*$cursos_arr = [];
 	// TODO: NO PERMITIR UNA QUERY CON TODO EN ALL!!!!
-	$view = views_get_view('cursos_api');
-	$view->set_arguments(array($ubicacion, $orientacion, $tipo, $centro));
-	$view->set_exposed_input( array( "turnos" => array_keys($turnos) ) );
-	$view->init_display();
-	$view->pre_execute();
-	$view->execute();
-	$cursos = $view->result;//views_get_view_result('cursos_test', 'default', $ubicacion, implode(',',array_keys($turnos)), $orientacion, $tipo);
-	//array_unshift($_GET, 'cursos', 'default');
-	//$cursos = call_user_func_array('views_get_view_result', $_GET);
+	*/
+	$cursos_ids = datauy_search_cursos($busqueda);
+	$oferta_ids = datauy_search_oferta($cursos_ids, $turnos, $centro);	
+	//TODO ARREGLAR TURNOS
+	/*watchdog('datauy', 'OFERTA EN CURSOS:'.print_r($oferta_ids, true));
+	print '<pre>';
+	print_r($cursos_ids);
+	exit();*/
+	$ofertas = node_load_multiple($oferta_ids);
 	//Armamos array para mantener el orden:
 	$cursos_est = array();
-	foreach ($cursos as $curso) {
-		/*print '<pre>';
-		print_r($curso);
-		exit();*/
-		//$oferta = $curso->_field_data['field_curso_node_nid']['entity'];
-		$est = $curso->_field_data['node_field_data_field_establecimiento_nid']['entity'];
-		//Si está el curso cargo sólo la oferta
-		if ( !isset($cursos_arr[$curso->nid]) ){
-			$cursos_est[$curso->nid] = array();
-			$curso_obj = $curso->_field_data['nid']['entity'];
-			if ( isset($edad) &&
-				( (isset($curso_obj->field_edad_max['und']) && $edad >= $curso_obj->field_edad_max['und'][0]['value']) ||
-				(isset($curso_obj->field_edad_min['und']) && $edad <= $curso_obj->field_edad_min['und'][0]['value']) )) {
-				//No tomamos el curso
-				continue;
-			}
-			$cursos_arr[$curso->nid] = array(
-				'plan' => isset($curso_obj->field_plan['und']) ? $curso_obj->field_plan['und']['0']['value'] : '',
-				'año' => isset($curso_obj->field_a_o['und']) ? $curso_obj->field_a_o['und']['0']['value'] : '',
-			);
-			//Levantamos taxonomías
-			foreach ($references as $field) {
-				if ( isset($curso_obj->$field) ) {
-					$field_arr = $curso_obj->$field;
-					if ( isset($field_arr['und']) ) {
-						$tid = $field_arr['und']['0']['target_id'];
-						$tax_field = $taxonomies[$field][$tid];
-						$cursos_arr[$curso->nid][$field] = $tax_field->name;
+	$cursos_arr = [];
+	if ( $ofertas ) {
+		$cursos = node_load_multiple($cursos_ids);
+		foreach ($cursos as $curso) {
+			$curso_obj = $curso;
+			foreach ($ofertas as $oid => $oferta) {
+				if ( $oferta->field_curso['und'][0]['target_id'] == $curso->nid) {
+					$est = node_load($oferta->field_establecimiento['und'][0]['target_id']);
+					//Si está el curso cargo sólo la oferta
+					if ( !isset($cursos_arr[$curso->nid]) ){
+						$cursos_est[$curso->nid] = array();
+						if ( isset($edad) &&
+							( (isset($curso_obj->field_edad_max['und']) && $edad >= $curso_obj->field_edad_max['und'][0]['value']) ||
+							(isset($curso_obj->field_edad_min['und']) && $edad <= $curso_obj->field_edad_min['und'][0]['value']) )) {
+							//No tomamos el curso
+							continue;
+						}
+						$cursos_arr[$curso->nid] = array(
+							'plan' => isset($curso_obj->field_plan['und']) ? $curso_obj->field_plan['und']['0']['value'] : '',
+							'año' => isset($curso_obj->field_a_o['und']) ? $curso_obj->field_a_o['und']['0']['value'] : '',
+						);
+						//Levantamos taxonomías
+						foreach ($references as $field) {
+							if ( isset($curso_obj->$field) ) {
+								$field_arr = $curso_obj->$field;
+								if ( isset($field_arr['und']) ) {
+									$tid = $field_arr['und']['0']['target_id'];
+									$tax_field = $taxonomies[$field][$tid];
+									$cursos_arr[$curso->nid][$field] = $tax_field->name;
+								}
+								else {
+									$cursos_arr[$curso->nid][$field] = '';
+								}
+							}
+							//else {
+							//	$cursos_arr[$curso->nid][$field] = '';
+							//}
+						}
+						if ( $cursos_arr[$curso->nid]['field_orientaci_n'] == '' ) {
+							$cursos_arr[$curso->nid]['field_orientaci_n'] = $cursos_arr[$curso->nid]['field_tipo_curso'];
+						}
+						$oid = $curso_obj->field_orientaci_n['und']['0']['target_id'];
+						$tipoid = $curso_obj->field_tipo_curso['und']['0']['target_id'];
+						$nid = $curso_obj->field_nivel['und']['0']['target_id'];
+						$cursos_arr[$curso->nid]['url'] = $curso_obj->field_web['und']['0']['value'];
+						$cursos_arr[$curso->nid]['tags'] = datauy_set_curso_tags($taxonomies['field_orientaci_n'][$oid], $taxonomies['field_tipo_curso'][$tipoid], $taxonomies['field_nivel'][$nid]);
 					}
-					else {
-						$cursos_arr[$curso->nid][$field] = '';
+					if (!isset($cursos_est[$curso->nid][$est->nid])) {
+						//Contador para mantener el orden
+						if ( isset($cursos_arr[$curso->nid]['oferta']) )
+							$count = count($cursos_arr[$curso->nid]['oferta']);
+						else
+							$count = 0;
+						$cursos_est[$curso->nid][$est->nid] = $count;
+						$cursos_arr[$curso->nid]['oferta'][] = array(
+							'nombre' => $est->title,
+							'lat' => $est->field_ubicaci_n['und'][0]['lat'],
+							'long' => $est->field_ubicaci_n['und'][0]['lon'],
+							'id' => $est->nid,
+							'turnos' => [],
+							'turnos_ext' => [],
+						);
 					}
-				}
-				//else {
-				//	$cursos_arr[$curso->nid][$field] = '';
-				//}
-			}
-			if ( $cursos_arr[$curso->nid]['field_orientaci_n'] == '' ) {
-				$cursos_arr[$curso->nid]['field_orientaci_n'] = $cursos_arr[$curso->nid]['field_tipo_curso'];
-			}
-			$oid = $curso_obj->field_orientaci_n['und']['0']['target_id'];
-			$tipoid = $curso_obj->field_tipo_curso['und']['0']['target_id'];
-			$nid = $curso_obj->field_nivel['und']['0']['target_id'];
-			$cursos_arr[$curso->nid]['url'] = $curso_obj->field_web['und']['0']['value'];
-			$cursos_arr[$curso->nid]['tags'] = datauy_set_curso_tags($taxonomies['field_orientaci_n'][$oid], $taxonomies['field_tipo_curso'][$tipoid], $taxonomies['field_nivel'][$nid]);
-		}
-		if (!isset($cursos_est[$curso->nid][$est->nid])) {
-			//Contador para mantener el orden
-			if ( isset($cursos_arr[$curso->nid]['oferta']) )
-				$count = count($cursos_arr[$curso->nid]['oferta']);
-			else
-				$count = 0;
-			$cursos_est[$curso->nid][$est->nid] = $count;
-			$cursos_arr[$curso->nid]['oferta'][] = array(
-				'nombre' => $est->title,
-				'lat' => $est->field_ubicaci_n['und'][0]['lat'],
-				'long' => $est->field_ubicaci_n['und'][0]['lon'],
-				'id' => $est->nid,
-				'turnos' => [],
-				'turnos_ext' => [],
-			);
-		}
-		$est_key = $cursos_est[$curso->nid][$est->nid];
-		//Cargamos taxo turno
-		foreach ($curso->field_field_turno as $turno_arr) {
-			$turno = $turno_arr['raw']['entity'];
-			if ( $turno_ext = datauy_turnos_map(0, $turno->tid) ) {
-				if ( !in_array($turno_ext, $cursos_arr[$curso->nid]['oferta'][$est_key]['turnos_ext']) ) {
-					$cursos_arr[$curso->nid]['oferta'][$est_key]['turnos_ext'][] = $turno_ext;
+					$est_key = $cursos_est[$curso->nid][$est->nid];
+					//Cargamos taxo turno
+					//TODO: ARMAR TURNOS?
+					/*foreach ($curso->field_field_turno as $turno_arr) {
+						$turno = $turno_arr['raw']['entity'];
+						if ( $turno_ext = datauy_turnos_map(0, $turno->tid) ) {
+							if ( !in_array($turno_ext, $cursos_arr[$curso->nid]['oferta'][$est_key]['turnos_ext']) ) {
+								$cursos_arr[$curso->nid]['oferta'][$est_key]['turnos_ext'][] = $turno_ext;
+							}
+						}
+						if ( !in_array($turno->name, $cursos_arr[$curso->nid]['oferta'][$est_key]['turnos']) ) {
+							$cursos_arr[$curso->nid]['oferta'][$est_key]['turnos'][] = $turno->name;
+						}
+					}*/
+					/*
+					$tax_field = $taxonomies['field_turno'][$tid];
+					$turno = $tax_field->name;*/
+					/*Cargamos oferta
+					$cursos_arr[$curso->nid]['oferta'][$est->nid] = array(
+						'horas' => isset($oferta->field_horas['und']) ? $oferta->field_horas['und']['0']['value'] : '',
+						'grupos' => isset($oferta->field_grupos['und']) ? sizeof($oferta->field_grupos['und']) : 0,
+						'establecimiento_id' => $oferta->field_establecimiento['und']['0']['target_id'],
+						'turno' => $turno
+					);*/
 				}
 			}
-			if ( !in_array($turno->name, $cursos_arr[$curso->nid]['oferta'][$est_key]['turnos']) ) {
-				$cursos_arr[$curso->nid]['oferta'][$est_key]['turnos'][] = $turno->name;
-			}
 		}
-		/*
-		$tax_field = $taxonomies['field_turno'][$tid];
-		$turno = $tax_field->name;*/
-		/*Cargamos oferta
-		$cursos_arr[$curso->nid]['oferta'][$est->nid] = array(
-			'horas' => isset($oferta->field_horas['und']) ? $oferta->field_horas['und']['0']['value'] : '',
-			'grupos' => isset($oferta->field_grupos['und']) ? sizeof($oferta->field_grupos['und']) : 0,
-			'establecimiento_id' => $oferta->field_establecimiento['und']['0']['target_id'],
-			'turno' => $turno
-		);*/
 	}
 	//Chequeamos previas
 	if ( isset($_GET['aprobado_tipo']) && $_GET['aprobado_tipo'] != 'all' ) {
