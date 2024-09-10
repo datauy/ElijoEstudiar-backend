@@ -1443,7 +1443,7 @@ function datauy_import_CETP() {
 			'subsis' => 3
 		);
 		if ( $curso_id = datauy_create_curso_node($curso_params) ) {
-      if ( $est = datauy_find_establecimiento_by_rule( $rowParsed[18], $rowParsed[17] ) ) {
+      if ( $est = datauy_find_establecimiento_by_ruee( $rowParsed[17] ) ) {
         $params = array();
         /*if ( isset($rowParsed[14]) && trim($rowParsed[14]) != '' ) {
           $params['mail'] = $rowParsed[14];
@@ -1460,7 +1460,7 @@ function datauy_import_CETP() {
         }*/
     	}
       else {
-        $message .=  "\nEST NO encontrado rule/ruee: $rowParsed[18], $rowParsed[17]";
+        $message .=  "\nEST NO encontrado ruee: $rowParsed[17]";
 				$fails++;
         continue;
       }
@@ -1736,7 +1736,7 @@ function datauy_import_UDELAR() {
 			watchdog('datauy', "Curso CREADO: $curso_id: \n".print_r($curso_params, true));
 			$turno = 220; //Sin turno
 			$oferta_params = array(
-				'title' => $rowParsed[5],
+				'title' => $rowParsed[0],
 				'rule' => false,
 				'ruee' => $est->field_ruee['und'][0]['value'],
         'est' => $est,
@@ -2588,10 +2588,10 @@ function datauy_test($quiere_nid, $tiene_nid) {
 		//datauy_import_previas();
 		//delete_all_oferta();
 		//datauy_import_establecimientos();
-		datauy_import_UTEC();
+		//datauy_import_UTEC();
 		//datauy_import_CEIP();
 		//datauy_import_CES();
-		//datauy_import_CETP();
+		datauy_import_CETP();
 		//datauy_import_CFE();
 		//datauy_import_7_8_9();
 		//datauy_import_ubicaciones($quiere_nid, $tiene_nid);
