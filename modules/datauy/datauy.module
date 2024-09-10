@@ -404,12 +404,13 @@ function datauy_get_cursos_previa($tid) {
 //Funciones customised
 function datauy_find_establecimiento_by_rule($rule, $ruee){
   $query = new EntityFieldQuery();
-    $result = $query->entityCondition('entity_type', 'node')
+  $query->entityCondition('entity_type', 'node')
     ->propertyCondition('type', "establecimiento")
     ->propertyCondition('status', 1)
-    ->fieldCondition('field_rule', 'value', $rule)
-		->fieldCondition('field_ruee', 'value', $ruee)
-    ->execute();
+		->fieldCondition('field_ruee', 'value', $ruee);
+	if ($rule) 
+    	$query->fieldCondition('field_rule', 'value', $rule);
+	$result = $query->execute();
   if (!empty($result['node'])) {
 		$node = array_keys($result['node']);
 		$est = array_shift($node);
@@ -1712,7 +1713,7 @@ function datauy_import_UDELAR() {
 			continue;
 		}
     if ( !$est = datauy_find_establecimiento_by_name($rowParsed[3]) ) {
-      $message .=  "\nEST NO encontrado: $rowParsed[1]";
+      $message .=  "\nEST NO encontrado: $rowParsed[3]";
       $fails++;
       continue;
     }
@@ -1736,8 +1737,8 @@ function datauy_import_UDELAR() {
 			$turno = 220; //Sin turno
 			$oferta_params = array(
 				'title' => $rowParsed[5],
-				//'rule' => $rowParsed[11],
-				//'ruee' => $rowParsed[10],
+				'rule' => false,
+				'ruee' => $est->field_ruee['und'][0]['value'],
         'est' => $est,
 				'curso' => $curso_id,
 				'turno' => $turno,
