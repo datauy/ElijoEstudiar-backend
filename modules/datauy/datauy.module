@@ -932,7 +932,7 @@ function datauy_import_establecimientos() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$fpath = './sites/ElijoEstudiar-backend/import/2023/UDELAR_centros.csv';
+	$fpath = './sites/ElijoEstudiar-backend/import/2024/CFE_centros.csv';
 	$tipos_hand = fopen($fpath, 'r') or die("can't open $fpath");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -940,7 +940,8 @@ function datauy_import_establecimientos() {
 			continue;
 		}
 		$sub = $rowParsed[3];
-		if ( !($est = datauy_find_establecimiento_by_rule($rowParsed[12], $rowParsed[2])) ) {
+		$rule = empty($rowParsed[12]) ? false : $rowParsed[12];
+		if ( !($est = datauy_find_establecimiento_by_rule($rule, $rowParsed[2])) ) {
 			$created = datauy_create_establecimiento_node($rowParsed, $subsis[$sub]);
 			if ($created) {
 				$i++;
@@ -1078,7 +1079,7 @@ function datauy_import_CEIP() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-  $local_path = './sites/ElijoEstudiar-backend/import/2023/CEIP.csv';
+  $local_path = './sites/ElijoEstudiar-backend/import/2024/CEIP.csv';
 	$tipos_hand = fopen($local_path, 'r') or die("can't open $local_path");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -1251,7 +1252,7 @@ function datauy_import_CES() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-  $local_path = './sites/ElijoEstudiar-backend/import/2023/CES.csv';
+  $local_path = './sites/ElijoEstudiar-backend/import/2024/CES.csv';
 	$tipos_hand = fopen($local_path, 'r') or die("can't open $local_path");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -1365,7 +1366,7 @@ function datauy_import_7_8_9() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-  $local_path = './sites/ElijoEstudiar-backend/import/2023/CEIP-7_8_9.csv';
+  $local_path = './sites/ElijoEstudiar-backend/import/2024/CEIP-7_8_9.csv';
 	$tipos_hand = fopen($local_path, 'r') or die("can't open $local_path");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -1408,7 +1409,7 @@ function datauy_import_CETP() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$fname = './sites/ElijoEstudiar-backend/import/2023/CETP.csv';
+	$fname = './sites/ElijoEstudiar-backend/import/2024/CETP.csv';
 	$tipos_hand = fopen($fname, 'r') or die("can't open $fname");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -1530,7 +1531,7 @@ function datauy_import_CFE() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$tipos_hand = fopen('./sites/ElijoEstudiar-backend/import/2023/CFE.csv', 'r') or die("can't open ./import/CFE-2020.csv");
+	$tipos_hand = fopen('./sites/ElijoEstudiar-backend/import/2024/CFE.csv', 'r') or die("can't open ./import/CFE-2020.csv");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
@@ -1636,7 +1637,7 @@ function datauy_import_UTEC() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$tipos_hand = fopen('./sites/ElijoEstudiar-backend/import/2023/UTEC.csv', 'r') or die("can't open ./import/2023/UTEC.csv");
+	$tipos_hand = fopen('./sites/ElijoEstudiar-backend/import/2024/UTEC.csv', 'r') or die("can't open ./import/2024/UTEC.csv");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
@@ -1706,7 +1707,7 @@ function datauy_import_UDELAR() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$tipos_hand = fopen('./sites/ElijoEstudiar-backend/import/2023/UDELAR.csv', 'r') or die("can't open ./import/2023/UDELAR.csv");
+	$tipos_hand = fopen('./sites/ElijoEstudiar-backend/import/2024/UDELAR.csv', 'r') or die("can't open ./import/2024/UDELAR.csv");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
 			$i++;
@@ -2586,12 +2587,12 @@ function datauy_test($quiere_nid, $tiene_nid) {
 		//datauy_build_tree();
 		//traigo las previas del padre
 		//datauy_import_previas();
-		//delete_all_oferta();
-		//datauy_import_establecimientos();
+		delete_all_oferta();
+		datauy_import_establecimientos();
 		//datauy_import_UTEC();
 		//datauy_import_CEIP();
 		//datauy_import_CES();
-		datauy_import_CETP();
+		//datauy_import_CETP();
 		//datauy_import_CFE();
 		//datauy_import_7_8_9();
 		//datauy_import_ubicaciones($quiere_nid, $tiene_nid);
