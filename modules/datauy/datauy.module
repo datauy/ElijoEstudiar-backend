@@ -1411,7 +1411,7 @@ function datauy_import_CETP() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-	$fname = './sites/ElijoEstudiar-backend/import/2024/CETP.csv';
+	$fname = './sites/ElijoEstudiar-backend/import/2024/DGETP.csv';
 	$tipos_hand = fopen($fname, 'r') or die("can't open $fname");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -1444,10 +1444,10 @@ function datauy_import_CETP() {
 		if ( !empty($rowParsed[3]) ) {
 			$curso_params['c_digo'] = $rowParsed[3];
 		}
-		if ( !empty($rowParsed[3]) ) {
+		if ( !empty($rowParsed[6]) ) {
 			$curso_params['a_o'] = $rowParsed[6];
 		}
-		if ( !empty($rowParsed[3]) ) {
+		if ( !empty($rowParsed[5]) ) {
 			$curso_params['trayectoria'] = substr_count($rowParsed[5],'I');
 		}
 			//'sector' => $sector,
@@ -2595,13 +2595,13 @@ function datauy_test($quiere_nid, $tiene_nid) {
 		//datauy_build_tree();
 		//traigo las previas del padre
 		//datauy_import_previas();
-		delete_all_oferta();
+		//delete_all_oferta();
 		datauy_import_establecimientos();
 		//datauy_import_UTEC();
 		//datauy_import_CEIP();
 		//datauy_import_CES();
 		//datauy_import_CETP();
-		//datauy_import_CFE();
+		datauy_import_CFE();
 		//datauy_import_7_8_9();
 		//datauy_import_ubicaciones($quiere_nid, $tiene_nid);
 		//datauy_update_nodes();
