@@ -713,7 +713,9 @@ function datauy_create_establecimiento_node($rowParsed, $subsis_id){
   $node->field_paraje['und'][0]['value'] = $rowParsed[8];
   $node->field_direcci_n['und'][0]['value'] = $rowParsed[9]." ".$rowParsed[10];
   $node->field_tel_fono['und'][0]['value'] = $rowParsed[11];
-  $node->field_rule['und'][0]['value'] = $rowParsed[12];
+  if ( !empty($rowParsed[12]) ) {
+		$node->field_rule['und'][0]['value'] = $rowParsed[12];
+	}
   //$node->field_number['und'][0]['value'] = $rowParsed[3];
   try {
     node_save($node); //Comentado para evitar duplicados
@@ -1436,13 +1438,19 @@ function datauy_import_CETP() {
 			'tipo' => $tipo,
 			'orientaci_n' => $orientacion,
 			'plan' => $rowParsed[2],
-			'c_digo' => $rowParsed[3],
-			'a_o' => $rowParsed[6],
-			//'sector' => $sector,
-			'trayectoria' => substr_count($rowParsed[5],'I'),
 			'web' => $rowParsed[16],
 			'subsis' => 3
 		);
+		if ( !empty($rowParsed[3]) ) {
+			$curso_params['c_digo'] = $rowParsed[3];
+		}
+		if ( !empty($rowParsed[3]) ) {
+			$curso_params['a_o'] = $rowParsed[6];
+		}
+		if ( !empty($rowParsed[3]) ) {
+			$curso_params['trayectoria'] = substr_count($rowParsed[5],'I');
+		}
+			//'sector' => $sector,
 		if ( $curso_id = datauy_create_curso_node($curso_params) ) {
       if ( $est = datauy_find_establecimiento_by_ruee( $rowParsed[17] ) ) {
         $params = array();
