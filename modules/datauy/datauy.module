@@ -500,7 +500,7 @@ function datauy_search_oferta($cursos, $turnos = false, $est = false){
  * @param QueryAlterableInterface $query
  */
 function datauy_query_oferta_alter($query) {
-	if (isset($_GET['ubicacion']) && $_GET['ubicacion'] ) {
+	if (isset($_GET['ubicacion']) && $_GET['ubicacion'] && $_GET['ubicacion'] != 'all' ) {
 		$ubicacion = explode(',', $_GET['ubicacion'] );
 		$table_alias = 'field_ubicaci_n';
 		$lat_alias = 'ubic' . '.' . $table_alias . '_lat';
@@ -611,8 +611,7 @@ function datauy_cursos4subsis($subsis) {
 		->fieldCondition('field_sub_sistema', 'target_id', $subsis )
 		->execute();
 	if (!empty($result['node'])) {
-		$nids = array_keys($result['node']);
-		return node_load_multiple( $nids );
+		return array_keys($result['node']);
 	}else{
 		return false;
 	}
@@ -728,8 +727,8 @@ function datauy_create_establecimiento_node($rowParsed, $subsis_id){
   $node->field_direcci_n['und'][0]['value'] = $rowParsed[9]." ".$rowParsed[10];
   $node->field_tel_fono['und'][0]['value'] = $rowParsed[11];
   if ( !empty($rowParsed[12]) ) {
-		$node->field_rule['und'][0]['value'] = $rowParsed[12];
-	}
+    $node->field_rule['und'][0]['value'] = $rowParsed[12];
+  }
   //$node->field_number['und'][0]['value'] = $rowParsed[3];
   try {
     node_save($node); //Comentado para evitar duplicados
@@ -1095,7 +1094,7 @@ function datauy_import_CEIP() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-  $local_path = './sites/ElijoEstudiar-backend/import/2024/CEIP.csv';
+  $local_path = './sites/ElijoEstudiar-backend/import/2024/DGEIP.csv';
 	$tipos_hand = fopen($local_path, 'r') or die("can't open $local_path");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -1268,7 +1267,7 @@ function datauy_import_CES() {
 	$i=0;
 	$fails = 0;
 	$repeated = 0;
-  $local_path = './sites/ElijoEstudiar-backend/import/2024/CES.csv';
+  $local_path = './sites/ElijoEstudiar-backend/import/2024/DGES.csv';
 	$tipos_hand = fopen($local_path, 'r') or die("can't open $local_path");
 	while (($rowParsed = fgetcsv($tipos_hand, 1000, ',')) !== FALSE){
 		if (!$i){
@@ -1942,13 +1941,15 @@ function datauy_import_pyd($subsis, $file) {
 function delete_from_subsis($subsis, $delete_cursos = false, $delete_oferta = false) {
 	//delete all cursos y oferta
 	$cursos = datauy_cursos4subsis($subsis);
-	$oferta_ids = datauy_find_cursos_oferta($cursos);
+	$oferta_ids = datauy_search_oferta($cursos);
+	watchdog('datauy', 'DELETE FROM SUBSIS:'.print_r($subsis, true));
 	if ( $delete_oferta ) {
 		node_delete_multiple($oferta_ids);
 	}
 	if ( $delete_cursos ) {
 		node_delete_multiple($cursos);
 	}
+	return;
 }
 
 /******* API *******/
@@ -1959,6 +1960,41 @@ function delete_from_subsis($subsis, $delete_cursos = false, $delete_oferta = fa
 	*@return:
 	* JSON array por SUBSISTEMA
 */
+function datauy_reload_all_cursos() {
+	$subsiss = datauy_get_vocabulary_terms(2);
+	$niveles = datauy_get_vocabulary_terms(7);
+	$tipos = datauy_get_vocabulary_terms(8);
+	$result = [];
+	foreach (datauy_subsis_def() as $subid) {
+		$cursos = node_load_multiple( datauy_cursos4subsis($subid) );
+		foreach ($cursos as $node) {
+			$nsubsis = $node->field_sub_sistema['und']['0']['target_id'];
+			$subsis = $subsiss[$nsubsis];
+			$ntipo = $node->field_tipo_curso['und']['0']['target_id'];
+			$tipo = $tipos[$ntipo];
+			$nnivel = $node->field_nivel['und']['0']['target_id'];
+			$nivel = $niveles[$nnivel];
+			if ( isset($node->field_orientaci_n['und']) ) {
+				$orientacion = taxonomy_term_load($node->field_orientaci_n['und']['0']['target_id']);
+			}
+			else {
+				$orientacion = $tipo;
+			}
+			//No agregar a menos que sea diferente
+			if ( isset($result[$subsis->name][$orientacion->tid]) )
+				continue;
+			$result[$subsis->name][$orientacion->tid] = datauy_set_curso_tags($orientacion, $tipo, $nivel);
+		}
+	}
+	$jres = [];
+	foreach ($result as $subsis => $sub_arr) {
+		$jres[] = array(
+			'subsis' => $subsis,
+			'cursos' => array_values($sub_arr)
+		);
+	}
+	file_put_contents(drupal_get_path('module', 'datauy').'/cursos.json', json_encode($jres) );
+}
 function datauy_api_busqueda_terminos($search, $terms = array()) {
 		//GEt all terms matching search and group by vocabulary
 		if ( $search == "all") {
@@ -2185,7 +2221,7 @@ function datauy_api_cursos() {
 	// TODO: NO PERMITIR UNA QUERY CON TODO EN ALL!!!!
 	*/
 	$cursos_ids = datauy_search_cursos($busqueda);
-	$oferta_ids = datauy_search_oferta($cursos_ids, $turnos, $centro);	
+	$oferta_ids = datauy_search_oferta($cursos_ids, $turnos, $centro);
 	//TODO ARREGLAR TURNOS
 	/*watchdog('datauy', 'OFERTA EN CURSOS:'.print_r($oferta_ids, true));
 	print '<pre>';
@@ -2612,8 +2648,9 @@ function datauy_test($quiere_nid, $tiene_nid) {
 		//datauy_import_CEIP();
 		//datauy_import_CES();
 		//datauy_import_CETP();
-		delete_from_subsis(4);
+		//delete_from_subsis(4,true,true);
 		//datauy_import_CFE();
+		datauy_reload_all_cursos();
 		//datauy_import_7_8_9();
 		//datauy_import_ubicaciones($quiere_nid, $tiene_nid);
 		//datauy_update_nodes();
